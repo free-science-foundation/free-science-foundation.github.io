@@ -171,14 +171,15 @@ body {
   font-size: 1.2rem;
   color: #2c3e50;
   line-height: 1.7;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
 }
 
 .mission-actions {
   display: flex;
-  gap: 1.5rem;
-  justify-content: center;
   flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  align-items: center;
 }
 
 .action-link {
@@ -219,13 +220,167 @@ body {
 .youtube-btn {
   background-color: #FF0000;
   color: #ffffff;
-  border-color: #FF0000;
 }
 
 .youtube-btn:hover {
   background-color: #CC0000;
-  border-color: #CC0000;
+}
+
+.linkedin-btn {
+  background-color: #0077B5;
   color: #ffffff;
+}
+
+.linkedin-btn:hover {
+  background-color: #005885;
+}
+
+/* Submission Guide Section */
+.submission-guide {
+  padding: 5rem 0;
+  background-color: #ffffff;
+}
+
+.submission-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.submission-text {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.submission-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.step {
+  background-color: #f8f9fa;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #e1e4e8;
+  text-align: left;
+}
+
+.step-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+}
+
+.step-description {
+  color: #586069;
+  line-height: 1.6;
+}
+
+.step-bullets {
+  text-align: left;
+  margin-top: 1rem;
+  padding-left: 1.5rem;
+}
+
+.step-bullets li {
+  color: #586069;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.step-bullets strong {
+  color: #2c3e50;
+}
+
+.submission-cta {
+  text-align: center;
+}
+
+.cta-text {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  margin-bottom: 2rem;
+}
+
+.volunteer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+/* GitHub Guide Section */
+.github-guide {
+  padding: 5rem 0;
+  background-color: #f8f9fa;
+}
+
+.github-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.github-text {
+  font-size: 1.2rem;
+  color: #2c3e50;
+  line-height: 1.7;
+  margin-bottom: 3rem;
+}
+
+.github-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.github-example {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 8px;
+  border: 1px solid #e1e4e8;
+  text-align: left;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.example-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.code-block {
+  background-color: #f6f8fa;
+  border: 1px solid #d0d7de;
+  border-radius: 6px;
+  padding: 1rem;
+  overflow-x: auto;
+}
+
+.code-block pre {
+  margin: 0;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  font-size: 0.9rem;
+  color: #24292f;
+  line-height: 1.5;
+}
+
+.code-block code {
+  background: none;
+  padding: 0;
+  border: none;
+  color: inherit;
 }
 
 /* Footer */
