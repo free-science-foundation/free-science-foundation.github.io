@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Free Software Foundation</title>
+    <meta name="description" content="Explore free software projects from the Free Software Foundation GitHub organization.">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="projects.css">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <nav class="nav-container" role="navigation" aria-label="Main navigation">
+            <div class="nav-brand">
+                <h1 class="site-title">FSF</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="#" class="nav-link active" aria-current="page">Projects</a></li>
+                <li><a href="https://www.fsf.org/" class="nav-link" target="_blank" rel="noopener">Official Site</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="projects-header" role="banner">
+            <div class="container">
+                <h1 class="page-title">Free Software Projects</h1>
+                <p class="page-description">
+                    Explore free and open source software projects from the FSF organization and community.
+                </p>
+            </div>
+        </section>
+
+        <section class="filters" aria-labelledby="filters-heading">
+            <div class="container">
+                <h2 id="filters-heading" class="visually-hidden">Filter Projects</h2>
+                
+                <div class="filter-controls">
+                    <div class="search-container">
+                        <label for="search-input" class="visually-hidden">Search projects</label>
+                        <input 
+                            type="search" 
+                            id="search-input" 
+                            class="search-input" 
+                            placeholder="Search projects..."
+                            aria-label="Search projects"
+                        >
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="category-filter" class="filter-label">Category</label>
+                        <select id="category-filter" class="filter-select" aria-label="Filter by category">
+                            <option value="">All Categories</option>
+                            <option value="development">Development Tools</option>
+                            <option value="utilities">Utilities</option>
+                            <option value="education">Education</option>
+                            <option value="multimedia">Multimedia</option>
+                            <option value="system">System Tools</option>
+                            <option value="documentation">Documentation</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="license-filter" class="filter-label">License</label>
+                        <select id="license-filter" class="filter-select" aria-label="Filter by license">
+                            <option value="">All Licenses</option>
+                            <option value="gplv3">GPL v3</option>
+                            <option value="gplv2">GPL v2</option>
+                            <option value="agplv3">AGPL v3</option>
+                            <option value="lgplv3">LGPL v3</option>
+                            <option value="apache">Apache 2.0</option>
+                            <option value="mit">MIT</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="results-info">
+                    <span id="results-count" class="results-count">Loading projects...</span>
+                    <button id="clear-filters" class="clear-filters" aria-label="Clear all filters">
+                        Clear Filters
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <section class="projects-grid" aria-labelledby="projects-heading">
+            <div class="container">
+                <h2 id="projects-heading" class="visually-hidden">Project List</h2>
+                <div id="projects-container" class="projects-container">
+                    <!-- Projects will be dynamically loaded here -->
+                </div>
+                
+                <div id="no-results" class="no-results" style="display: none;">
+                    <h3>No projects found</h3>
+                    <p>Try adjusting your filters or search terms.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.gnu.org/philosophy/free-sw.html" target="_blank" rel="noopener">What is Free Software?</a></li>
+                        <li><a href="https://www.gnu.org/licenses/" target="_blank" rel="noopener">GNU Licenses</a></li>
+                        <li><a href="https://www.fsf.org/news/" target="_blank" rel="noopener">News & Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-heading">Community</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/free-software-foundation" target="_blank" rel="noopener">GitHub Organization</a></li>
+                        <li><a href="https://www.fsf.org/associate/" target="_blank" rel="noopener">Associate Members</a></li>
+                        <li><a href="https://www.fsf.org/blogs/community/" target="_blank" rel="noopener">Community Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-heading">Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.fsf.org/about/contact.html" target="_blank" rel="noopener">Contact</a></li>
+                        <li><a href="https://www.fsf.org/about/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
+                        <li><a href="https://www.gnu.org/copyleft/" target="_blank" rel="noopener">Copyleft</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="license-text">
+                    This site is unofficial. For official information, visit <a href="https://www.fsf.org/" target="_blank" rel="noopener">fsf.org</a>
+                </p>
+                <p class="repository-link">
+                    <a href="https://github.com/free-software-foundation/free-software-foundation.github.io" target="_blank" rel="noopener">
+                        View source code
+                    </a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="projects.js"></script>
+</body>
+</html>

@@ -3,78 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Software Foundation</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            color: #333;
-        }
-        header {
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 30px;
-        }
-        h1 {
-            color: #3c5d72;
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        .card {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 20px;
-            background-color: #f9f9f9;
-        }
-        a {
-            color: #3c5d72;
-            text-decoration: none;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <title>Free Software Foundation - Defending Computer User Freedom Since 1985</title>
+    <meta name="description" content="The Free Software Foundation is a nonprofit with a worldwide mission to promote computer user freedom and to defend the rights of all software users.">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>Free Software Foundation</h1>
-        <p>Defending computer user freedom since 1985</p>
+    <header class="site-header" role="banner">
+        <nav class="nav-container" role="navigation" aria-label="Main navigation">
+            <div class="nav-brand">
+                <h1 class="site-title">FSF</h1>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#" class="nav-link active" aria-current="page">Home</a></li>
+                <li><a href="projects.html" class="nav-link">Projects</a></li>
+                <li><a href="https://www.fsf.org/" class="nav-link" target="_blank" rel="noopener">Official Site</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="container">
-        <div class="card">
-            <h2>About FSF</h2>
-            <p>The Free Software Foundation (FSF) is a nonprofit with a worldwide mission to promote computer user freedom and to defend the rights of all software users.</p>
-            <p><a href="https://www.fsf.org/" target="_blank">Visit Official Website →</a></p>
-        </div>
+    <main>
+        <section class="hero" role="banner">
+            <div class="container">
+                <h2 class="hero-title">Free Software, Free Society</h2>
+                <p class="hero-subtitle">Defending computer user freedom since 1985</p>
+                <p class="hero-description">
+                    The Free Software Foundation is a nonprofit with a worldwide mission to promote 
+                    computer user freedom and to defend the rights of all software users.
+                </p>
+                <a href="projects.html" class="cta-button">Explore Projects</a>
+            </div>
+        </section>
 
-        <div class="card">
-            <h2>GitHub Repository</h2>
-            <p>Explore the official FSF GitHub organization to find free software projects and contribute to the community.</p>
-            <p><a href="https://github.com/free-software-foundation" target="_blank">View on GitHub →</a></p>
-        </div>
+        <section class="values" aria-labelledby="values-heading">
+            <div class="container">
+                <h2 id="values-heading" class="section-title">Our Values</h2>
+                <div class="values-grid">
+                    <article class="value-card">
+                        <h3 class="value-title">Freedom</h3>
+                        <p class="value-description">
+                            Users should be free to run, copy, distribute, study, change, and improve software.
+                        </p>
+                    </article>
+                    <article class="value-card">
+                        <h3 class="value-title">Transparency</h3>
+                        <p class="value-description">
+                            Software should be open for inspection, modification, and verification by anyone.
+                        </p>
+                    </article>
+                    <article class="value-card">
+                        <h3 class="value-title">Community</h3>
+                        <p class="value-description">
+                            Free software benefits when people work together, sharing knowledge and code.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-        <div class="card">
-            <h2>Get Involved</h2>
-            <p>There are many ways to support the Free Software Foundation and the free software movement.</p>
-            <ul>
-                <li><a href="https://www.fsf.org/join" target="_blank">Become a Member</a></li>
-                <li><a href="https://www.fsf.org/campaigns/" target="_blank">Campaigns</a></li>
-                <li><a href="https://www.fsf.org/volunteer/" target="_blank">Volunteer</a></li>
-            </ul>
-        </div>
-    </div>
+        <section class="mission" aria-labelledby="mission-heading">
+            <div class="container">
+                <h2 id="mission-heading" class="section-title">Our Mission</h2>
+                <div class="mission-content">
+                    <p class="mission-text">
+                        The Free Software Foundation campaigns for computer users' freedom and for the 
+                        ethical principles of free software. We develop resources that help people 
+                        understand and exercise their rights to software freedom.
+                    </p>
+                    <div class="mission-actions">
+                        <a href="https://www.fsf.org/join" class="action-link" target="_blank" rel="noopener">
+                            Become a Member
+                        </a>
+                        <a href="https://www.fsf.org/campaigns/" class="action-link" target="_blank" rel="noopener">
+                            Support Campaigns
+                        </a>
+                        <a href="https://www.fsf.org/volunteer/" class="action-link" target="_blank" rel="noopener">
+                            Volunteer
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-    <footer style="margin-top: 40px; text-align: center; color: #666; font-size: 0.9em;">
-        <p>This is an unofficial GitHub Pages site for the Free Software Foundation.</p>
-        <p>For official information, please visit <a href="https://www.fsf.org/" target="_blank">fsf.org</a></p>
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-heading">Resources</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.gnu.org/philosophy/free-sw.html" target="_blank" rel="noopener">What is Free Software?</a></li>
+                        <li><a href="https://www.gnu.org/licenses/" target="_blank" rel="noopener">GNU Licenses</a></li>
+                        <li><a href="https://www.fsf.org/news/" target="_blank" rel="noopener">News & Events</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-heading">Community</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/free-software-foundation" target="_blank" rel="noopener">GitHub Organization</a></li>
+                        <li><a href="https://www.fsf.org/associate/" target="_blank" rel="noopener">Associate Members</a></li>
+                        <li><a href="https://www.fsf.org/blogs/community/" target="_blank" rel="noopener">Community Blog</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 class="footer-heading">Legal</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://www.fsf.org/about/contact.html" target="_blank" rel="noopener">Contact</a></li>
+                        <li><a href="https://www.fsf.org/about/privacy-policy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
+                        <li><a href="https://www.gnu.org/copyleft/" target="_blank" rel="noopener">Copyleft</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="license-text">
+                    This site is unofficial. For official information, visit <a href="https://www.fsf.org/" target="_blank" rel="noopener">fsf.org</a>
+                </p>
+                <p class="repository-link">
+                    <a href="https://github.com/free-software-foundation/free-software-foundation.github.io" target="_blank" rel="noopener">
+                        View source code
+                    </a>
+                </p>
+            </div>
+        </div>
     </footer>
 </body>
 </html>
