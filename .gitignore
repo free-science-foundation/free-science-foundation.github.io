@@ -18,3 +18,4 @@ build/
 *.njsproj
 *.sln
 *.sw?
+/context

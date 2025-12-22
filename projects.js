@@ -98,27 +98,28 @@ document.addEventListener('DOMContentLoaded', function() {
   projectsContainer = document.getElementById('projects-container');
   noResults = document.getElementById('no-results');
 
-  // Set up event listeners
+  // Set up event listeners (enhanced with screen reader announcements)
   setupEventListeners();
-  
+
   // Initial render
   renderProjects();
+  updateClearFiltersButton();
 });
 
 function setupEventListeners() {
   // Search input
   if (searchInput) {
-    searchInput.addEventListener('input', debounce(handleFilterChange, 300));
+    searchInput.addEventListener('input', debounce(handleFilterChangeWithAnnouncement, 300));
   }
 
   // Category filter
   if (categoryFilter) {
-    categoryFilter.addEventListener('change', handleFilterChange);
+    categoryFilter.addEventListener('change', handleFilterChangeWithAnnouncement);
   }
 
   // License filter
   if (licenseFilter) {
-    licenseFilter.addEventListener('change', handleFilterChange);
+    licenseFilter.addEventListener('change', handleFilterChangeWithAnnouncement);
   }
 
   // Clear filters button
@@ -128,11 +129,6 @@ function setupEventListeners() {
 
   // Keyboard navigation
   document.addEventListener('keydown', handleKeyboardNavigation);
-}
-
-function handleFilterChange() {
-  renderProjects();
-  updateClearFiltersButton();
 }
 
 function clearFilters() {
@@ -205,38 +201,35 @@ function createProjectCard(project) {
   
   return `
     <article class="project-card" tabindex="0" role="article">
-      <div class="project-header">
-        <div class="project-thumbnail">
-          <img src="${project.thumbnail}" alt="${project.name} thumbnail" width="50" height="50">
+      <div class="project-content">
+        <div class="project-info">
+          <h3 class="project-name">
+            <a href="${project.homepage}" target="_blank" rel="noopener" aria-label="Visit ${project.name} homepage">
+              ${project.name}
+            </a>
+          </h3>
+          <p class="project-description">
+            ${project.pageDescription || project.description}
+          </p>
         </div>
-        <h3 class="project-name">
-          <a href="${project.homepage}" target="_blank" rel="noopener" aria-label="Visit ${project.name} homepage">
-            ${project.name}
-          </a>
-        </h3>
-      </div>
-      
-      <p class="project-description">
-        ${project.pageDescription || project.description}
-      </p>
-      
-      <div class="project-meta">
-        <div class="project-tags">
-          <span class="project-tag" aria-label="Category: ${categoryName}">${categoryName}</span>
-          ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-        </div>
-        
-        <div class="project-license">
-          <span class="license-badge" aria-label="License: ${licenseName}">${licenseName}</span>
-        </div>
-        
-        <div class="project-links">
-          <a href="${project.repository}" target="_blank" rel="noopener" class="project-link" aria-label="View ${project.name} source code">
-            Source
-          </a>
-          <a href="${project.homepage}" target="_blank" rel="noopener" class="project-link" aria-label="Visit ${project.name} homepage">
-            Website
-          </a>
+        <div class="project-meta">
+          <div class="project-tags">
+            <span class="project-tag" aria-label="Category: ${categoryName}">${categoryName}</span>
+            ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
+          </div>
+          
+          <div class="project-license">
+            <span class="license-badge" aria-label="License: ${licenseName}">${licenseName}</span>
+          </div>
+          
+          <div class="project-links">
+            <a href="${project.repository}" target="_blank" rel="noopener" class="project-link" aria-label="View ${project.name} source code">
+              Source
+            </a>
+            <a href="${project.homepage}" target="_blank" rel="noopener" class="project-link" aria-label="Visit ${project.name} homepage">
+              Website
+            </a>
+          </div>
         </div>
       </div>
     </article>
@@ -321,19 +314,3 @@ function handleFilterChangeWithAnnouncement() {
     : `Found ${count} projects with current filters`;
   announceToScreenReader(message);
 }
-
-// Replace the original handler with the enhanced version
-document.addEventListener('DOMContentLoaded', function() {
-  // ... existing initialization code ...
-  
-  // Replace the filter change handler
-  if (searchInput) {
-    searchInput.addEventListener('input', debounce(handleFilterChangeWithAnnouncement, 300));
-  }
-  if (categoryFilter) {
-    categoryFilter.addEventListener('change', handleFilterChangeWithAnnouncement);
-  }
-  if (licenseFilter) {
-    licenseFilter.addEventListener('change', handleFilterChangeWithAnnouncement);
-  }
-});
