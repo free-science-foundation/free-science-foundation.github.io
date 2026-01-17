@@ -1343,6 +1343,178 @@ body {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Light Mode Styles - Explicit for when user toggles to light on dark system */
+[data-theme="light"] {
+  --color-text: #1f2937;
+  --color-text-muted: #5b6573;
+  --color-text-light: #64748b;
+  --color-surface: #ffffff;
+  --color-surface-elevated: rgba(255, 255, 255, 0.82);
+  --color-border: rgba(15, 23, 42, 0.12);
+  --color-border-light: rgba(15, 23, 42, 0.08);
+  --shadow-sm: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --shadow-md: 0 18px 50px rgba(15, 23, 42, 0.12);
+  --shadow-lg: 0 18px 50px rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] body {
+  background: 
+    radial-gradient(1200px 700px at 15% -10%, rgba(37, 99, 235, 0.14), transparent 60%),
+    radial-gradient(900px 650px at 85% 10%, rgba(124, 58, 237, 0.12), transparent 55%),
+    #ffffff;
+}
+
+[data-theme="light"] .site-header {
+  background: rgba(255, 255, 255, 0.82);
+  border-bottom-color: rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .nav-brand .site-title {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-theme="light"] .nav-link {
+  color: #5b6573;
+}
+
+[data-theme="light"] .nav-link:hover,
+[data-theme="light"] .nav-link.active {
+  color: #1f2937;
+}
+
+[data-theme="light"] .theme-slider {
+  background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .theme-slider::before {
+  transform: translateX(0);
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="light"] .hero-title {
+  background: linear-gradient(135deg, #1f2937 0%, #2563eb 50%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-theme="light"] .hero-subtitle {
+  color: #5b6573;
+}
+
+[data-theme="light"] .hero-description {
+  color: #5b6573;
+}
+
+[data-theme="light"] .section-title {
+  color: #1f2937;
+}
+
+[data-theme="light"] .mission-text,
+[data-theme="light"] .submission-text {
+  color: #5b6573;
+}
+
+[data-theme="light"] .step {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .step-title {
+  color: #1f2937;
+}
+
+[data-theme="light"] .step-description {
+  color: #5b6573;
+}
+
+[data-theme="light"] .step-bullets li {
+  color: #5b6573;
+}
+
+[data-theme="light"] .step-bullets strong {
+  color: #1f2937;
+}
+
+[data-theme="light"] .action-link {
+  background: rgba(255, 255, 255, 0.82);
+  color: #1f2937;
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .action-link:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #2563eb;
+  color: #2563eb;
+}
+
+[data-theme="light"] .cta-button {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
+}
+
+[data-theme="light"] .submission-cta {
+  background: rgba(255, 255, 255, 0.82);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .cta-text {
+  color: #1f2937;
+}
+
+[data-theme="light"] .team-grid-section {
+  background: transparent;
+}
+
+[data-theme="light"] .team-member-photo {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.14), rgba(124, 58, 237, 0.12));
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .photo-placeholder {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.08), rgba(124, 58, 237, 0.06));
+  border-color: #2563eb;
+}
+
+[data-theme="light"] .team-member-name {
+  color: #1f2937;
+}
+
+[data-theme="light"] .team-member-role {
+  color: #5b6573;
+}
+
+[data-theme="light"] .team-member-bio {
+  color: #64748b;
+}
+
+[data-theme="light"] .code-block {
+  background-color: rgba(255, 255, 255, 0.82);
+  border-color: rgba(15, 23, 42, 0.12);
+}
+
+[data-theme="light"] .code-block pre {
+  color: #1f2937;
+}
+
+[data-theme="light"] .site-footer {
+  background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  border-top-color: rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .site-footer,
+[data-theme="light"] .footer-section h4,
+[data-theme="light"] .footer-bottom {
+  color: #1f2937;
+}
+
+[data-theme="light"] .footer-link,
+[data-theme="light"] .footer-section p {
+  color: #5b6573;
+}
+
 /* Dark Mode Styles */
 [data-theme="dark"] {
   --color-text: rgba(255, 255, 255, 0.92);

@@ -557,6 +557,112 @@ main {
   border-color: rgba(59, 130, 246, 0.22);
 }
 
+/* Light mode - Manual toggle (for when user's system is dark but they want light) */
+[data-theme="light"] {
+  --p-bg: #ffffff;
+  --p-surface: rgba(255, 255, 255, 0.92);
+  --p-surface-solid: #ffffff;
+  --p-text: #1f2937;
+  --p-muted: #4b5563;
+  --p-border: rgba(15, 23, 42, 0.15);
+  --p-shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+  --p-shadow-soft: 0 8px 24px rgba(15, 23, 42, 0.08);
+  --p-ring: rgba(37, 99, 235, 0.28);
+}
+
+[data-theme="light"] body {
+  background:
+    radial-gradient(1200px 700px at 15% -10%, rgba(37, 99, 235, 0.12), transparent 60%),
+    radial-gradient(900px 650px at 85% 10%, rgba(124, 58, 237, 0.10), transparent 55%),
+    #f8fafc;
+}
+
+[data-theme="light"] .projects-header {
+  background:
+    linear-gradient(180deg, rgba(248, 250, 252, 0.95), rgba(248, 250, 252, 0.75)),
+    radial-gradient(1000px 400px at 50% 0%, rgba(37, 99, 235, 0.12), transparent 55%);
+  border-bottom-color: rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .page-title {
+  color: #0f172a;
+  background: linear-gradient(135deg, #1e293b 0%, #2563eb 50%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="light"] .page-description {
+  color: #475569;
+}
+
+[data-theme="light"] .filter-controls {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(15, 23, 42, 0.12);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+}
+
+[data-theme="light"] .filter-label {
+  color: #374151;
+}
+
+[data-theme="light"] .search-input,
+[data-theme="light"] .filter-select {
+  background-color: #ffffff;
+  color: #1f2937;
+  border-color: rgba(15, 23, 42, 0.15);
+}
+
+[data-theme="light"] .search-input::placeholder {
+  color: #9ca3af;
+}
+
+[data-theme="light"] .results-count {
+  color: #6b7280;
+}
+
+[data-theme="light"] .project-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(15, 23, 42, 0.1);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
+}
+
+[data-theme="light"] .project-card:hover {
+  box-shadow: 0 8px 30px rgba(15, 23, 42, 0.12);
+  border-color: rgba(37, 99, 235, 0.3);
+}
+
+[data-theme="light"] .project-name {
+  color: #0f172a;
+}
+
+[data-theme="light"] .project-description {
+  color: #475569;
+}
+
+[data-theme="light"] .project-tag {
+  background: rgba(37, 99, 235, 0.06);
+  border-color: rgba(37, 99, 235, 0.15);
+  color: #3b82f6;
+}
+
+[data-theme="light"] .license-badge {
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.2);
+  color: #059669;
+}
+
+[data-theme="light"] .project-link {
+  background: rgba(37, 99, 235, 0.08);
+  border-color: rgba(37, 99, 235, 0.2);
+  color: #2563eb;
+}
+
+[data-theme="light"] .project-link:hover {
+  background: rgba(37, 99, 235, 0.15);
+  border-color: rgba(37, 99, 235, 0.35);
+}
+
 /* Print */
 @media print {
   body {
