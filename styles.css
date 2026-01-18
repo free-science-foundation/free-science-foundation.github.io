@@ -1420,6 +1420,180 @@ body {
   top: 6px;
 }
 
+/* Nav Controls (Language + Theme Toggle) */
+.nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Language Selector */
+.language-selector {
+  position: relative;
+}
+
+.language-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  color: var(--color-text);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.language-btn:hover {
+  background: var(--color-surface-elevated);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.current-lang {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.language-dropdown {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  min-width: 160px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition-fast);
+  z-index: 1000;
+}
+
+/* Custom scrollbar for language dropdown */
+.language-dropdown::-webkit-scrollbar {
+  width: 6px;
+}
+
+.language-dropdown::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.language-dropdown::-webkit-scrollbar-thumb {
+  background: var(--color-neutral-300);
+  border-radius: 3px;
+}
+
+.language-dropdown::-webkit-scrollbar-thumb:hover {
+  background: var(--color-neutral-400);
+}
+
+.language-selector.open .language-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.lang-option {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  text-align: left;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.lang-option:hover {
+  background: var(--color-surface-elevated);
+  color: var(--color-primary);
+}
+
+.lang-option.active {
+  background: rgba(52, 152, 219, 0.1);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* Dark mode language selector */
+[data-theme="dark"] .language-btn {
+  border-color: rgba(144, 164, 174, 0.18);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .language-btn:hover {
+  background: rgba(38, 50, 56, 0.5);
+  border-color: #85c1e9;
+  color: #85c1e9;
+}
+
+[data-theme="dark"] .language-dropdown {
+  background: #263238;
+  border-color: rgba(144, 164, 174, 0.18);
+}
+
+[data-theme="dark"] .language-dropdown::-webkit-scrollbar-thumb {
+  background: rgba(144, 164, 174, 0.3);
+}
+
+[data-theme="dark"] .language-dropdown::-webkit-scrollbar-thumb:hover {
+  background: rgba(144, 164, 174, 0.5);
+}
+
+[data-theme="dark"] .lang-option {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .lang-option:hover {
+  background: rgba(93, 173, 226, 0.15);
+  color: #85c1e9;
+}
+
+[data-theme="dark"] .lang-option.active {
+  background: rgba(93, 173, 226, 0.2);
+  color: #85c1e9;
+}
+
+/* Light mode language selector */
+[data-theme="light"] .language-btn {
+  border-color: rgba(38, 50, 56, 0.12);
+  color: #263238;
+}
+
+[data-theme="light"] .language-btn:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: #3498db;
+  color: #3498db;
+}
+
+[data-theme="light"] .language-dropdown {
+  background: #ffffff;
+  border-color: rgba(38, 50, 56, 0.12);
+}
+
+[data-theme="light"] .lang-option {
+  color: #263238;
+}
+
+[data-theme="light"] .lang-option:hover {
+  background: rgba(52, 152, 219, 0.08);
+  color: #3498db;
+}
+
+[data-theme="light"] .lang-option.active {
+  background: rgba(52, 152, 219, 0.12);
+  color: #3498db;
+}
+
 /* Theme Toggle Switch */
 .theme-toggle-wrapper {
   display: flex;

@@ -164,12 +164,96 @@
                 <li><a href="team.html" class="nav-link">Team</a></li>
                 <li><a href="white-papers.html" class="nav-link">White Papers</a></li>
                 <li>
-                    <div class="theme-toggle-wrapper">
-                        <label class="theme-switch" for="theme-toggle">
-                            <input type="checkbox" id="theme-toggle">
-                            <span class="theme-slider"></span>
-                        </label>
+            <div class="nav-controls">
+                <div class="theme-toggle-wrapper">
+                    <label class="theme-switch" for="theme-toggle">
+                        <input type="checkbox" id="theme-toggle">
+                        <span class="theme-slider"></span>
+                    </label>
+                </div>
+                <div class="language-selector">
+                    <button class="language-btn" aria-label="Select language" aria-expanded="false">
+                        <span class="current-lang">EN</span>
+                    </button>
+                    <div class="language-dropdown" role="menu">
+                        <button class="lang-option" data-lang="en" role="menuitem">English</button>
+                        <button class="lang-option" data-lang="es" role="menuitem">Español</button>
+                        <button class="lang-option" data-lang="pt" role="menuitem">Português</button>
+                        <button class="lang-option" data-lang="fr" role="menuitem">Français</button>
+                        <button class="lang-option" data-lang="de" role="menuitem">Deutsch</button>
+                        <button class="lang-option" data-lang="it" role="menuitem">Italiano</button>
+                        <button class="lang-option" data-lang="nl" role="menuitem">Nederlands</button>
+                        <button class="lang-option" data-lang="pl" role="menuitem">Polski</button>
+                        <button class="lang-option" data-lang="ro" role="menuitem">Română</button>
+                        <button class="lang-option" data-lang="hu" role="menuitem">Magyar</button>
+                        <button class="lang-option" data-lang="cs" role="menuitem">Čeština</button>
+                        <button class="lang-option" data-lang="el" role="menuitem">Ελληνικά</button>
+                        <button class="lang-option" data-lang="sv" role="menuitem">Svenska</button>
+                        <button class="lang-option" data-lang="da" role="menuitem">Dansk</button>
+                        <button class="lang-option" data-lang="no" role="menuitem">Norsk</button>
+                        <button class="lang-option" data-lang="fi" role="menuitem">Suomi</button>
+                        <button class="lang-option" data-lang="bg" role="menuitem">Български</button>
+                        <button class="lang-option" data-lang="hr" role="menuitem">Hrvatski</button>
+                        <button class="lang-option" data-lang="sr" role="menuitem">Српски</button>
+                        <button class="lang-option" data-lang="sk" role="menuitem">Slovenčina</button>
+                        <button class="lang-option" data-lang="sl" role="menuitem">Slovenščina</button>
+                        <button class="lang-option" data-lang="lt" role="menuitem">Lietuvių</button>
+                        <button class="lang-option" data-lang="lv" role="menuitem">Latviešu</button>
+                        <button class="lang-option" data-lang="et" role="menuitem">Eesti</button>
+                        <button class="lang-option" data-lang="sq" role="menuitem">Shqip</button>
+                        <button class="lang-option" data-lang="mk" role="menuitem">Македонски</button>
+                        <button class="lang-option" data-lang="be" role="menuitem">Беларуская</button>
+                        <button class="lang-option" data-lang="uk" role="menuitem">Українська</button>
+                        <button class="lang-option" data-lang="ru" role="menuitem">Русский</button>
+                        <button class="lang-option" data-lang="ca" role="menuitem">Català</button>
+                        <button class="lang-option" data-lang="gl" role="menuitem">Galego</button>
+                        <button class="lang-option" data-lang="eu" role="menuitem">Euskara</button>
+                        <button class="lang-option" data-lang="ga" role="menuitem">Gaeilge</button>
+                        <button class="lang-option" data-lang="cy" role="menuitem">Cymraeg</button>
+                        <button class="lang-option" data-lang="is" role="menuitem">Íslenska</button>
+                        <button class="lang-option" data-lang="mt" role="menuitem">Malti</button>
+                        <button class="lang-option" data-lang="tr" role="menuitem">Türkçe</button>
+                        <button class="lang-option" data-lang="ar" role="menuitem">العربية</button>
+                        <button class="lang-option" data-lang="fa" role="menuitem">فارسی</button>
+                        <button class="lang-option" data-lang="ur" role="menuitem">اردو</button>
+                        <button class="lang-option" data-lang="hi" role="menuitem">हिन्दी</button>
+                        <button class="lang-option" data-lang="bn" role="menuitem">বাংলা</button>
+                        <button class="lang-option" data-lang="pa" role="menuitem">ਪੰਜਾਬੀ</button>
+                        <button class="lang-option" data-lang="gu" role="menuitem">ગુજરાતી</button>
+                        <button class="lang-option" data-lang="mr" role="menuitem">मराठी</button>
+                        <button class="lang-option" data-lang="te" role="menuitem">తెలుగు</button>
+                        <button class="lang-option" data-lang="ta" role="menuitem">தமிழ்</button>
+                        <button class="lang-option" data-lang="kn" role="menuitem">ಕನ್ನಡ</button>
+                        <button class="lang-option" data-lang="ml" role="menuitem">മലയാളം</button>
+                        <button class="lang-option" data-lang="si" role="menuitem">සිංහල</button>
+                        <button class="lang-option" data-lang="ne" role="menuitem">नेपाली</button>
+                        <button class="lang-option" data-lang="zh" role="menuitem">中文</button>
+                        <button class="lang-option" data-lang="ja" role="menuitem">日本語</button>
+                        <button class="lang-option" data-lang="ko" role="menuitem">한국어</button>
+                        <button class="lang-option" data-lang="id" role="menuitem">Bahasa Indonesia</button>
+                        <button class="lang-option" data-lang="ms" role="menuitem">Bahasa Melayu</button>
+                        <button class="lang-option" data-lang="tl" role="menuitem">Tagalog</button>
+                        <button class="lang-option" data-lang="ceb" role="menuitem">Cebuano</button>
+                        <button class="lang-option" data-lang="vi" role="menuitem">Tiếng Việt</button>
+                        <button class="lang-option" data-lang="th" role="menuitem">ไทย</button>
+                        <button class="lang-option" data-lang="lo" role="menuitem">ລາວ</button>
+                        <button class="lang-option" data-lang="my" role="menuitem">မြန်မာဘာသာ</button>
+                        <button class="lang-option" data-lang="km" role="menuitem">ភាសាខ្មែរ</button>
+                        <button class="lang-option" data-lang="sw" role="menuitem">Kiswahili</button>
+                        <button class="lang-option" data-lang="ha" role="menuitem">Hausa</button>
+                        <button class="lang-option" data-lang="yo" role="menuitem">Yorùbá</button>
+                        <button class="lang-option" data-lang="ig" role="menuitem">Igbo</button>
+                        <button class="lang-option" data-lang="ff" role="menuitem">Fulfulde</button>
+                        <button class="lang-option" data-lang="am" role="menuitem">አማርኛ</button>
+                        <button class="lang-option" data-lang="ti" role="menuitem">ትግርኛ</button>
+                        <button class="lang-option" data-lang="om" role="menuitem">Oromoo</button>
+                        <button class="lang-option" data-lang="so" role="menuitem">Soomaali</button>
+                        <button class="lang-option" data-lang="mg" role="menuitem">Malagasy</button>
+                        <button class="lang-option" data-lang="sn" role="menuitem">ChiShona</button>
+                        <button class="lang-option" data-lang="zu" role="menuitem">isiZulu</button>
                     </div>
+                </div>
+            </div>
                 </li>
             </ul>
         </nav>
