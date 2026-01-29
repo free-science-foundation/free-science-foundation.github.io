@@ -489,12 +489,75 @@ body {
   margin-bottom: 2.5rem;
 }
 
+/* Letter-style Mission Statement */
+.mission-letter {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.letter-border {
+  border: 3px double rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+  padding: 3px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.letter-border::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+.letter-content {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 3.5rem 3rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.letter-opening {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+  font-weight: 400;
+  text-align: left;
+}
+
+.letter-text {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 1.8rem;
+  font-weight: 400;
+  text-align: left;
+}
+
+.letter-closing {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: var(--color-text);
+  line-height: 1.8;
+  margin-bottom: 0;
+  font-weight: 400;
+  text-align: left;
+}
+
 .mission-actions {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: center;
   align-items: center;
+  margin-top: 2.5rem;
 }
 
 .action-link {
@@ -2139,6 +2202,27 @@ body {
   color: rgba(226, 232, 240, 0.7);
 }
 
+[data-theme="dark"] .letter-border {
+  border-color: rgba(255, 255, 255, 0.15);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .letter-border::before {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .letter-content {
+  background: rgba(30, 30, 30, 0.95);
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .letter-opening,
+[data-theme="dark"] .letter-text,
+[data-theme="dark"] .letter-closing {
+  color: rgba(255, 255, 255, 0.88);
+}
+
 [data-theme="dark"] .step {
   background: #1e1e1e;
   border-color: rgba(255, 255, 255, 0.08);
@@ -2681,6 +2765,46 @@ body {
   color: rgba(255, 255, 255, 0.9);
 }
 
+/* Responsive Letter Format */
+@media (max-width: 768px) {
+  .letter-content {
+    padding: 2.5rem 2rem;
+  }
+  
+  .letter-opening,
+  .letter-text,
+  .letter-closing {
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
+  }
+}
+
+@media (max-width: 600px) {
+  .letter-border {
+    border-width: 2px;
+    padding: 2px;
+  }
+  
+  .letter-content {
+    padding: 2rem 1.5rem;
+  }
+  
+  .letter-opening {
+    margin-bottom: 1.5rem;
+  }
+  
+  .letter-text {
+    margin-bottom: 1.5rem;
+  }
+  
+  .letter-closing {
+    margin-top: 1.5rem;
+  }
+  
+  .mission-actions {
+    margin-top: 2rem;
+  }
+}
+
 /* Responsive modal */
 @media (max-width: 600px) {
   .disclaimer-modal {
@@ -2877,16 +3001,22 @@ body {
 .pillar-expand-hint {
   display: inline-block;
   font-size: 0.8rem;
-  color: var(--color-text-light);
-  padding: 0.25rem 0.75rem;
-  background: rgba(0, 0, 0, 0.05);
+  color: var(--color-text-muted);
+  padding: 0.3rem 0.85rem;
+  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: var(--radius-full);
   transition: all var(--transition-fast);
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .pillar-card:hover .pillar-expand-hint {
-  background: rgba(0, 0, 0, 0.1);
-  color: var(--color-text-muted);
+  background: rgba(0, 0, 0, 0.12);
+  border-color: rgba(0, 0, 0, 0.15);
+  color: var(--color-text);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
 }
 
 /* Pillar Trees Container */
@@ -3204,15 +3334,148 @@ body {
    PATH EXPLORER RESPONSIVE STYLES
    ========================================================================== */
 
-/* Tablet - 1024px and below */
-@media (max-width: 1024px) {
+/* Ultra-Wide Desktop - 1920px and above */
+@media (min-width: 1920px) {
   .pillar-cards {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 2rem;
+  }
+  
+  .pillar-card {
+    padding: 2.5rem;
+  }
+  
+  .pillar-icon {
+    width: 72px;
+    height: 72px;
+  }
+  
+  .pillar-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .pillar-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .pillar-description {
+    font-size: 1.05rem;
+    margin-bottom: 1.25rem;
+  }
+  
+  .pillar-expand-hint {
+    font-size: 0.875rem;
+    padding: 0.35rem 0.875rem;
+  }
+  
+  .path-explorer-subtitle {
+    font-size: 1.25rem;
+    margin-bottom: 3.5rem;
+  }
+}
+
+/* Large Desktop - 1440px to 1919px */
+@media (min-width: 1440px) and (max-width: 1919px) {
+  .pillar-cards {
+    gap: 1.75rem;
+  }
+  
+  .pillar-card {
+    padding: 2.25rem;
+  }
+  
+  .pillar-icon {
+    width: 68px;
+    height: 68px;
+  }
+  
+  .pillar-icon svg {
+    width: 34px;
+    height: 34px;
+  }
+  
+  .pillar-title {
+    font-size: 1.4rem;
+    margin-bottom: 0.65rem;
+  }
+  
+  .pillar-description {
+    font-size: 1rem;
+    margin-bottom: 1.15rem;
+  }
+  
+  .pillar-expand-hint {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.8rem;
+  }
+  
+  .path-explorer-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 3.25rem;
+  }
+}
+
+/* Large Tablet / Small Desktop - 901px to 1200px */
+@media (max-width: 1200px) {
+  .pillar-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .pillar-card {
+    padding: 1.75rem;
+  }
+  
+  .pillar-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
+    margin: 0 auto;
+  }
+  
+  .pillar-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .pillar-icon svg {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .pillar-title {
+    font-size: 1.25rem;
+  }
+  
+  .pillar-description {
+    font-size: 0.95rem;
+  }
+  
+  .tree-branches {
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .tree-branch {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablet Landscape - 769px to 900px */
+@media (max-width: 900px) {
+  .pillar-cards {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
   }
   
   .pillar-card {
     padding: 1.5rem;
+  }
+  
+  .pillar-card:last-child {
+    grid-column: 1 / -1;
+    max-width: 50%;
   }
   
   .pillar-icon {
@@ -3228,19 +3491,9 @@ body {
   .pillar-title {
     font-size: 1.2rem;
   }
-  
-  .tree-branches {
-    gap: 0.5rem;
-    padding: 1rem;
-  }
-  
-  .tree-branch {
-    padding: 0.6rem 1rem;
-    font-size: 0.9rem;
-  }
 }
 
-/* Tablet Portrait - 768px and below */
+/* Tablet Portrait - 601px to 768px */
 @media (max-width: 768px) {
   .path-explorer {
     padding: 4rem 0;
@@ -3258,6 +3511,12 @@ body {
   
   .pillar-card {
     padding: 1.5rem;
+  }
+  
+  .pillar-card:last-child {
+    grid-column: auto;
+    max-width: 100%;
+    margin: 0;
   }
   
   .pillar-header {
@@ -3361,6 +3620,90 @@ body {
   }
 }
 
+/* Large Mobile - 481px to 600px */
+@media (max-width: 600px) {
+  .path-explorer {
+    padding: 3.5rem 0;
+  }
+  
+  .path-explorer-subtitle {
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .pillar-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .pillar-card {
+    padding: 1.25rem;
+  }
+  
+  .pillar-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 0.875rem;
+  }
+  
+  .pillar-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  
+  .pillar-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .pillar-header-content {
+    flex: 1;
+  }
+  
+  .pillar-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .pillar-description {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .pillar-expand-hint {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .tree-header {
+    padding: 1rem;
+  }
+  
+  .tree-title {
+    font-size: 1.1rem;
+  }
+  
+  .tree-branches {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .tree-branch {
+    width: 100%;
+    padding: 0.7rem 1rem;
+  }
+  
+  .path-explorer-cta {
+    margin-top: 2rem;
+    padding: 1.5rem;
+  }
+}
+
 /* Mobile - 480px and below */
 @media (max-width: 480px) {
   .path-explorer {
@@ -3368,16 +3711,27 @@ body {
   }
   
   .path-explorer-subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
   }
   
   .pillar-card {
     padding: 1.25rem;
   }
   
+  .pillar-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 0.75rem;
+  }
+  
   .pillar-icon {
     width: 44px;
     height: 44px;
+    margin: 0;
+    flex-shrink: 0;
   }
   
   .pillar-icon svg {
@@ -3385,12 +3739,23 @@ body {
     height: 22px;
   }
   
+  .pillar-header-content {
+    flex: 1;
+  }
+  
   .pillar-title {
     font-size: 1.05rem;
+    margin-bottom: 0.2rem;
   }
   
   .pillar-description {
     font-size: 0.85rem;
+    margin-bottom: 0.4rem;
+  }
+  
+  .pillar-expand-hint {
+    font-size: 0.68rem;
+    padding: 0.18rem 0.45rem;
   }
   
   .tree-header {
@@ -3478,9 +3843,19 @@ body {
     padding: 1rem;
   }
   
+  .pillar-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 0.65rem;
+  }
+  
   .pillar-icon {
     width: 40px;
     height: 40px;
+    margin: 0;
+    flex-shrink: 0;
   }
   
   .pillar-icon svg {
@@ -3488,12 +3863,23 @@ body {
     height: 20px;
   }
   
+  .pillar-header-content {
+    flex: 1;
+  }
+  
   .pillar-title {
     font-size: 1rem;
+    margin-bottom: 0.2rem;
   }
   
   .pillar-description {
     font-size: 0.8rem;
+    margin-bottom: 0.35rem;
+  }
+  
+  .pillar-expand-hint {
+    font-size: 0.65rem;
+    padding: 0.16rem 0.4rem;
   }
   
   .tree-branch {
@@ -3554,12 +3940,15 @@ body {
 
 [data-theme="dark"] .pillar-expand-hint {
   background: rgba(255, 255, 255, 0.08);
-  color: rgba(226, 232, 240, 0.6);
+  border-color: rgba(255, 255, 255, 0.12);
+  color: rgba(226, 232, 240, 0.7);
 }
 
 [data-theme="dark"] .pillar-card:hover .pillar-expand-hint {
-  background: rgba(255, 255, 255, 0.12);
-  color: rgba(226, 232, 240, 0.8);
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* Dark Mode - Tree Panel */
