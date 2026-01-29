@@ -420,3 +420,141 @@
     setTimeout(showDisclaimer, 300);
   }
 })();
+
+// Path Explorer Interactive Functionality
+(function() {
+  const pillarCards = document.querySelectorAll('.pillar-card');
+  const pillarTrees = document.querySelectorAll('.pillar-tree');
+  const treeBranches = document.querySelectorAll('.tree-branch');
+  const treeDetails = document.querySelectorAll('.tree-detail');
+  const treeCloseButtons = document.querySelectorAll('.tree-close');
+  
+  if (!pillarCards.length) return;
+  
+  // Handle pillar card clicks
+  pillarCards.forEach(card => {
+    card.addEventListener('click', function() {
+      const pillarId = this.dataset.pillar;
+      const targetTree = document.getElementById(`tree-${pillarId}`);
+      
+      // Check if this pillar is already active
+      const isActive = this.classList.contains('active');
+      
+      // Close all pillars and trees first
+      pillarCards.forEach(c => c.classList.remove('active'));
+      pillarTrees.forEach(t => t.classList.remove('active'));
+      
+      // If clicking on a different pillar (or re-opening), activate it
+      if (!isActive && targetTree) {
+        this.classList.add('active');
+        targetTree.classList.add('active');
+        
+        // Auto-select first branch if none selected
+        const branches = targetTree.querySelectorAll('.tree-branch');
+        const details = targetTree.querySelectorAll('.tree-detail');
+        
+        // Reset branch selection
+        branches.forEach(b => b.classList.remove('active'));
+        details.forEach(d => d.classList.remove('active'));
+        
+        // Activate first branch and its detail
+        if (branches.length > 0) {
+          branches[0].classList.add('active');
+          const firstBranchId = branches[0].dataset.branch;
+          const firstDetail = document.getElementById(`detail-${firstBranchId}`);
+          if (firstDetail) {
+            firstDetail.classList.add('active');
+          }
+        }
+        
+        // Smooth scroll to the tree
+        setTimeout(() => {
+          targetTree.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    });
+    
+    // Keyboard accessibility
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('role', 'button');
+    card.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        this.click();
+      }
+    });
+  });
+  
+  // Handle tree branch clicks
+  treeBranches.forEach(branch => {
+    branch.addEventListener('click', function() {
+      const branchId = this.dataset.branch;
+      const parentTree = this.closest('.pillar-tree');
+      
+      // Deactivate all branches and details in this tree
+      const siblings = parentTree.querySelectorAll('.tree-branch');
+      const details = parentTree.querySelectorAll('.tree-detail');
+      
+      siblings.forEach(s => s.classList.remove('active'));
+      details.forEach(d => d.classList.remove('active'));
+      
+      // Activate this branch and its detail
+      this.classList.add('active');
+      const targetDetail = document.getElementById(`detail-${branchId}`);
+      if (targetDetail) {
+        targetDetail.classList.add('active');
+      }
+    });
+  });
+  
+  // Handle tree close buttons
+  treeCloseButtons.forEach(btn => {
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      const parentTree = this.closest('.pillar-tree');
+      const treeId = parentTree.dataset.tree;
+      
+      // Close the tree
+      parentTree.classList.remove('active');
+      
+      // Deactivate the corresponding pillar card
+      const pillarCard = document.querySelector(`.pillar-card[data-pillar="${treeId}"]`);
+      if (pillarCard) {
+        pillarCard.classList.remove('active');
+      }
+      
+      // Smooth scroll back to pillars
+      const pathExplorer = document.getElementById('path-explorer');
+      if (pathExplorer) {
+        setTimeout(() => {
+          pathExplorer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    });
+  });
+  
+  // Close tree when clicking outside
+  document.addEventListener('click', function(e) {
+    // Only process if we have active trees and click is outside
+    const activeTree = document.querySelector('.pillar-tree.active');
+    if (!activeTree) return;
+    
+    const isClickInside = e.target.closest('.pillar-tree') || e.target.closest('.pillar-card');
+    if (!isClickInside) {
+      // Close all trees and deactivate pillars
+      pillarTrees.forEach(t => t.classList.remove('active'));
+      pillarCards.forEach(c => c.classList.remove('active'));
+    }
+  });
+  
+  // Close on Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      const activeTree = document.querySelector('.pillar-tree.active');
+      if (activeTree) {
+        pillarTrees.forEach(t => t.classList.remove('active'));
+        pillarCards.forEach(c => c.classList.remove('active'));
+      }
+    }
+  });
+})();

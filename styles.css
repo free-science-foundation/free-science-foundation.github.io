@@ -256,10 +256,15 @@ body {
 
 /* Hero Section - Modern Consulting Style */
 .hero {
-  padding: 8rem 0 6rem;
+  padding: 2rem 0;
+  padding-bottom: 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+}
+
+.hero .container {
+  padding-bottom: 0;
 }
 
 .hero::before {
@@ -317,7 +322,7 @@ body {
   font-size: clamp(2.5rem, 5vw, 4.5rem);
   font-weight: 800;
   line-height: 1.1;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0;
   letter-spacing: -0.03em;
   background: linear-gradient(135deg, var(--color-text) 0%, var(--color-primary) 50%, var(--color-secondary) 100%);
   -webkit-background-clip: text;
@@ -389,7 +394,8 @@ body {
 
 /* Mission Section - Modern Card Layout */
 .mission {
-  padding: 6rem 0;
+  padding: 0;
+  padding-bottom: 4rem;
   background: transparent;
   position: relative;
 }
@@ -399,6 +405,7 @@ body {
   font-weight: 800;
   color: var(--color-text);
   text-align: center;
+  margin-top: 0;
   margin-bottom: 1rem;
   letter-spacing: -0.02em;
   line-height: 1.2;
@@ -420,12 +427,24 @@ body {
   text-align: center;
 }
 
+.mission-subtitle {
+  text-align: center;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
 .mission-text {
   font-size: clamp(1.1rem, 1.5vw, 1.3rem);
   color: var(--color-text-muted);
   line-height: 1.7;
-  margin-bottom: 3rem;
+  margin-bottom: 1.5rem;
   font-weight: 400;
+}
+
+.mission-text:last-of-type {
+  margin-bottom: 2.5rem;
 }
 
 .mission-actions {
@@ -768,7 +787,7 @@ body {
 /* Mobile Responsive Design - Modern Breakpoints */
 @media (max-width: 768px) {
   .hero {
-    padding: 5rem 0 4rem;
+    padding: 2rem 0 0;
   }
   
   .nav-container {
@@ -807,7 +826,7 @@ body {
 
 @media (max-width: 480px) {
   .hero {
-    padding: 4rem 0 3rem;
+    padding: 2rem 0 0;
   }
   
   .container {
@@ -816,7 +835,7 @@ body {
   
   .mission,
   .submission-guide {
-    padding: 4rem 0;
+    padding: 0 0 4rem;
   }
   
   .step {
@@ -1218,7 +1237,7 @@ body {
   }
   
   .hero {
-    padding: 8rem 0;
+    padding: 4rem 0 0;
   }
   
   .hero-title {
@@ -2563,4 +2582,963 @@ body {
     width: 100%;
     text-align: center;
   }
+}
+
+/* ==========================================================================
+   PATH EXPLORER SECTION - Interactive Tree Navigation
+   ========================================================================== */
+
+.path-explorer {
+  padding: 5rem 0;
+  background: transparent;
+  position: relative;
+}
+
+.path-explorer-subtitle {
+  text-align: center;
+  font-size: 1.15rem;
+  color: var(--color-text-muted);
+  margin-top: -0.5rem;
+  margin-bottom: 3rem;
+}
+
+/* Pillar Cards Container */
+.pillar-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+/* Individual Pillar Card */
+.pillar-card {
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.pillar-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  transition: opacity var(--transition-base);
+  pointer-events: none;
+}
+
+.pillar-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pillar-card:hover::before {
+  opacity: 1;
+}
+
+.pillar-card.active {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Consulting Pillar - Teal/Cyan */
+.pillar-consulting {
+  background: linear-gradient(135deg, var(--color-neutral-50) 0%, rgba(23, 162, 184, 0.12) 100%);
+  border-color: rgba(23, 162, 184, 0.2);
+}
+
+.pillar-consulting:hover,
+.pillar-consulting.active {
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-glow-accent);
+}
+
+.pillar-consulting .pillar-icon {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-dark) 100%);
+}
+
+/* Teaching Pillar - Green */
+.pillar-teaching {
+  background: linear-gradient(135deg, var(--color-neutral-50) 0%, rgba(39, 174, 96, 0.12) 100%);
+  border-color: rgba(39, 174, 96, 0.2);
+}
+
+.pillar-teaching:hover,
+.pillar-teaching.active {
+  border-color: var(--color-secondary);
+  box-shadow: var(--shadow-glow-secondary);
+}
+
+.pillar-teaching .pillar-icon {
+  background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+}
+
+/* Projects Pillar - Blue */
+.pillar-projects {
+  background: linear-gradient(135deg, var(--color-neutral-50) 0%, rgba(52, 152, 219, 0.12) 100%);
+  border-color: rgba(52, 152, 219, 0.2);
+}
+
+.pillar-projects:hover,
+.pillar-projects.active {
+  border-color: var(--color-primary);
+  box-shadow: var(--shadow-glow-primary);
+}
+
+.pillar-projects .pillar-icon {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+}
+
+/* Pillar Header Content */
+.pillar-header {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.pillar-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+  color: white;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-base);
+}
+
+.pillar-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.pillar-card:hover .pillar-icon {
+  transform: scale(1.1);
+}
+
+.pillar-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.pillar-description {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.pillar-expand-hint {
+  display: inline-block;
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  padding: 0.25rem 0.75rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
+}
+
+.pillar-card:hover .pillar-expand-hint {
+  background: rgba(0, 0, 0, 0.1);
+  color: var(--color-text-muted);
+}
+
+/* Pillar Trees Container */
+.pillar-trees {
+  position: relative;
+  min-height: 0;
+}
+
+/* Individual Pillar Tree Panel */
+.pillar-tree {
+  display: none;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  animation: slideDown 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.pillar-tree.active {
+  display: block;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Tree Header */
+.tree-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-neutral-50);
+}
+
+.tree-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0;
+}
+
+.tree-close {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-full);
+  font-size: 1.25rem;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.tree-close:hover {
+  background: var(--color-neutral-200);
+  color: var(--color-text);
+}
+
+/* Tree Branches (Sub-categories) */
+.tree-branches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.tree-branch {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: var(--color-neutral-50);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.tree-branch:hover {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-sm);
+}
+
+.tree-branch.active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.tree-branch.active:hover {
+  background: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+  color: white;
+}
+
+.branch-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.branch-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+.branch-name {
+  white-space: nowrap;
+}
+
+/* Tree Details Container */
+.tree-details {
+  padding: 0;
+}
+
+/* Individual Detail Panel */
+.tree-detail {
+  display: none;
+  padding: 1.5rem;
+  animation: fadeIn 0.25s ease;
+}
+
+.tree-detail.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.detail-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--color-primary);
+}
+
+.detail-section {
+  margin-bottom: 1.5rem;
+}
+
+.detail-heading {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.75rem;
+}
+
+.detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.detail-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.detail-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 6px;
+  height: 6px;
+  background: var(--color-secondary);
+  border-radius: 50%;
+}
+
+/* People Section */
+.detail-people {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.people-role {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  background: var(--color-neutral-100);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+}
+
+.people-you {
+  display: inline-block;
+  padding: 0.4rem 0.85rem;
+  background: linear-gradient(135deg, var(--color-secondary-light) 0%, var(--color-secondary) 100%);
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(39, 174, 96, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(39, 174, 96, 0);
+  }
+}
+
+/* Detail CTA */
+.detail-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.detail-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.detail-btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-neutral-100);
+  color: var(--color-text);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.detail-btn-secondary:hover {
+  background: var(--color-surface);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Path Explorer Bottom CTA */
+.path-explorer-cta {
+  text-align: center;
+  margin-top: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(52, 152, 219, 0.08) 0%, rgba(39, 174, 96, 0.08) 100%);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--color-border);
+}
+
+.path-tagline {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.path-message {
+  font-size: 1.1rem;
+  color: var(--color-text-muted);
+  margin: 0;
+}
+
+/* ==========================================================================
+   PATH EXPLORER RESPONSIVE STYLES
+   ========================================================================== */
+
+/* Tablet - 1024px and below */
+@media (max-width: 1024px) {
+  .pillar-cards {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  
+  .pillar-card {
+    padding: 1.5rem;
+  }
+  
+  .pillar-icon {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .pillar-icon svg {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .pillar-title {
+    font-size: 1.2rem;
+  }
+  
+  .tree-branches {
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .tree-branch {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablet Portrait - 768px and below */
+@media (max-width: 768px) {
+  .path-explorer {
+    padding: 4rem 0;
+  }
+  
+  .path-explorer-subtitle {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .pillar-cards {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .pillar-card {
+    padding: 1.5rem;
+  }
+  
+  .pillar-header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+    gap: 1rem;
+  }
+  
+  .pillar-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0;
+    flex-shrink: 0;
+  }
+  
+  .pillar-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .pillar-header-content {
+    flex: 1;
+  }
+  
+  .pillar-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .pillar-description {
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .pillar-expand-hint {
+    font-size: 0.75rem;
+    padding: 0.2rem 0.5rem;
+  }
+  
+  .tree-header {
+    padding: 1rem;
+  }
+  
+  .tree-title {
+    font-size: 1.1rem;
+  }
+  
+  .tree-branches {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 1rem;
+  }
+  
+  .tree-branch {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 0.75rem 1rem;
+  }
+  
+  .branch-name {
+    white-space: normal;
+  }
+  
+  .tree-detail {
+    padding: 1rem;
+  }
+  
+  .detail-title {
+    font-size: 1.15rem;
+    margin-bottom: 1rem;
+  }
+  
+  .detail-section {
+    margin-bottom: 1.25rem;
+  }
+  
+  .detail-cta {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  
+  .detail-btn,
+  .detail-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .path-explorer-cta {
+    margin-top: 2rem;
+    padding: 1.5rem;
+  }
+  
+  .path-tagline {
+    font-size: 1.25rem;
+  }
+  
+  .path-message {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile - 480px and below */
+@media (max-width: 480px) {
+  .path-explorer {
+    padding: 3rem 0;
+  }
+  
+  .path-explorer-subtitle {
+    font-size: 0.95rem;
+  }
+  
+  .pillar-card {
+    padding: 1.25rem;
+  }
+  
+  .pillar-icon {
+    width: 44px;
+    height: 44px;
+  }
+  
+  .pillar-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+  
+  .pillar-title {
+    font-size: 1.05rem;
+  }
+  
+  .pillar-description {
+    font-size: 0.85rem;
+  }
+  
+  .tree-header {
+    padding: 0.875rem;
+  }
+  
+  .tree-title {
+    font-size: 1rem;
+  }
+  
+  .tree-branches {
+    padding: 0.875rem;
+  }
+  
+  .tree-branch {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.85rem;
+  }
+  
+  .branch-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .branch-icon svg {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .tree-detail {
+    padding: 0.875rem;
+  }
+  
+  .detail-title {
+    font-size: 1.05rem;
+  }
+  
+  .detail-heading {
+    font-size: 0.8rem;
+  }
+  
+  .detail-list li {
+    font-size: 0.9rem;
+    padding-left: 1.25rem;
+  }
+  
+  .detail-list li::before {
+    width: 5px;
+    height: 5px;
+    top: 0.45rem;
+  }
+  
+  .detail-people {
+    gap: 0.375rem;
+  }
+  
+  .people-role,
+  .people-you {
+    font-size: 0.8rem;
+    padding: 0.3rem 0.7rem;
+  }
+  
+  .detail-btn,
+  .detail-btn-secondary {
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+  }
+  
+  .path-explorer-cta {
+    padding: 1.25rem;
+  }
+  
+  .path-tagline {
+    font-size: 1.1rem;
+  }
+  
+  .path-message {
+    font-size: 0.9rem;
+  }
+}
+
+/* Small Mobile - 360px and below */
+@media (max-width: 360px) {
+  .pillar-card {
+    padding: 1rem;
+  }
+  
+  .pillar-icon {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .pillar-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .pillar-title {
+    font-size: 1rem;
+  }
+  
+  .pillar-description {
+    font-size: 0.8rem;
+  }
+  
+  .tree-branch {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.8rem;
+  }
+  
+  .detail-title {
+    font-size: 1rem;
+  }
+}
+
+/* ==========================================================================
+   PATH EXPLORER DARK MODE STYLES
+   ========================================================================== */
+
+/* Dark Mode - Pillar Cards */
+[data-theme="dark"] .pillar-consulting {
+  background: linear-gradient(135deg, rgba(23, 162, 184, 0.18) 0%, rgba(23, 162, 184, 0.08) 100%);
+  border-color: rgba(72, 209, 204, 0.25);
+}
+
+[data-theme="dark"] .pillar-consulting:hover,
+[data-theme="dark"] .pillar-consulting.active {
+  border-color: #48d1cc;
+  box-shadow: 0 8px 30px rgba(72, 209, 204, 0.25);
+}
+
+[data-theme="dark"] .pillar-teaching {
+  background: linear-gradient(135deg, rgba(88, 214, 141, 0.18) 0%, rgba(88, 214, 141, 0.08) 100%);
+  border-color: rgba(88, 214, 141, 0.25);
+}
+
+[data-theme="dark"] .pillar-teaching:hover,
+[data-theme="dark"] .pillar-teaching.active {
+  border-color: #58d68d;
+  box-shadow: 0 8px 30px rgba(88, 214, 141, 0.25);
+}
+
+[data-theme="dark"] .pillar-projects {
+  background: linear-gradient(135deg, rgba(93, 173, 226, 0.18) 0%, rgba(93, 173, 226, 0.08) 100%);
+  border-color: rgba(93, 173, 226, 0.25);
+}
+
+[data-theme="dark"] .pillar-projects:hover,
+[data-theme="dark"] .pillar-projects.active {
+  border-color: #5dade2;
+  box-shadow: 0 8px 30px rgba(93, 173, 226, 0.25);
+}
+
+[data-theme="dark"] .pillar-title {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .pillar-description {
+  color: rgba(226, 232, 240, 0.7);
+}
+
+[data-theme="dark"] .pillar-expand-hint {
+  background: rgba(255, 255, 255, 0.08);
+  color: rgba(226, 232, 240, 0.6);
+}
+
+[data-theme="dark"] .pillar-card:hover .pillar-expand-hint {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(226, 232, 240, 0.8);
+}
+
+/* Dark Mode - Tree Panel */
+[data-theme="dark"] .pillar-tree {
+  background: rgba(38, 50, 56, 0.85);
+  border-color: rgba(144, 164, 174, 0.18);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="dark"] .tree-header {
+  background: rgba(26, 37, 47, 0.6);
+  border-bottom-color: rgba(144, 164, 174, 0.18);
+}
+
+[data-theme="dark"] .tree-title {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .tree-close {
+  background: rgba(144, 164, 174, 0.15);
+  color: rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .tree-close:hover {
+  background: rgba(144, 164, 174, 0.25);
+  color: white;
+}
+
+[data-theme="dark"] .tree-branches {
+  background: rgba(38, 50, 56, 0.5);
+  border-bottom-color: rgba(144, 164, 174, 0.18);
+}
+
+[data-theme="dark"] .tree-branch {
+  background: rgba(144, 164, 174, 0.1);
+  border-color: rgba(144, 164, 174, 0.18);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="dark"] .tree-branch:hover {
+  background: rgba(144, 164, 174, 0.15);
+  border-color: #85c1e9;
+  color: #85c1e9;
+}
+
+[data-theme="dark"] .tree-branch.active {
+  background: linear-gradient(135deg, #5dade2 0%, #48d1cc 100%);
+  border-color: #5dade2;
+  color: white;
+}
+
+[data-theme="dark"] .tree-branch.active:hover {
+  background: linear-gradient(135deg, #48d1cc 0%, #3ab8b0 100%);
+}
+
+/* Dark Mode - Detail Panel */
+[data-theme="dark"] .detail-title {
+  color: rgba(255, 255, 255, 0.92);
+  border-bottom-color: #5dade2;
+}
+
+[data-theme="dark"] .detail-heading {
+  color: rgba(226, 232, 240, 0.65);
+}
+
+[data-theme="dark"] .detail-list li {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="dark"] .detail-list li::before {
+  background: #58d68d;
+}
+
+[data-theme="dark"] .people-role {
+  background: rgba(144, 164, 174, 0.15);
+  color: rgba(226, 232, 240, 0.8);
+}
+
+[data-theme="dark"] .people-you {
+  background: linear-gradient(135deg, #58d68d 0%, #27ae60 100%);
+}
+
+[data-theme="dark"] .detail-cta {
+  border-top-color: rgba(144, 164, 174, 0.18);
+}
+
+[data-theme="dark"] .detail-btn-secondary {
+  background: rgba(144, 164, 174, 0.1);
+  color: rgba(255, 255, 255, 0.9);
+  border-color: rgba(144, 164, 174, 0.2);
+}
+
+[data-theme="dark"] .detail-btn-secondary:hover {
+  background: rgba(144, 164, 174, 0.15);
+  border-color: #85c1e9;
+  color: #85c1e9;
+}
+
+/* Dark Mode - Path Explorer CTA */
+[data-theme="dark"] .path-explorer-cta {
+  background: linear-gradient(135deg, rgba(93, 173, 226, 0.12) 0%, rgba(88, 214, 141, 0.12) 100%);
+  border-color: rgba(144, 164, 174, 0.18);
+}
+
+[data-theme="dark"] .path-tagline {
+  background: linear-gradient(135deg, #85c1e9 0%, #76d7c4 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+[data-theme="dark"] .path-message {
+  color: rgba(226, 232, 240, 0.7);
+}
+
+[data-theme="dark"] .path-explorer-subtitle {
+  color: rgba(226, 232, 240, 0.7);
 }
