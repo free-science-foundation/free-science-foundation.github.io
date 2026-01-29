@@ -1569,6 +1569,52 @@ body {
   font-weight: 600;
 }
 
+/* Social Icons in Header */
+.social-icons {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: 1rem;
+}
+
+.social-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-surface-elevated);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.social-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon.linkedin-icon:hover {
+  background: #0077b5;
+  border-color: #0077b5;
+  color: #ffffff;
+}
+
+.social-icon.discord-icon:hover {
+  background: #5865f2;
+  border-color: #5865f2;
+  color: #ffffff;
+}
+
+/* Responsive - hide social icons on smaller screens */
+@media (max-width: 768px) {
+  .social-icons {
+    display: none;
+  }
+}
+
 /* Dark mode language selector */
 [data-theme="dark"] .language-btn {
   border-color: rgba(144, 164, 174, 0.18);
