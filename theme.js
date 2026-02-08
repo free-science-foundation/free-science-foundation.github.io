@@ -558,3 +558,92 @@
     }
   });
 })();
+
+// LinkedIn Contact Modal (instead of direct navigation)
+(function() {
+  const LINKEDIN_URL = 'https://www.linkedin.com/in/cozzolinofrancesco/';
+
+  function ensureModal() {
+    let overlay = document.querySelector('.linkedin-contact-overlay');
+    if (overlay) return overlay;
+
+    overlay = document.createElement('div');
+    overlay.className = 'linkedin-contact-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-labelledby', 'linkedin-contact-title');
+
+    overlay.innerHTML = `
+      <div class="linkedin-contact-modal">
+        <button class="linkedin-contact-close" aria-label="Close">&times;</button>
+        <div class="linkedin-contact-icon" aria-hidden="true">
+          <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect x="2" y="9" width="4" height="12"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </div>
+        <h2 class="linkedin-contact-title" id="linkedin-contact-title">Contact me on LinkedIn</h2>
+        <p class="linkedin-contact-message">
+          Please write me directly on LinkedIn. Send a short message with who you are and what you need help with.
+        </p>
+        <div class="linkedin-contact-actions">
+          <a class="linkedin-contact-open" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Open LinkedIn</a>
+          <button class="linkedin-contact-cancel" type="button">Close</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const closeBtn = overlay.querySelector('.linkedin-contact-close');
+    const cancelBtn = overlay.querySelector('.linkedin-contact-cancel');
+
+    function hide() {
+      overlay.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function show() {
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        (closeBtn || cancelBtn || overlay).focus?.();
+      }, 50);
+    }
+
+    closeBtn?.addEventListener('click', hide);
+    cancelBtn?.addEventListener('click', hide);
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) hide();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) hide();
+    });
+
+    overlay._showLinkedInModal = show;
+    overlay._hideLinkedInModal = hide;
+    return overlay;
+  }
+
+  function attachHandlers() {
+    const links = document.querySelectorAll('a.social-icon.linkedin-icon');
+    if (!links.length) return;
+
+    const overlay = ensureModal();
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        overlay._showLinkedInModal?.();
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachHandlers);
+  } else {
+    attachHandlers();
+  }
+})();
