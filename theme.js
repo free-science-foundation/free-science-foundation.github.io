@@ -561,7 +561,7 @@
 
 // LinkedIn Contact Modal (instead of direct navigation)
 (function() {
-  const LINKEDIN_URL = 'https://www.linkedin.com/in/cozzolinofrancesco/';
+  const LINKEDIN_URL = 'https://chat.whatsapp.com/FvUDXRQwqh6CTMyOCZqAUh?mode=gi_t';
 
   function ensureModal() {
     let overlay = document.querySelector('.linkedin-contact-overlay');
@@ -583,12 +583,12 @@
             <circle cx="4" cy="4" r="2"></circle>
           </svg>
         </div>
-        <h2 class="linkedin-contact-title" id="linkedin-contact-title">Contact me on LinkedIn</h2>
+        <h2 class="linkedin-contact-title" id="linkedin-contact-title">Join our WhatsApp group</h2>
         <p class="linkedin-contact-message">
-          Please write me directly on LinkedIn. Send a short message with who you are and what you need help with.
+          Connect with us on WhatsApp for updates and direct communication.
         </p>
         <div class="linkedin-contact-actions">
-          <a class="linkedin-contact-open" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Open LinkedIn</a>
+          <a class="linkedin-contact-open" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Open WhatsApp Group</a>
           <button class="linkedin-contact-cancel" type="button">Close</button>
         </div>
       </div>
@@ -646,4 +646,214 @@
   } else {
     attachHandlers();
   }
+})();
+
+// WhatsApp Group Contact Modal + First Visit Prompt
+(function() {
+  const WHATSAPP_URL = 'https://chat.whatsapp.com/FvUDXRQwqh6CTMyOCZqAUh?mode=gi_t';
+  const WHATSAPP_QR_PATH = 'images/whatsapp-group-qr.png';
+  const WHATSAPP_POPUP_KEY = 'fsf_whatsapp_popup_seen_v1';
+
+  function ensureWhatsAppNavIcon() {
+    const iconContainers = document.querySelectorAll('.social-icons');
+    if (!iconContainers.length) return;
+
+    iconContainers.forEach(container => {
+      if (container.querySelector('.whatsapp-nav-wrap')) return;
+
+      const wrap = document.createElement('div');
+      wrap.className = 'whatsapp-nav-wrap';
+
+      const link = document.createElement('a');
+      link.href = WHATSAPP_URL;
+      link.target = '_blank';
+      link.rel = 'noopener';
+      link.className = 'social-icon whatsapp-icon';
+      link.setAttribute('aria-label', 'WhatsApp Group');
+      link.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M20.52 3.48A11.91 11.91 0 0 0 12.04 0C5.44 0 .07 5.37.07 11.97c0 2.11.55 4.17 1.6 5.99L0 24l6.2-1.62a11.9 11.9 0 0 0 5.83 1.49h.01c6.6 0 11.97-5.37 11.97-11.97 0-3.2-1.24-6.2-3.49-8.42zm-8.48 18.37h-.01a9.93 9.93 0 0 1-5.05-1.38l-.36-.21-3.68.96.98-3.59-.23-.37a9.91 9.91 0 0 1-1.53-5.29C2.16 6.47 6.54 2.1 12.03 2.1c2.65 0 5.14 1.03 7.01 2.9a9.86 9.86 0 0 1 2.9 7.01c0 5.49-4.38 9.84-9.9 9.84zm5.45-7.41c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.16-.17.2-.35.22-.65.07-.3-.15-1.25-.46-2.39-1.46-.88-.78-1.48-1.74-1.66-2.03-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.5h-.57c-.2 0-.52.08-.79.37-.27.3-1.04 1.02-1.04 2.5s1.07 2.91 1.22 3.11c.15.2 2.11 3.22 5.11 4.52.71.31 1.26.5 1.69.64.71.23 1.36.2 1.87.12.57-.08 1.77-.72 2.02-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35z"/>
+        </svg>
+      `;
+
+      const qrLink = document.createElement('a');
+      qrLink.href = WHATSAPP_URL;
+      qrLink.target = '_blank';
+      qrLink.rel = 'noopener';
+      qrLink.className = 'whatsapp-nav-qr';
+      qrLink.setAttribute('aria-label', 'Open WhatsApp group QR');
+      qrLink.innerHTML = `<img src="${WHATSAPP_QR_PATH}" alt="WhatsApp group QR code" class="whatsapp-nav-qr-image">`;
+
+      wrap.appendChild(link);
+      wrap.appendChild(qrLink);
+      container.appendChild(wrap);
+    });
+  }
+
+  function ensureWhatsAppModal() {
+    let overlay = document.querySelector('.whatsapp-contact-overlay');
+    if (overlay) return overlay;
+
+    overlay = document.createElement('div');
+    overlay.className = 'whatsapp-contact-overlay';
+    overlay.setAttribute('role', 'dialog');
+    overlay.setAttribute('aria-modal', 'true');
+    overlay.setAttribute('aria-label', 'WhatsApp QR code');
+
+    overlay.innerHTML = `
+      <div class="whatsapp-contact-modal">
+        <button class="whatsapp-contact-close" aria-label="Close">&times;</button>
+        <div class="whatsapp-qr-wrap">
+          <img src="${WHATSAPP_QR_PATH}" alt="WhatsApp group QR code" class="whatsapp-qr-image">
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const closeBtn = overlay.querySelector('.whatsapp-contact-close');
+
+    function hide() {
+      overlay.classList.remove('active');
+      overlay.classList.remove('qr-focus');
+      document.body.style.overflow = '';
+    }
+
+    function show(qrFocus = false) {
+      overlay.classList.toggle('qr-focus', qrFocus);
+      overlay.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        (closeBtn || overlay).focus?.();
+      }, 50);
+    }
+
+    closeBtn?.addEventListener('click', hide);
+
+    overlay.addEventListener('click', function(e) {
+      if (e.target === overlay) hide();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) hide();
+    });
+
+    overlay._showWhatsAppModal = show;
+    overlay._hideWhatsAppModal = hide;
+    return overlay;
+  }
+
+  function markPopupSeen() {
+    try {
+      localStorage.setItem(WHATSAPP_POPUP_KEY, '1');
+    } catch (err) {
+      // Ignore private mode/localStorage restrictions
+    }
+  }
+
+  function hasSeenPopup() {
+    try {
+      return localStorage.getItem(WHATSAPP_POPUP_KEY) === '1';
+    } catch (err) {
+      return false;
+    }
+  }
+
+  function maybeShowFirstVisitPopup(overlay) {
+    if (hasSeenPopup()) return;
+
+    function tryShow() {
+      const disclaimer = document.getElementById('disclaimer-overlay');
+      if (disclaimer && disclaimer.classList.contains('active')) {
+        setTimeout(tryShow, 800);
+        return;
+      }
+
+      overlay._showWhatsAppModal?.();
+      markPopupSeen();
+    }
+
+    setTimeout(tryShow, 700);
+  }
+
+  function attachHandlers() {
+    ensureWhatsAppNavIcon();
+
+    const links = document.querySelectorAll('a.social-icon.whatsapp-icon');
+    const qrLinks = document.querySelectorAll('a.whatsapp-nav-qr');
+    if (!links.length && !qrLinks.length) return;
+
+    const overlay = ensureWhatsAppModal();
+
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        overlay._showWhatsAppModal?.(false);
+      });
+    });
+
+    qrLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        overlay._showWhatsAppModal?.(true);
+      });
+    });
+
+    maybeShowFirstVisitPopup(overlay);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', attachHandlers);
+  } else {
+    attachHandlers();
+  }
+})();
+
+// Enforce WhatsApp group as single contact channel
+(function() {
+  const CONTACT_URL = 'https://chat.whatsapp.com/FvUDXRQwqh6CTMyOCZqAUh?mode=gi_t';
+  const contactSelector = [
+    'a[href*="linkedin.com/in/cozzolinofrancesco"]',
+    'a[href*="discord.gg/"]',
+    'a.translation-link.discord',
+    'a.translation-link.linkedin',
+    'a.action-link.discord-btn',
+    'a.action-link.linkedin-btn',
+    'a.help-contact-btn'
+  ].join(', ');
+
+  function normalizeContactLinks() {
+    const links = document.querySelectorAll(contactSelector);
+    links.forEach(link => {
+      const href = (link.getAttribute('href') || '').toLowerCase();
+      const cls = link.className || '';
+      const isContactClass =
+        cls.includes('discord') ||
+        cls.includes('linkedin') ||
+        cls.includes('help-contact-btn');
+      const isContactHref =
+        href.includes('linkedin.com/in/cozzolinofrancesco') ||
+        href.includes('discord.gg/');
+      if (!isContactClass && !isContactHref) return;
+
+      link.href = CONTACT_URL;
+      link.target = '_blank';
+      link.rel = 'noopener';
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', normalizeContactLinks);
+  } else {
+    normalizeContactLinks();
+  }
+
+  // Ensure dynamic contact buttons always use WhatsApp URL before navigation
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a.help-contact-btn');
+    if (!link) return;
+    link.href = CONTACT_URL;
+    link.target = '_blank';
+    link.rel = 'noopener';
+  });
 })();
