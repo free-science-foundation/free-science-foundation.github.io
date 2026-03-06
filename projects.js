@@ -1,4 +1,4 @@
-// Free Software Foundation Projects Page JavaScript
+// Free Software Projects Page JavaScript
 // Client-side filtering and project display functionality
 
 // FSF-Affiliated Projects - Only repositories from https://github.com/topics/fsf-affiliated (excluding FSF itself)

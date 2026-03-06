@@ -1,10 +1,10 @@
 # Free Software Hub
 
-A modern, beautiful static website showcasing free and open source software projects. This site demonstrates the power of collaborative development and promotes the values of software freedom.
+A modern, beautiful static website showcasing free software projects. This site demonstrates the power of collaborative development and promotes the values of software freedom.
 
 ## About
 
-This platform serves as a curated collection of free and open source software projects, making it easy to discover, explore, and contribute to projects that respect user freedom and promote transparency.
+This platform serves as a curated collection of free software projects, making it easy to discover, explore, and contribute to projects that respect user freedom and promote transparency.
 
 ## Features
 
@@ -17,7 +17,7 @@ This platform serves as a curated collection of free and open source software pr
 ## Site Structure
 
 - **Landing Page**: Introduction to free software values and principles
-- **Projects Page**: Filterable catalog of open source projects
+- **Projects Page**: Filterable catalog of free software projects
 
 ## Technologies Used
 
@@ -29,9 +29,9 @@ This platform serves as a curated collection of free and open source software pr
 ## Links
 
 - [GNU Project](https://www.gnu.org/)
-- [Open Source Initiative](https://opensource.org/)
-- [GitHub Open Source Topics](https://github.com/topics/open-source)
+- [GNU Philosophy](https://www.gnu.org/philosophy/free-sw.html)
+- [GitHub Free Software Topics](https://github.com/topics/free-software)
 
 ## License
 
-This project is open source and available under a permissive license. Feel free to contribute or use as inspiration for your own free software projects.
+This project is available under a permissive license. Feel free to contribute or use as inspiration for your own free software projects.

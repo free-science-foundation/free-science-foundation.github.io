@@ -1,8 +1,8 @@
-# Free Science Foundation - Color Scheme Documentation
+# Free Science - Color Scheme Documentation
 
 ## Overview
 
-This document defines the official color scheme for the Free Science Foundation website. The palette is inspired by the **navbar background image** (`images/navbar-bg.png`), which features a natural landscape with:
+This document defines the official color scheme for the Free Science website. The palette is inspired by the **navbar background image** (`images/navbar-bg.png`), which features a natural landscape with:
 
 - **Sky blue tones** (representing openness and clarity)
 - **Green rolling hills** (representing growth and nature)

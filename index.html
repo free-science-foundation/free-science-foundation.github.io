@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Free Science Foundation - Scientific Tools for All</title>
-    <meta name="description" content="A curated collection of free and open source scientific tools. Empowering researchers, universities, and startups with accessible tools to bridge the gap between well-funded companies and underbudget scientific communities.">
+    <title>Free Science - Scientific Tools for All</title>
+    <meta name="description" content="A curated collection of free scientific tools. Empowering researchers, universities, and startups with accessible tools to bridge the gap between well-funded companies and underbudget scientific communities.">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,8 +12,8 @@
         <nav class="nav-container" role="navigation" aria-label="Main navigation">
             <div class="nav-brand">
                 <a href="index.html" class="brand-link">
-                    <img src="images/logo.png" alt="Free Science Foundation Logo" class="site-logo">
-                    <h1 class="site-title">Free Science Foundation</h1>
+                    <img src="images/logo.png" alt="Free Science Logo" class="site-logo">
+                    <h1 class="site-title">Free Science</h1>
                 </a>
             </div>
             <ul class="nav-links">
@@ -129,23 +129,66 @@
         <section class="hero" role="banner">
             <div class="container">
                 <div class="hero-banner">
-                    <img src="images/banner.png" alt="Free Science Foundation - Scientific tools, microscope, and flask illustration" class="hero-banner-image">
+                    <img src="images/f546dfd4-3b7d-447e-abbc-d32cf332fd24.png" alt="Free Science banner illustration" class="hero-banner-image">
                 </div>
-                <h2 class="hero-title">Free Open Science</h2>
-                <blockquote class="hero-quote">
-                    <p class="quote-text">"The only thing that we truly want is to make this world a better place, using our skills to help the humanity to move to the next stage"</p>
-                    <a href="#initial-choice" class="quote-cta">If that sentence resonates with you, read further.</a>
-                </blockquote>
             </div>
         </section>
 
         <!-- Initial Choice Section -->
-        <section class="initial-choice" id="initial-choice" aria-labelledby="initial-choice-heading">
+        <section class="initial-choice" id="initial-choice">
             <div class="container">
-                <img src="images/rose-logo.png" alt="DAT ROSA MEL APIBUS - The rose gives honey to the bees" class="initial-choice-logo">
-                <h2 id="initial-choice-heading" class="section-title">How can we help you today?</h2>
+                <h2 class="initial-choice-group-title">What We Offer for Free</h2>
+                <div class="service-cards">
+                    <article class="service-card service-card-tools">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                <polyline points="14 2 14 8 20 8"></polyline>
+                                <line x1="16" y1="13" x2="8" y2="13"></line>
+                                <line x1="16" y1="17" x2="8" y2="17"></line>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Free Tools for Science</h3>
+                        <ul class="service-list">
+                            <li>Free software for scientific paper review</li>
+                            <li>AI in the Lab (automate your lab operations)</li>
+                            <li>Databases creation and help (RAG, SQL, ...)</li>
+                        </ul>
+                    </article>
+
+                    <article class="service-card service-card-consulting">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 20h9"></path>
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Consulting and Services</h3>
+                        <ul class="service-list">
+                            <li>AI tools consultancies</li>
+                            <li>General project management</li>
+                            <li>Data governance</li>
+                            <li>Pentesting and security lookup</li>
+                        </ul>
+                    </article>
+
+                    <article class="service-card service-card-engineering">
+                        <div class="service-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14.7 6.3a1 1 0 0 1 0 1.4l-1.4 1.4 2 2 1.4-1.4a1 1 0 0 1 1.4 0l3.3 3.3a1 1 0 0 1 0 1.4l-5 5a1 1 0 0 1-1.4 0l-3.3-3.3a1 1 0 0 1 0-1.4l1.4-1.4-2-2-1.4 1.4a1 1 0 0 1-1.4 0L5 9a1 1 0 0 1 0-1.4l5-5a1 1 0 0 1 1.4 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="service-title">Engineering</h3>
+                        <ul class="service-list">
+                            <li>3D printing scientific instruments (e.g. microscopes)</li>
+                            <li>IT infrastructure creation</li>
+                            <li>3D printing prosthetics</li>
+                        </ul>
+                    </article>
+                </div>
+
+                <h2 class="initial-choice-group-title">What Can You Do ...</h2>
                 <p class="initial-choice-subtitle">Choose the path that best describes what you're looking for</p>
-                
                 <div class="choice-cards">
                     <button class="choice-card choice-donate" id="choice-donate" data-choice="donate">
                         <div class="choice-icon">
@@ -159,7 +202,7 @@
                         <h3 class="choice-title">I Want to Donate Time</h3>
                         <p class="choice-description">I want to contribute my skills and help make a difference</p>
                     </button>
-                    
+
                     <button class="choice-card choice-help" id="choice-help" data-choice="help">
                         <div class="choice-icon">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -287,7 +330,7 @@
                                         <path d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"/>
                                     </svg>
                                 </span>
-                                <span class="branch-name">Legal & Open Source</span>
+                                <span class="branch-name">Legal & Free Software</span>
                             </button>
                         </div>
                         
@@ -336,11 +379,11 @@
                             </div>
                             
                             <div class="tree-detail" id="detail-legal-consulting">
-                                <h4 class="detail-title">Legal & Open Source Consulting</h4>
+                                <h4 class="detail-title">Legal & Free Software Consulting</h4>
                                 <div class="detail-section">
                                     <h5 class="detail-heading">What You'll Do</h5>
                                     <ul class="detail-list">
-                                        <li>Help someone pick the right open source license</li>
+                                        <li>Help someone pick the right free software license</li>
                                         <li>Spot compliance issues before they become legal headaches</li>
                                         <li>Guide a project toward clearer governance and decision-making</li>
                                         <li>Advise on IP and copyright basics that actually matter</li>
@@ -674,7 +717,7 @@
                             <button class="help-branch" type="button" data-branch="startup-product-mvp">Product / MVP build</button>
                             <button class="help-branch" type="button" data-branch="startup-devops">DevOps & deployment</button>
                             <button class="help-branch" type="button" data-branch="startup-security">Security review</button>
-                            <button class="help-branch" type="button" data-branch="startup-open-source">Open source & licensing guidance</button>
+                            <button class="help-branch" type="button" data-branch="startup-free-software">Free software & licensing guidance</button>
                             <button class="help-branch" type="button" data-branch="startup-3d-printing">3D Printing</button>
                             <button class="help-branch" type="button" data-branch="startup-sensors">Sensors & Environmental Monitoring</button>
                             <button class="help-branch" type="button" data-branch="startup-data-analysis">Data Analysis</button>
@@ -684,7 +727,7 @@
                             <button class="help-branch" type="button" data-branch="startup-communities">Local Communities</button>
                             <button class="help-branch" type="button" data-branch="startup-it-consulting">IT Projects Consulting</button>
                             <button class="help-branch" type="button" data-branch="startup-science-consulting">Scientific Research Consulting</button>
-                            <button class="help-branch" type="button" data-branch="startup-legal-consulting">Legal & Open Source Consulting</button>
+                            <button class="help-branch" type="button" data-branch="startup-legal-consulting">Legal & Free Software Consulting</button>
                             <button class="help-branch" type="button" data-branch="startup-project-management">Project Management</button>
                         </div>
                         <div class="help-details">
@@ -720,8 +763,8 @@
                                     <li>Create a practical checklist your team can follow</li>
                                 </ul>
                             </div>
-                            <div class="help-detail" id="help-detail-startup-open-source">
-                                <h4 class="help-detail-title">Open source & licensing guidance</h4>
+                            <div class="help-detail" id="help-detail-startup-free-software">
+                                <h4 class="help-detail-title">Free software & licensing guidance</h4>
                                 <ul class="help-detail-list">
                                     <li>Choose a license that matches your goals</li>
                                     <li>Set up contributions and governance basics</li>
@@ -810,9 +853,9 @@
                                 </ul>
                             </div>
                             <div class="help-detail" id="help-detail-startup-legal-consulting">
-                                <h4 class="help-detail-title">Legal & Open Source Consulting</h4>
+                                <h4 class="help-detail-title">Legal & Free Software Consulting</h4>
                                 <ul class="help-detail-list">
-                                    <li>Help pick the right open source license</li>
+                                    <li>Help pick the right free software license</li>
                                     <li>Spot compliance issues before they become legal problems</li>
                                     <li>Guide projects toward clearer governance and decision-making</li>
                                     <li>Advise on IP and copyright basics that matter</li>
@@ -844,7 +887,7 @@
                             <button class="help-branch" type="button" data-branch="ngo-product-mvp">Product / MVP build</button>
                             <button class="help-branch" type="button" data-branch="ngo-devops">DevOps & deployment</button>
                             <button class="help-branch" type="button" data-branch="ngo-security">Security review</button>
-                            <button class="help-branch" type="button" data-branch="ngo-open-source">Open source & licensing guidance</button>
+                            <button class="help-branch" type="button" data-branch="ngo-free-software">Free software & licensing guidance</button>
                             <button class="help-branch" type="button" data-branch="ngo-3d-printing">3D Printing</button>
                             <button class="help-branch" type="button" data-branch="ngo-sensors">Sensors & Environmental Monitoring</button>
                             <button class="help-branch" type="button" data-branch="ngo-data-analysis">Data Analysis</button>
@@ -854,7 +897,7 @@
                             <button class="help-branch" type="button" data-branch="ngo-communities">Local Communities</button>
                             <button class="help-branch" type="button" data-branch="ngo-it-consulting">IT Projects Consulting</button>
                             <button class="help-branch" type="button" data-branch="ngo-science-consulting">Scientific Research Consulting</button>
-                            <button class="help-branch" type="button" data-branch="ngo-legal-consulting">Legal & Open Source Consulting</button>
+                            <button class="help-branch" type="button" data-branch="ngo-legal-consulting">Legal & Free Software Consulting</button>
                             <button class="help-branch" type="button" data-branch="ngo-project-management">Project Management</button>
                         </div>
                         <div class="help-details">
@@ -890,8 +933,8 @@
                                     <li>Create a practical checklist your team can follow</li>
                                 </ul>
                             </div>
-                            <div class="help-detail" id="help-detail-ngo-open-source">
-                                <h4 class="help-detail-title">Open source & licensing guidance</h4>
+                            <div class="help-detail" id="help-detail-ngo-free-software">
+                                <h4 class="help-detail-title">Free software & licensing guidance</h4>
                                 <ul class="help-detail-list">
                                     <li>Choose a license that matches your goals</li>
                                     <li>Set up contributions and governance basics</li>
@@ -980,9 +1023,9 @@
                                 </ul>
                             </div>
                             <div class="help-detail" id="help-detail-ngo-legal-consulting">
-                                <h4 class="help-detail-title">Legal & Open Source Consulting</h4>
+                                <h4 class="help-detail-title">Legal & Free Software Consulting</h4>
                                 <ul class="help-detail-list">
-                                    <li>Help pick the right open source license</li>
+                                    <li>Help pick the right free software license</li>
                                     <li>Spot compliance issues before they become legal problems</li>
                                     <li>Guide projects toward clearer governance and decision-making</li>
                                     <li>Advise on IP and copyright basics that matter</li>
@@ -1014,7 +1057,7 @@
                             <button class="help-branch" type="button" data-branch="other-product-mvp">Product / MVP build</button>
                             <button class="help-branch" type="button" data-branch="other-devops">DevOps & deployment</button>
                             <button class="help-branch" type="button" data-branch="other-security">Security review</button>
-                            <button class="help-branch" type="button" data-branch="other-open-source">Open source & licensing guidance</button>
+                            <button class="help-branch" type="button" data-branch="other-free-software">Free software & licensing guidance</button>
                             <button class="help-branch" type="button" data-branch="other-3d-printing">3D Printing</button>
                             <button class="help-branch" type="button" data-branch="other-sensors">Sensors & Environmental Monitoring</button>
                             <button class="help-branch" type="button" data-branch="other-data-analysis">Data Analysis</button>
@@ -1024,7 +1067,7 @@
                             <button class="help-branch" type="button" data-branch="other-communities">Local Communities</button>
                             <button class="help-branch" type="button" data-branch="other-it-consulting">IT Projects Consulting</button>
                             <button class="help-branch" type="button" data-branch="other-science-consulting">Scientific Research Consulting</button>
-                            <button class="help-branch" type="button" data-branch="other-legal-consulting">Legal & Open Source Consulting</button>
+                            <button class="help-branch" type="button" data-branch="other-legal-consulting">Legal & Free Software Consulting</button>
                             <button class="help-branch" type="button" data-branch="other-project-management">Project Management</button>
                         </div>
                         <div class="help-details">
@@ -1060,8 +1103,8 @@
                                     <li>Create a practical checklist your team can follow</li>
                                 </ul>
                             </div>
-                            <div class="help-detail" id="help-detail-other-open-source">
-                                <h4 class="help-detail-title">Open source & licensing guidance</h4>
+                            <div class="help-detail" id="help-detail-other-free-software">
+                                <h4 class="help-detail-title">Free software & licensing guidance</h4>
                                 <ul class="help-detail-list">
                                     <li>Choose a license that matches your goals</li>
                                     <li>Set up contributions and governance basics</li>
@@ -1150,9 +1193,9 @@
                                 </ul>
                             </div>
                             <div class="help-detail" id="help-detail-other-legal-consulting">
-                                <h4 class="help-detail-title">Legal & Open Source Consulting</h4>
+                                <h4 class="help-detail-title">Legal & Free Software Consulting</h4>
                                 <ul class="help-detail-list">
-                                    <li>Help pick the right open source license</li>
+                                    <li>Help pick the right free software license</li>
                                     <li>Spot compliance issues before they become legal problems</li>
                                     <li>Guide projects toward clearer governance and decision-making</li>
                                     <li>Advise on IP and copyright basics that matter</li>
@@ -1196,25 +1239,21 @@
                 <div class="footer-section">
                     <h3 class="footer-heading">Community</h3>
                     <ul class="footer-links">
-                        <li><a href="https://github.com/topics/open-source" target="_blank" rel="noopener">Open Source Projects</a></li>
+                        <li><a href="https://github.com/topics/free-software" target="_blank" rel="noopener">Free Software Projects</a></li>
                         <li><a href="https://www.gnu.org/people/people.html" target="_blank" rel="noopener">Contributors</a></li>
-                        <li><a href="https://opensource.org/blog" target="_blank" rel="noopener">Community Blog</a></li>
                         <li><a href="https://www.linkedin.com/in/cozzolinofrancesco/" target="_blank" rel="noopener">LinkedIn</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h3 class="footer-heading">Legal</h3>
                     <ul class="footer-links">
-                        <li><a href="https://opensource.org/contact" target="_blank" rel="noopener">Contact</a></li>
-                        <li><a href="https://opensource.org/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
                         <li><a href="https://www.gnu.org/copyleft/" target="_blank" rel="noopener">Copyleft</a></li>
                         <li><a href="public-materials.html">Public Materials</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <img src="images/rose-logo.png" alt="DAT ROSA MEL APIBUS - The rose gives honey to the bees" class="stamp-watermark stamp-footer">
-                <p>&copy; 2025-2030 Free Science Foundation. All content is free and open source.</p>
+                <p>&copy; 2025-2030 Free Science. All content is free.</p>
             </div>
         </div>
     </footer>
@@ -1256,7 +1295,7 @@
             </div>
             <div class="disclaimer-content">
                 <h3>1. No Responsibility for Volunteers & Members</h3>
-                <p>Free Science Foundation is a decentralized, volunteer-driven organization. <strong>We do not control, supervise, or assume responsibility for the individual actions, statements, or conduct of our volunteers, contributors, or community members.</strong> Each participant acts in their own capacity and is solely responsible for their own actions.</p>
+                <p>Free Science is a decentralized, volunteer-driven organization. <strong>We do not control, supervise, or assume responsibility for the individual actions, statements, or conduct of our volunteers, contributors, or community members.</strong> Each participant acts in their own capacity and is solely responsible for their own actions.</p>
 
                 <h3>2. No Professional Advice</h3>
                 <p>All content provided on this website is for <strong>educational and informational purposes only</strong>. Nothing on this site constitutes professional legal, medical, financial, scientific, or technical advice. Always consult qualified professionals before making decisions based on information found here.</p>
@@ -1268,7 +1307,7 @@
                 <p>This website may contain links to external websites and resources. <strong>We are not responsible for the content, accuracy, or practices of third-party sites.</strong> Inclusion of any link does not imply endorsement or affiliation.</p>
 
                 <h3>5. Limitation of Liability</h3>
-                <p>To the fullest extent permitted by law, Free Science Foundation and its volunteers, officers, and contributors shall <strong>not be liable for any direct, indirect, incidental, consequential, special, or exemplary damages</strong> arising from:</p>
+                <p>To the fullest extent permitted by law, Free Science and its volunteers, officers, and contributors shall <strong>not be liable for any direct, indirect, incidental, consequential, special, or exemplary damages</strong> arising from:</p>
                 <ul>
                     <li>Use or inability to use this website or any linked resources</li>
                     <li>Any errors, omissions, or inaccuracies in content</li>
@@ -1278,7 +1317,7 @@
                 </ul>
 
                 <h3>6. Indemnification</h3>
-                <p>By using this website, you agree to <strong>indemnify, defend, and hold harmless</strong> Free Science Foundation, its volunteers, officers, and affiliates from any claims, damages, losses, or expenses (including legal fees) arising from your use of this site or violation of these terms.</p>
+                <p>By using this website, you agree to <strong>indemnify, defend, and hold harmless</strong> Free Science, its volunteers, officers, and affiliates from any claims, damages, losses, or expenses (including legal fees) arising from your use of this site or violation of these terms.</p>
 
                 <h3>7. Defamation & Content Protection</h3>
                 <p>We are not the publisher or speaker of user-generated content. Under applicable laws, we are <strong>not liable for defamatory statements made by third parties</strong>, including volunteers or community members. We reserve the right to remove any content at our discretion.</p>
@@ -1287,7 +1326,7 @@
                 <p>We reserve the right to modify this disclaimer at any time. Continued use of the website constitutes acceptance of any changes.</p>
 
                 <h3>9. Jurisdictional Compliance & Local Laws</h3>
-                <p>Free Science Foundation operates as a decentralized, international volunteer organization with no fixed jurisdiction. <strong>This organization expressly disclaims any responsibility for compliance with the laws, regulations, statutes, or legal requirements of any specific country, state, territory, or jurisdiction.</strong></p>
+                <p>Free Science operates as a decentralized, international volunteer organization with no fixed jurisdiction. <strong>This organization expressly disclaims any responsibility for compliance with the laws, regulations, statutes, or legal requirements of any specific country, state, territory, or jurisdiction.</strong></p>
                 <p>By accessing and using this website, you acknowledge and represent that:</p>
                 <ul>
                     <li>You are solely responsible for determining and ensuring compliance with all applicable local, national, and international laws in your jurisdiction</li>
