@@ -561,7 +561,7 @@
 
 // LinkedIn Contact Modal (instead of direct navigation)
 (function() {
-  const LINKEDIN_URL = 'https://chat.whatsapp.com/FvUDXRQwqh6CTMyOCZqAUh?mode=gi_t';
+  const LINKEDIN_URL = 'https://www.linkedin.com/in/cozzolinofrancesco/';
 
   function ensureModal() {
     let overlay = document.querySelector('.linkedin-contact-overlay');
@@ -583,12 +583,12 @@
             <circle cx="4" cy="4" r="2"></circle>
           </svg>
         </div>
-        <h2 class="linkedin-contact-title" id="linkedin-contact-title">Join our WhatsApp group</h2>
+        <h2 class="linkedin-contact-title" id="linkedin-contact-title">Contact me on LinkedIn</h2>
         <p class="linkedin-contact-message">
-          Connect with us on WhatsApp for updates and direct communication.
+          Please write me directly on LinkedIn. Send a short message with who you are and what you need help with.
         </p>
         <div class="linkedin-contact-actions">
-          <a class="linkedin-contact-open" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Open WhatsApp Group</a>
+          <a class="linkedin-contact-open" href="${LINKEDIN_URL}" target="_blank" rel="noopener">Open LinkedIn</a>
           <button class="linkedin-contact-cancel" type="button">Close</button>
         </div>
       </div>
@@ -813,12 +813,9 @@
 (function() {
   const CONTACT_URL = 'https://chat.whatsapp.com/FvUDXRQwqh6CTMyOCZqAUh?mode=gi_t';
   const contactSelector = [
-    'a[href*="linkedin.com/in/cozzolinofrancesco"]',
     'a[href*="discord.gg/"]',
     'a.translation-link.discord',
-    'a.translation-link.linkedin',
     'a.action-link.discord-btn',
-    'a.action-link.linkedin-btn',
     'a.help-contact-btn'
   ].join(', ');
 
@@ -829,10 +826,8 @@
       const cls = link.className || '';
       const isContactClass =
         cls.includes('discord') ||
-        cls.includes('linkedin') ||
         cls.includes('help-contact-btn');
       const isContactHref =
-        href.includes('linkedin.com/in/cozzolinofrancesco') ||
         href.includes('discord.gg/');
       if (!isContactClass && !isContactHref) return;
 
