@@ -1,0 +1,66 @@
+[
+  {
+    "id": "project-1",
+    "type": "project",
+    "category": "research",
+    "name": "Small MP4 Compressor",
+    "description": "Lightweight utility to compress MP4 videos while preserving visual quality for publishing and sharing.",
+    "link": "https://github.com/YodaGitMaster/smallmp4compressor"
+  },
+  {
+    "id": "project-2",
+    "type": "project",
+    "category": "education",
+    "name": "StudyNote",
+    "description": "Containerized note-taking app for students and researchers who want structured study workflows.",
+    "link": "https://hub.docker.com/r/francescocozzolino/studynote"
+  },
+  {
+    "id": "project-3",
+    "type": "project",
+    "category": "development",
+    "name": "Rust Compiler Backend",
+    "description": "Container image that provides a Rust backend service for distributed build and test pipelines.",
+    "link": "https://hub.docker.com/r/francescocozzolino/rust-compiler-backend"
+  },
+  {
+    "id": "project-4",
+    "type": "project",
+    "category": "utilities",
+    "name": "Free QR Code Generator",
+    "description": "Small web tool to generate QR codes quickly for links and shared resources.",
+    "link": "https://freeqrcode.freesciencenetwork.org"
+  },
+  {
+    "id": "service-2",
+    "type": "service",
+    "category": "teaching",
+    "name": "Teaching Session",
+    "description": "Hands-on teaching support for AI, software development, and open science workflows.",
+    "link": "https://www.linkedin.com/in/cozzolinofrancesco/"
+  },
+  {
+    "id": "service-3",
+    "type": "service",
+    "category": "web",
+    "name": "Website Support",
+    "description": "Help to design, build, and improve websites with better UX, performance, and maintainability.",
+    "link": "https://www.linkedin.com/in/cozzolinofrancesco/"
+  },
+  {
+    "id": "service-4",
+    "type": "service",
+    "category": "security",
+    "name": "Security Guidance",
+    "description": "Practical security checks for websites and applications, with prioritized recommendations.",
+    "link": "https://www.linkedin.com/in/cozzolinofrancesco/"
+  },
+  {
+    "id": "service-5",
+    "type": "service",
+    "category": "off-grid",
+    "name": "Local Models Off-Grid Implementation",
+    "description": "Implementing local AI model solutions that run off-grid for low-connectivity or no-internet environments.",
+    "link": "https://www.linkedin.com/in/cozzolinofrancesco/"
+  }
+]
