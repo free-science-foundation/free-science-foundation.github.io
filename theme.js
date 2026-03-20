@@ -1,49 +1,71 @@
-// Theme Toggle Functionality
+// Theme: light | dark | zambia (sunrise palette)
 (function() {
   const themeToggle = document.getElementById('theme-toggle');
+  const themeZambiaBtn = document.getElementById('theme-zambia-toggle');
   const html = document.documentElement;
-  
-  // Check for saved theme preference or default to system preference
+  const STORAGE = 'theme';
+  const BEFORE_ZAMBIA = 'themeBeforeZambia';
+
   function getPreferredTheme() {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme;
+    const saved = localStorage.getItem(STORAGE);
+    if (saved === 'light' || saved === 'dark' || saved === 'zambia') {
+      return saved;
     }
-    // Check system preference
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
       return 'dark';
     }
     return 'light';
   }
-  
-  // Apply theme
-  function setTheme(theme) {
-    html.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-    
-    // Update checkbox state
+
+  function syncControls(theme) {
     if (themeToggle) {
-      themeToggle.checked = (theme === 'dark');
+      if (theme === 'zambia') {
+        const b = localStorage.getItem(BEFORE_ZAMBIA);
+        themeToggle.checked = b === 'dark';
+      } else {
+        themeToggle.checked = theme === 'dark';
+      }
+    }
+    if (themeZambiaBtn) {
+      const on = theme === 'zambia';
+      themeZambiaBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      themeZambiaBtn.classList.toggle('is-active', on);
     }
   }
-  
-  // Initialize theme on page load
-  const preferredTheme = getPreferredTheme();
-  setTheme(preferredTheme);
-  
-  // Toggle theme on checkbox change
+
+  function setTheme(theme) {
+    if (theme !== 'light' && theme !== 'dark' && theme !== 'zambia') {
+      theme = 'light';
+    }
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem(STORAGE, theme);
+    syncControls(theme);
+  }
+
+  setTheme(getPreferredTheme());
+
   if (themeToggle) {
     themeToggle.addEventListener('change', function() {
-      const newTheme = this.checked ? 'dark' : 'light';
-      setTheme(newTheme);
+      setTheme(this.checked ? 'dark' : 'light');
     });
   }
-  
-  // Listen for system theme changes
+
+  if (themeZambiaBtn) {
+    themeZambiaBtn.addEventListener('click', function() {
+      const cur = html.getAttribute('data-theme');
+      if (cur === 'zambia') {
+        const back = localStorage.getItem(BEFORE_ZAMBIA);
+        setTheme(back === 'dark' ? 'dark' : 'light');
+      } else {
+        localStorage.setItem(BEFORE_ZAMBIA, cur === 'dark' ? 'dark' : 'light');
+        setTheme('zambia');
+      }
+    });
+  }
+
   if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-      // Only auto-switch if user hasn't manually set a preference
-      if (!localStorage.getItem('theme')) {
+      if (!localStorage.getItem(STORAGE)) {
         setTheme(e.matches ? 'dark' : 'light');
       }
     });
@@ -850,5 +872,48 @@
     link.href = CONTACT_URL;
     link.target = '_blank';
     link.rel = 'noopener';
+  });
+})();
+
+// Nav: Projects dropdown (beside Catalog)
+(function() {
+  const dropdowns = document.querySelectorAll('.nav-dropdown');
+  if (!dropdowns.length) return;
+
+  function closeAll(except) {
+    dropdowns.forEach(wrap => {
+      if (except && wrap === except) return;
+      wrap.classList.remove('is-open');
+      const btn = wrap.querySelector('.nav-dropdown__toggle');
+      const menu = wrap.querySelector('.nav-dropdown__menu');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+      if (menu) menu.hidden = true;
+    });
+  }
+
+  dropdowns.forEach(wrap => {
+    const btn = wrap.querySelector('.nav-dropdown__toggle');
+    const menu = wrap.querySelector('.nav-dropdown__menu');
+    if (!btn || !menu) return;
+
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const willOpen = !wrap.classList.contains('is-open');
+      closeAll();
+      if (willOpen) {
+        wrap.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        menu.hidden = false;
+      }
+    });
+
+    menu.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => closeAll());
+    });
+  });
+
+  document.addEventListener('click', () => closeAll());
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeAll();
   });
 })();

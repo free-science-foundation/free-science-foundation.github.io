@@ -32,6 +32,10 @@
   border: 0 !important;
 }
 
+#project-zambia {
+  scroll-margin-top: 5.5rem;
+}
+
 body {
   background:
     radial-gradient(1200px 700px at 15% -10%, rgba(52, 152, 219, 0.12), transparent 60%),
@@ -172,6 +176,28 @@ main {
   background: linear-gradient(135deg, rgba(52, 152, 219, 0.1), rgba(39, 174, 96, 0.1));
   border-radius: var(--p-radius-sm);
   color: var(--p-accent);
+}
+
+.featured-card--photo {
+  padding-top: 0;
+  overflow: hidden;
+}
+
+.featured-photo-wrap {
+  margin: 0 -2rem 0 -2rem;
+  aspect-ratio: 4 / 3;
+  max-height: 220px;
+  overflow: hidden;
+  border-radius: var(--p-radius) var(--p-radius) 0 0;
+  border-bottom: 1px solid var(--p-border);
+}
+
+.featured-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
 }
 
 .featured-title {

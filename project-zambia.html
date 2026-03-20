@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Public Materials - Free Science Network</title>
-    <meta name="description" content="Download promotional materials, flyers, and resources to help spread the word about Free Science Network.">
+    <title>Project: Zambia - Free Science Network</title>
+    <meta name="description" content="Project Zambia: open microscopy, smart sensing in environment and agriculture, and partnerships for AI upskilling and universities.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="theme-zambia-global.css">
+    <link rel="stylesheet" href="project-zambia.css">
 </head>
-<body>
+<body class="zambia-page">
+    <div class="zambia-page-illustration" aria-hidden="true"></div>
     <header class="site-header" role="banner">
         <nav class="nav-container" role="navigation" aria-label="Main navigation">
             <div class="nav-brand">
@@ -31,7 +33,7 @@
                 </li>
                 <!-- <li><a href="trainings.html" class="nav-link">Trainings</a></li> -->
                 <!-- <li><a href="consultancies.html" class="nav-link">Consultancies</a></li> -->
-                <li><a href="team.html" class="nav-link">Team</a></li>
+                <li><a href="team.html" class="nav-link active" aria-current="page">Team</a></li>
                 <li><a href="partners.html" class="nav-link">Partners</a></li>
                 <!-- <li><a href="3d-printing.html" class="nav-link">3D Printing</a></li> -->
                 <!-- <li><a href="white-papers.html" class="nav-link">White Papers</a></li> -->
@@ -139,84 +141,69 @@
         </nav>
     </header>
 
-    <main>
-        <section class="hero" role="banner">
-            <div class="container">
-                <h2 class="hero-title">Public Materials</h2>
-                <p class="hero-subtitle">Share Our Mission</p>
-                <p class="hero-description">
-                    Download promotional materials, flyers, and resources to help spread the word about democratizing science. All materials are free to use for non-commercial purposes.
+    <main class="zambia-main">
+        <nav class="zambia-section-dots" aria-label="On this page">
+            <ul class="zambia-section-dots__list">
+                <li>
+                    <a
+                        href="#zambia-intro"
+                        class="zambia-section-dots__link is-active"
+                        data-zambia-section-link
+                        aria-current="location"
+                        title="Introduction"
+                    >
+                        <span class="visually-hidden">Introduction</span>
+                    </a>
+                </li>
+                <li class="zambia-section-dots__rule" aria-hidden="true"></li>
+                <li>
+                    <a
+                        href="#zambia-map"
+                        class="zambia-section-dots__link"
+                        data-zambia-section-link
+                        title="Interactive map"
+                    >
+                        <span class="visually-hidden">Interactive map</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <section id="zambia-intro" class="zambia-hero container" aria-labelledby="zambia-title">
+            <p class="zambia-hero__eyebrow">Free Science Network</p>
+            <h1 id="zambia-title" class="zambia-hero__title">Project: Zambia</h1>
+            <p class="zambia-hero__lede">
+                A warm-sunrise map of how community science meets the field: microscopy for care and learning,
+                sensors for landscapes and herds, and consultancies that help nonprofits and universities grow capacity.
+            </p>
+        </section>
+
+        <div id="zambia-map" class="zambia-graph-wrap">
+            <div class="zambia-graph-intro" id="zambia-graph-hint">
+                <p class="zambia-graph-hint">
+                    <strong>Reactive map</strong> — starts with <strong>Zambia</strong> and the three hubs only.
+                    <strong>Hover</strong> a hub to show its programs (one branch at a time); they <strong>stay open</strong> when you move the pointer away. Hover <strong>Zambia</strong> to collapse, or use <strong>Reset view</strong>.
+                    Click a program node to highlight its links. Drag nodes; scroll or pinch to zoom. <strong>Reset view</strong> clears zoom, expansion, and highlight.
                 </p>
-            </div>
-        </section>
-
-        <section class="submission-guide" aria-labelledby="materials-heading">
-            <div class="container">
-                <h2 id="materials-heading" class="section-title">Promotional Flyer</h2>
-                <div class="submission-content">
-                    <p class="submission-text">
-                        Use this flyer to promote Free Science Network at conferences, workshops, universities, and community events. It provides a clear overview of our mission, project areas, and ways to contribute.
-                    </p>
-                    
-                    <div class="step" style="max-width: 800px; margin: 2rem auto;">
-                        <img src="images/flyer.png" alt="Free Science Network promotional flyer showing project areas and ways to contribute" style="width: 100%; border-radius: 12px; box-shadow: 0 8px 24px rgba(0,0,0,0.12);">
-                    </div>
-
-                    <div class="submission-steps">
-                        <div class="step">
-                            <h3 class="step-title">How to Use</h3>
-                            <ul class="step-bullets">
-                                <li><strong>Print:</strong> Right-click and save the image for high-quality printing</li>
-                                <li><strong>Social Media:</strong> Share on LinkedIn, Twitter, Facebook, and other platforms</li>
-                                <li><strong>Email:</strong> Include in newsletters and email campaigns</li>
-                                <li><strong>Presentations:</strong> Add to slides and presentations about open science</li>
-                                <li><strong>Events:</strong> Display at conferences, workshops, and community gatherings</li>
-                            </ul>
-                        </div>
-                        <div class="step">
-                            <h3 class="step-title">Usage Guidelines</h3>
-                            <ul class="step-bullets">
-                                <li><strong>Attribution:</strong> Credit "Free Science Network" when sharing</li>
-                                <li><strong>Non-commercial:</strong> Free to use for educational and promotional purposes</li>
-                                <li><strong>No Modifications:</strong> Please don't alter the design or messaging</li>
-                                <li><strong>Share Freely:</strong> Distribute widely to help spread our mission</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="submission-cta">
-                        <p class="cta-text">Need custom materials or have questions?</p>
-                        <div class="volunteer-links">
-                            <a href="https://discord.gg/eESc5DuWX9" class="action-link discord-btn" target="_blank" rel="noopener">
-                                Join Discord
-                            </a>
-                            <a href="https://www.linkedin.com/in/cozzolinofrancesco/" class="action-link linkedin-btn" target="_blank" rel="noopener">
-                                Contact on LinkedIn
-                            </a>
-                            <a href="images/flyer.png" download="free-science-foundation-flyer.png" class="action-link" style="background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%); color: white;">
-                                Download Flyer
-                            </a>
-                        </div>
-                    </div>
+                <div class="zambia-graph-actions">
+                    <button type="button" class="zambia-graph-btn" id="zambia-graph-reset-zoom" aria-label="Reset zoom and pan">Reset view</button>
+                    <button type="button" class="zambia-graph-btn" id="zambia-graph-unfix" aria-label="Release pinned center">Release center</button>
                 </div>
             </div>
-        </section>
-
-        <section class="mission" aria-labelledby="share-heading">
-            <div class="container">
-                <div class="mission-content">
-                    <h2 id="share-heading" class="section-title">Help Us Grow</h2>
-                    <p class="mission-text">
-                        Every share, every conversation, and every connection helps us reach more people who can benefit from free and open science. Whether you're a researcher, educator, student, or advocate, you can help spread our mission.
-                    </p>
-                    <p class="mission-text">
-                        Share our materials on social media, print them for your institution, or include them in your presentations. Together, we can democratize science and make it accessible to everyone.
-                    </p>
-                </div>
+            <div class="zambia-graph-chrome">
+                <aside class="zambia-graph-scroll-rail" aria-label="Scroll the page; use this strip to scroll past the graph on touch devices">
+                    <span class="zambia-graph-scroll-rail__text">Scroll</span>
+                </aside>
+                <div
+                    id="zambia-graph-mount"
+                    class="zambia-graph-shell"
+                    role="application"
+                    aria-label="Interactive force-directed graph of Project Zambia programs"
+                    aria-describedby="zambia-graph-hint"
+                ></div>
             </div>
-        </section>
+        </div>
     </main>
-
     <footer class="site-footer" role="contentinfo">
         <div class="container">
             <div class="footer-content">
@@ -345,6 +332,32 @@
         </div>
     </div>
 
+    <div
+        id="zambia-micro-preview"
+        class="zambia-micro-preview"
+        hidden
+        aria-hidden="true"
+        role="dialog"
+        aria-label="Microscopy photo preview"
+    >
+        <div class="zambia-micro-preview__backdrop" aria-hidden="true"></div>
+        <figure class="zambia-micro-preview__frame">
+            <a href="projects.html#project-zambia" class="zambia-micro-preview__project-link">
+                <img
+                    class="zambia-micro-preview__img"
+                    src="images/microscope-01.jpg"
+                    alt="Open hardware microscope build on a lab bench"
+                    width="1920"
+                    height="1080"
+                    decoding="async"
+                />
+            </a>
+        </figure>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" crossorigin="anonymous"></script>
+    <script src="project-zambia.js"></script>
+    <script src="zambia-section-nav.js"></script>
     <script src="theme.js"></script>
 </body>
 </html>

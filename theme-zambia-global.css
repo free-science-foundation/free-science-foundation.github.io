@@ -1,0 +1,569 @@
+/**
+ * Global “Zambia sunrise” palette (third theme: html[data-theme="zambia"]).
+ * Pairs with #theme-zambia-toggle next to the light/dark switch.
+ */
+
+[data-theme="zambia"] {
+  --zm-sunrise: #f47c1b;
+  --zm-sunset: #e85a0c;
+  --zm-gold: #f6c544;
+  --zm-cream: #f9e8c8;
+  --zm-leaf: #3e6f2a;
+  --zm-brown: #8c4a2f;
+  --zm-sky: #f29e3d;
+  --zm-ink: #3d2918;
+  --zm-ink-muted: #6b4f3a;
+
+  --color-text: #3d2918;
+  --color-text-muted: #6b4f3a;
+  --color-text-light: #8c4a2f;
+  --color-surface: rgba(249, 232, 200, 0.94);
+  --color-surface-elevated: rgba(255, 252, 245, 0.96);
+  --color-border: rgba(140, 74, 47, 0.28);
+  --color-border-light: rgba(140, 74, 47, 0.14);
+  --color-primary: #e85a0c;
+  --color-primary-light: #f47c1b;
+  --color-primary-dark: #c2410c;
+  --color-primary-darker: #9a3412;
+  --color-secondary: #5e8c3b;
+  --color-secondary-dark: #3e6f2a;
+  --color-secondary-darker: #2d5016;
+  --color-accent: #f29e3d;
+  --color-accent-light: #f6c544;
+  --color-accent-lighter: #fde68a;
+  --color-accent-dark: #ea580c;
+  --color-text-inverse: #fffefc;
+  --shadow-sm: 0 8px 26px rgba(61, 41, 24, 0.1);
+  --shadow-md: 0 18px 48px rgba(61, 41, 24, 0.14);
+  --shadow-lg: 0 24px 60px rgba(61, 41, 24, 0.16);
+  --shadow-glow-primary: 0 4px 22px rgba(232, 90, 12, 0.3);
+  --shadow-glow-secondary: 0 4px 22px rgba(62, 111, 42, 0.28);
+  --shadow-glow-accent: 0 4px 22px rgba(246, 197, 68, 0.35);
+
+  /* projects.css tokens */
+  --p-bg: #fdf3e4;
+  --p-text: #3d2918;
+  --p-muted: #6b4f3a;
+  --p-border: rgba(140, 74, 47, 0.22);
+  --p-surface: rgba(255, 252, 245, 0.94);
+  --p-surface-solid: #fff8ee;
+  --p-accent: #e85a0c;
+  --p-accent-2: #5e8c3b;
+}
+
+[data-theme="zambia"] body {
+  color: var(--zm-ink);
+  background:
+    radial-gradient(ellipse 100% 70% at 50% -8%, rgba(249, 232, 200, 0.97) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 42% at 12% 92%, rgba(62, 111, 42, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 88% 88%, rgba(94, 140, 59, 0.18) 0%, transparent 52%),
+    linear-gradient(168deg, var(--zm-sky) 0%, var(--zm-sunrise) 28%, var(--zm-sunset) 62%, #6b381f 92%, var(--zm-brown) 100%);
+  background-attachment: fixed;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="zambia"] body {
+    background-attachment: scroll;
+  }
+}
+
+[data-theme="zambia"] .site-header {
+  background:
+    linear-gradient(180deg, rgba(249, 232, 200, 0.94) 0%, rgba(249, 232, 200, 0.8) 100%),
+    linear-gradient(135deg, rgba(244, 124, 27, 0.14) 0%, rgba(94, 140, 59, 0.12) 100%);
+  border-bottom: 2px solid rgba(140, 74, 47, 0.35);
+  box-shadow: 0 1px 0 rgba(246, 197, 68, 0.35) inset, 0 8px 32px rgba(61, 41, 24, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+[data-theme="zambia"] .site-header,
+[data-theme="zambia"] .site-header .nav-link {
+  --color-border: rgba(140, 74, 47, 0.25);
+}
+
+[data-theme="zambia"] .nav-brand .site-title {
+  background: linear-gradient(135deg, var(--zm-leaf) 0%, var(--zm-sunrise) 45%, var(--zm-sunset) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+[data-theme="zambia"] .nav-link {
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .nav-link:hover,
+[data-theme="zambia"] .nav-link.active {
+  color: var(--zm-brown);
+}
+
+[data-theme="zambia"] .nav-link::after {
+  background: linear-gradient(90deg, var(--zm-gold), var(--zm-sunset), var(--zm-leaf));
+  height: 2px;
+}
+
+[data-theme="zambia"] .nav-dropdown__menu {
+  background: rgba(249, 232, 200, 0.98);
+  border-color: rgba(140, 74, 47, 0.28);
+  box-shadow: 0 14px 40px rgba(61, 41, 24, 0.18);
+}
+
+[data-theme="zambia"] .nav-dropdown__item {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .nav-dropdown__item:hover,
+[data-theme="zambia"] .nav-dropdown__item:focus-visible {
+  background: rgba(244, 124, 27, 0.12);
+  color: var(--zm-sunset);
+}
+
+[data-theme="zambia"] .language-btn {
+  border-color: rgba(140, 74, 47, 0.35);
+  color: var(--zm-brown);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+[data-theme="zambia"] .language-btn:hover {
+  border-color: var(--zm-sunrise);
+  color: var(--zm-sunset);
+  background: rgba(249, 232, 200, 0.55);
+}
+
+[data-theme="zambia"] .language-dropdown {
+  background: rgba(255, 252, 245, 0.98);
+  border-color: rgba(140, 74, 47, 0.22);
+}
+
+[data-theme="zambia"] .lang-option {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .lang-option:hover {
+  background: rgba(244, 124, 27, 0.1);
+  color: var(--zm-sunset);
+}
+
+[data-theme="zambia"] .lang-option.active {
+  background: rgba(232, 90, 12, 0.12);
+  color: var(--zm-sunset);
+}
+
+[data-theme="zambia"] .social-icon.linkedin-icon {
+  background: transparent;
+  border: 2px solid var(--zm-brown);
+  color: var(--zm-brown);
+}
+
+[data-theme="zambia"] .social-icon.linkedin-icon:hover {
+  background: rgba(140, 74, 47, 0.1);
+  border-color: var(--zm-sunset);
+  color: var(--zm-sunset);
+}
+
+/* Light/dark switch: warm styling while in Zambia theme */
+[data-theme="zambia"] .theme-slider {
+  background: linear-gradient(135deg, #fde68a, #fb923c);
+  border-color: rgba(140, 74, 47, 0.35);
+}
+
+[data-theme="zambia"] .theme-slider::before {
+  background: linear-gradient(135deg, #fffef9, #fef3c7);
+  box-shadow: 0 2px 6px rgba(61, 41, 24, 0.2);
+}
+
+[data-theme="zambia"] .theme-switch input:checked + .theme-slider {
+  background: linear-gradient(135deg, #c2410c, #7c2d12);
+  border-color: rgba(124, 45, 18, 0.45);
+}
+
+[data-theme="zambia"] .theme-switch input:checked + .theme-slider::before {
+  background: linear-gradient(135deg, #431407, #292524);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+}
+
+[data-theme="zambia"] .theme-switch input:focus + .theme-slider {
+  box-shadow: 0 0 0 3px rgba(246, 197, 68, 0.5);
+}
+
+/* Zambia theme toggle (sun badge) */
+.theme-zambia-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(140, 74, 47, 0.45);
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255, 253, 245, 0.95) 0%, transparent 45%),
+    linear-gradient(145deg, #f6c544 0%, #f47c1b 45%, #e85a0c 100%);
+  box-shadow: 0 2px 10px rgba(232, 90, 12, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-zambia-btn__glyph {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin: 0 auto;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fffef5, #fde047 55%, #f59e0b 100%);
+  box-shadow: 0 0 8px rgba(246, 197, 68, 0.9);
+  transition: transform 0.2s ease;
+}
+
+.theme-zambia-btn:hover {
+  transform: scale(1.06);
+  border-color: rgba(232, 90, 12, 0.7);
+  box-shadow: 0 4px 16px rgba(232, 90, 12, 0.45);
+}
+
+.theme-zambia-btn:focus-visible {
+  outline: 2px solid var(--zm-gold, #f6c544);
+  outline-offset: 3px;
+}
+
+.theme-zambia-btn.is-active {
+  border-color: rgba(246, 197, 68, 0.95);
+  box-shadow: 0 0 0 3px rgba(246, 197, 68, 0.45), 0 4px 18px rgba(232, 90, 12, 0.5);
+}
+
+.theme-zambia-btn.is-active:hover {
+  border-color: rgba(232, 90, 12, 0.7);
+  box-shadow: 0 4px 16px rgba(232, 90, 12, 0.45);
+}
+
+.theme-zambia-btn.is-active:hover .theme-zambia-btn__glyph {
+  transform: scale(1.06);
+}
+
+[data-theme="dark"] .theme-zambia-btn {
+  border-color: rgba(246, 197, 68, 0.35);
+}
+
+[data-theme="dark"] .theme-zambia-btn.is-active {
+  border-color: rgba(246, 197, 68, 0.85);
+}
+
+/* Core content (home + inner pages) */
+[data-theme="zambia"] .hero-title,
+[data-theme="zambia"] .section-title {
+  background: linear-gradient(135deg, var(--zm-ink) 0%, var(--zm-sunrise) 42%, var(--zm-leaf) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+[data-theme="zambia"] .hero-subtitle,
+[data-theme="zambia"] .hero-description,
+[data-theme="zambia"] .mission-text,
+[data-theme="zambia"] .submission-text {
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .site-footer {
+  background: linear-gradient(180deg, rgba(249, 232, 200, 0.88), rgba(249, 232, 200, 0.72));
+  border-top: 2px solid rgba(140, 74, 47, 0.28);
+  color: var(--zm-ink);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+[data-theme="zambia"] .footer-heading,
+[data-theme="zambia"] .site-footer h3,
+[data-theme="zambia"] .site-footer h4 {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .site-footer a,
+[data-theme="zambia"] .footer-links a {
+  color: var(--zm-leaf);
+}
+
+[data-theme="zambia"] .site-footer a:hover,
+[data-theme="zambia"] .footer-links a:hover {
+  color: var(--zm-sunset);
+}
+
+[data-theme="zambia"] .service-card,
+[data-theme="zambia"] .step,
+[data-theme="zambia"] .initial-choice {
+  --color-surface: rgba(255, 252, 245, 0.88);
+}
+
+[data-theme="zambia"] .service-card,
+[data-theme="zambia"] .step {
+  background: rgba(255, 252, 245, 0.9);
+  border-color: rgba(140, 74, 47, 0.2);
+  box-shadow: 0 10px 28px rgba(61, 41, 24, 0.08);
+}
+
+/* Home initial-choice: solid ink (gradient clipped text was low-contrast on warm body BG) */
+[data-theme="zambia"] .initial-choice-group-title {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: unset;
+  color: #fffefc;
+  text-shadow:
+    0 1px 3px rgba(61, 41, 24, 0.5),
+    0 0 24px rgba(61, 41, 24, 0.28);
+}
+
+[data-theme="zambia"] .initial-choice-subtitle {
+  color: var(--zm-ink-muted);
+}
+
+/* Team page: gradient .section-title + slate .team-member-contribution wash out on warm body BG */
+[data-theme="zambia"] .team-grid-section .section-title,
+[data-theme="zambia"] #team-members .section-title,
+[data-theme="zambia"] .hero .hero-title {
+  background: none;
+  -webkit-background-clip: unset;
+  background-clip: unset;
+  -webkit-text-fill-color: unset;
+  color: #fffefc;
+  text-shadow:
+    0 1px 3px rgba(61, 41, 24, 0.5),
+    0 0 24px rgba(61, 41, 24, 0.28);
+}
+
+[data-theme="zambia"] .team-member-card {
+  background: rgba(255, 252, 245, 0.94);
+  border: 1px solid rgba(140, 74, 47, 0.22);
+  border-radius: 16px;
+  padding: 1.2rem 1rem 1.3rem;
+  box-shadow: 0 10px 28px rgba(61, 41, 24, 0.09);
+}
+
+[data-theme="zambia"] .team-member-photo {
+  background: linear-gradient(135deg, rgba(244, 124, 27, 0.14), rgba(62, 111, 42, 0.1));
+  border-color: rgba(140, 74, 47, 0.28);
+}
+
+[data-theme="zambia"] .team-member-name {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .team-member-role {
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .team-member-title-group {
+  color: var(--zm-leaf);
+}
+
+[data-theme="zambia"] .team-member-profession {
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .team-member-contribution {
+  color: var(--zm-ink-muted);
+  border-top-color: rgba(140, 74, 47, 0.2);
+}
+
+[data-theme="zambia"] .team-member-bio {
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .photo-placeholder {
+  border-color: var(--zm-sunrise);
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .service-card-tools::before {
+  background: linear-gradient(135deg, var(--zm-sunrise), var(--zm-sunset));
+}
+
+[data-theme="zambia"] .service-card-consulting::before {
+  background: linear-gradient(135deg, var(--zm-leaf), var(--color-secondary));
+}
+
+[data-theme="zambia"] .service-card-engineering::before {
+  background: linear-gradient(135deg, var(--zm-gold), var(--zm-sunrise));
+}
+
+[data-theme="zambia"] .service-card-tools .service-icon {
+  background: linear-gradient(135deg, var(--zm-sunrise), var(--zm-sunset));
+}
+
+[data-theme="zambia"] .service-card-consulting .service-icon {
+  background: linear-gradient(135deg, var(--zm-leaf), var(--color-secondary));
+}
+
+[data-theme="zambia"] .service-card-engineering .service-icon {
+  background: linear-gradient(135deg, var(--zm-gold), var(--zm-sunset));
+}
+
+[data-theme="zambia"] .service-card-tools:hover {
+  border-color: var(--zm-sunrise);
+  box-shadow: var(--shadow-glow-primary);
+}
+
+[data-theme="zambia"] .service-card-consulting:hover {
+  border-color: var(--zm-leaf);
+  box-shadow: var(--shadow-glow-secondary);
+}
+
+[data-theme="zambia"] .service-card-engineering:hover {
+  border-color: var(--zm-gold);
+  box-shadow: var(--shadow-glow-accent);
+}
+
+[data-theme="zambia"] .current-project-card {
+  box-shadow: 0 10px 28px rgba(61, 41, 24, 0.1);
+}
+
+[data-theme="zambia"] .current-project-card:hover {
+  box-shadow: 0 18px 34px rgba(61, 41, 24, 0.14);
+}
+
+[data-theme="zambia"] .current-project-card::after {
+  background: var(--zm-leaf);
+  box-shadow: 0 0 0 6px rgba(62, 111, 42, 0.22);
+}
+
+[data-theme="zambia"] .current-project-review .current-project-tag {
+  background: rgba(244, 124, 27, 0.14);
+  border-color: rgba(232, 90, 12, 0.32);
+  color: var(--zm-sunset);
+}
+
+[data-theme="zambia"] .current-project-ai .current-project-tag {
+  background: rgba(62, 111, 42, 0.14);
+  border-color: rgba(62, 111, 42, 0.32);
+  color: var(--zm-leaf);
+}
+
+[data-theme="zambia"] .current-project-microscope .current-project-tag {
+  background: rgba(246, 197, 68, 0.22);
+  border-color: rgba(140, 74, 47, 0.28);
+  color: var(--zm-brown);
+}
+
+/* Initial choice CTAs: legible cream panels + sunrise/leaf top accent (not faint edge tint) */
+[data-theme="zambia"] .choice-cards {
+  gap: 1.5rem;
+}
+
+[data-theme="zambia"] .choice-card {
+  border-width: 1px;
+  border-color: rgba(140, 74, 47, 0.3);
+  border-radius: 18px;
+  padding: 2.35rem 1.75rem 2rem;
+  background: linear-gradient(168deg, #fffefb 0%, #fdf6ea 55%, #f8ead2 100%);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.72) inset,
+    0 14px 38px rgba(61, 41, 24, 0.12);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+[data-theme="zambia"] .choice-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+[data-theme="zambia"] .choice-card::before {
+  z-index: 0;
+  background: radial-gradient(ellipse 100% 65% at 50% -20%, rgba(255, 255, 255, 0.55), transparent 52%);
+  opacity: 0.4;
+}
+
+[data-theme="zambia"] .choice-card:hover::before {
+  opacity: 0.72;
+}
+
+[data-theme="zambia"] .choice-card:hover {
+  border-color: rgba(140, 74, 47, 0.42);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.82) inset,
+    0 22px 52px rgba(61, 41, 24, 0.16);
+}
+
+[data-theme="zambia"] .choice-donate {
+  background:
+    linear-gradient(90deg, var(--zm-gold) 0%, var(--zm-sunrise) 52%, var(--zm-sunset) 100%) no-repeat top /
+      100% 4px,
+    linear-gradient(168deg, #fffcf7 0%, #fff4e6 38%, rgba(253, 186, 116, 0.38) 100%) no-repeat;
+}
+
+[data-theme="zambia"] .choice-help {
+  background:
+    linear-gradient(90deg, #2d5016 0%, var(--zm-leaf) 42%, #5e8c3b 72%, var(--zm-gold) 100%) no-repeat top /
+      100% 4px,
+    linear-gradient(168deg, #fffcf7 0%, #f2f7eb 40%, rgba(180, 207, 154, 0.42) 100%) no-repeat;
+}
+
+[data-theme="zambia"] .choice-donate:hover {
+  border-color: rgba(232, 90, 12, 0.55);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 22px 48px rgba(61, 41, 24, 0.13),
+    0 0 0 1px rgba(232, 90, 12, 0.15),
+    0 10px 32px rgba(232, 90, 12, 0.22);
+}
+
+[data-theme="zambia"] .choice-help:hover {
+  border-color: rgba(62, 111, 42, 0.55);
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.85) inset,
+    0 22px 48px rgba(61, 41, 24, 0.13),
+    0 0 0 1px rgba(62, 111, 42, 0.14),
+    0 10px 32px rgba(62, 111, 42, 0.2);
+}
+
+[data-theme="zambia"] .choice-donate .choice-icon {
+  box-shadow:
+    0 6px 22px rgba(232, 90, 12, 0.34),
+    0 0 0 3px rgba(255, 252, 245, 0.98);
+}
+
+[data-theme="zambia"] .choice-help .choice-icon {
+  box-shadow:
+    0 6px 22px rgba(62, 111, 42, 0.32),
+    0 0 0 3px rgba(255, 252, 245, 0.98);
+}
+
+[data-theme="zambia"] .choice-card:focus-visible {
+  outline: 2px solid var(--zm-gold);
+  outline-offset: 3px;
+}
+
+[data-theme="zambia"] .choice-title {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .choice-description {
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .hero::before {
+  opacity: 0.35;
+}
+
+[data-theme="zambia"] .hero-banner--carousel .hero-carousel-viewport {
+  background: rgba(254, 243, 230, 0.5);
+}
+
+/* Projects listing page */
+[data-theme="zambia"] .projects-header {
+  background:
+    linear-gradient(180deg, rgba(249, 232, 200, 0.92), rgba(249, 232, 200, 0.75)),
+    radial-gradient(900px 400px at 50% 0%, rgba(244, 124, 27, 0.15), transparent 55%);
+  border-bottom-color: rgba(140, 74, 47, 0.22);
+}
+
+[data-theme="zambia"] .featured-card,
+[data-theme="zambia"] .project-card {
+  border-color: rgba(140, 74, 47, 0.2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-zambia-btn {
+    transition-duration: 0.01ms;
+  }
+}

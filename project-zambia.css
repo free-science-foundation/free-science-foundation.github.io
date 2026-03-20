@@ -1,0 +1,808 @@
+/* Project Zambia — special sunset landscape + navbar (scoped to body.zambia-page) */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* Palette */
+body.zambia-page {
+  --zm-sunrise: #f47c1b;
+  --zm-sunset: #e85a0c;
+  --zm-gold: #f6c544;
+  --zm-cream: #f9e8c8;
+  --zm-green: #5e8c3b;
+  --zm-olive: #7a9a4a;
+  --zm-leaf: #3e6f2a;
+  --zm-coral: #e94b3c;
+  --zm-brown: #8c4a2f;
+  --zm-sky: #f29e3d;
+  --zm-ink: #3d2918;
+  --zm-ink-muted: #6b4f3a;
+  position: relative;
+  min-height: 100vh;
+  color: var(--zm-ink);
+  /* Sunrise grading + cream glow + savanna greens at horizon */
+  background:
+    radial-gradient(ellipse 100% 70% at 50% -8%, rgba(249, 232, 200, 0.97) 0%, transparent 58%),
+    radial-gradient(ellipse 55% 42% at 12% 92%, rgba(62, 111, 42, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 88% 88%, rgba(94, 140, 59, 0.18) 0%, transparent 52%),
+    linear-gradient(168deg, var(--zm-sky) 0%, var(--zm-sunrise) 28%, var(--zm-sunset) 62%, #6b381f 92%, var(--zm-brown) 100%);
+  background-attachment: fixed;
+}
+
+/* Full-page savanna art (zambia-1) — faint watermark (above body gradient, below grain/vignette + content) */
+.zambia-page-illustration {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: url("images/zambia-1.png") center center / cover no-repeat;
+  opacity: 0.07;
+}
+
+html[data-theme="dark"] .zambia-page-illustration {
+  opacity: 0.045;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.zambia-page {
+    background-attachment: scroll;
+  }
+}
+
+/* Painterly grain */
+body.zambia-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.11;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+}
+
+/* Soft vignette + symbolic “horizon” warmth */
+body.zambia-page::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 1;
+  background:
+    radial-gradient(ellipse 120% 80% at 50% 100%, rgba(140, 74, 47, 0.25) 0%, transparent 45%),
+    radial-gradient(ellipse 50% 35% at 50% 12%, rgba(246, 197, 68, 0.15) 0%, transparent 70%);
+}
+
+html[data-theme="light"] body.zambia-page,
+html[data-theme="dark"] body.zambia-page {
+  /* Ensure Zambia wins over generic body rules */
+  color: var(--zm-ink);
+}
+
+html[data-theme="dark"] body.zambia-page {
+  --zm-ink: #f9e8c8;
+  --zm-ink-muted: #d4c4a8;
+  background:
+    radial-gradient(ellipse 90% 60% at 50% 0%, rgba(244, 124, 27, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 45% at 8% 95%, rgba(62, 111, 42, 0.35) 0%, transparent 50%),
+    radial-gradient(ellipse 45% 40% at 92% 90%, rgba(94, 140, 59, 0.28) 0%, transparent 48%),
+    linear-gradient(172deg, #1a1510 0%, #2d2418 40%, #3d2918 72%, #1f1812 100%);
+}
+
+html[data-theme="dark"] body.zambia-page::before {
+  opacity: 0.08;
+}
+
+html[data-theme="dark"] body.zambia-page::after {
+  background:
+    radial-gradient(ellipse 130% 70% at 50% 100%, rgba(0, 0, 0, 0.45) 0%, transparent 50%),
+    radial-gradient(ellipse 45% 30% at 50% 8%, rgba(246, 197, 68, 0.08) 0%, transparent 65%);
+}
+
+/* ——— Navbar: cream glass, no default sky photo ——— */
+.zambia-page .site-header {
+  background:
+    linear-gradient(180deg, rgba(249, 232, 200, 0.94) 0%, rgba(249, 232, 200, 0.78) 100%),
+    linear-gradient(135deg, rgba(244, 124, 27, 0.14) 0%, rgba(94, 140, 59, 0.12) 100%);
+  background-size: auto, auto;
+  border-bottom: 2px solid rgba(140, 74, 47, 0.35);
+  box-shadow:
+    0 1px 0 rgba(246, 197, 68, 0.35) inset,
+    0 8px 32px rgba(61, 41, 24, 0.12);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+html[data-theme="dark"] .zambia-page .site-header {
+  background:
+    linear-gradient(180deg, rgba(42, 35, 26, 0.92) 0%, rgba(30, 26, 20, 0.88) 100%),
+    linear-gradient(135deg, rgba(244, 124, 27, 0.12) 0%, rgba(62, 111, 42, 0.15) 100%);
+  border-bottom-color: rgba(246, 197, 68, 0.22);
+  box-shadow:
+    0 1px 0 rgba(246, 197, 68, 0.12) inset,
+    0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+.zambia-page .nav-brand .site-title {
+  background: linear-gradient(135deg, var(--zm-leaf) 0%, var(--zm-sunrise) 45%, var(--zm-sunset) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+html[data-theme="dark"] .zambia-page .nav-brand .site-title {
+  background: linear-gradient(135deg, var(--zm-gold) 0%, var(--zm-sunrise) 50%, var(--zm-cream) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.zambia-page .nav-link {
+  color: var(--zm-ink-muted);
+}
+
+.zambia-page .nav-link:hover,
+.zambia-page .nav-link.active {
+  color: var(--zm-brown);
+}
+
+html[data-theme="dark"] .zambia-page .nav-link:hover,
+html[data-theme="dark"] .zambia-page .nav-link.active {
+  color: var(--zm-gold);
+}
+
+.zambia-page .nav-link::after {
+  background: linear-gradient(90deg, var(--zm-gold), var(--zm-sunset), var(--zm-leaf));
+  height: 2px;
+}
+
+.zambia-page .nav-dropdown__menu {
+  background: rgba(249, 232, 200, 0.98);
+  border-color: rgba(140, 74, 47, 0.28);
+  box-shadow: 0 14px 36px rgba(61, 41, 24, 0.18);
+}
+
+.zambia-page .nav-dropdown__item {
+  color: var(--zm-ink);
+}
+
+.zambia-page .nav-dropdown__item:hover,
+.zambia-page .nav-dropdown__item:focus-visible {
+  background: rgba(244, 124, 27, 0.12);
+  color: var(--zm-sunset);
+}
+
+html[data-theme="dark"] .zambia-page .nav-dropdown__menu {
+  background: rgba(42, 35, 26, 0.98);
+  border-color: rgba(246, 197, 68, 0.22);
+}
+
+html[data-theme="dark"] .zambia-page .nav-dropdown__item {
+  color: var(--zm-cream);
+}
+
+html[data-theme="dark"] .zambia-page .nav-dropdown__item:hover,
+html[data-theme="dark"] .zambia-page .nav-dropdown__item:focus-visible {
+  background: rgba(246, 197, 68, 0.12);
+  color: var(--zm-gold);
+}
+
+.zambia-fnode__thumb-link {
+  cursor: pointer;
+}
+
+.zambia-fnode__thumb-link:focus {
+  outline: none;
+}
+
+.zambia-micro-preview__project-link {
+  display: block;
+  line-height: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.zambia-micro-preview__project-link:focus-visible {
+  outline: 2px solid var(--zm-gold);
+  outline-offset: 4px;
+  border-radius: 12px;
+}
+
+.zambia-page .nav-brand .site-logo {
+  box-shadow:
+    0 0 0 2px rgba(246, 197, 68, 0.5),
+    0 4px 14px rgba(232, 90, 12, 0.2);
+  background: var(--zm-cream);
+}
+
+html[data-theme="dark"] .zambia-page .nav-brand .site-logo {
+  box-shadow:
+    0 0 0 2px rgba(246, 197, 68, 0.25),
+    0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+/* Theme + language chips feel on-brand */
+.zambia-page .theme-slider {
+  background: rgba(140, 74, 47, 0.2);
+  border: 1px solid rgba(140, 74, 47, 0.25);
+}
+
+.zambia-page .theme-switch input:checked + .theme-slider {
+  background: linear-gradient(135deg, var(--zm-sunrise), var(--zm-leaf));
+}
+
+.zambia-page .language-btn {
+  border-color: rgba(140, 74, 47, 0.35);
+  color: var(--zm-brown);
+  background: rgba(255, 255, 255, 0.35);
+}
+
+.zambia-page .language-btn:hover {
+  border-color: var(--zm-sunrise);
+  color: var(--zm-sunset);
+  background: rgba(249, 232, 200, 0.55);
+}
+
+html[data-theme="dark"] .zambia-page .language-btn {
+  color: var(--zm-cream);
+  border-color: rgba(246, 197, 68, 0.25);
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.zambia-page .social-icon.linkedin-icon {
+  background: transparent;
+  border: 2px solid var(--zm-brown);
+  color: var(--zm-brown);
+}
+
+.zambia-page .social-icon.linkedin-icon:hover {
+  background: rgba(140, 74, 47, 0.1);
+  border-color: var(--zm-sunset);
+  color: var(--zm-sunset);
+}
+
+html[data-theme="dark"] .zambia-page .social-icon.linkedin-icon {
+  border-color: var(--zm-gold);
+  color: var(--zm-gold);
+}
+
+html[data-theme="dark"] .zambia-page .social-icon.linkedin-icon:hover {
+  background: rgba(246, 197, 68, 0.1);
+  border-color: var(--zm-cream);
+  color: var(--zm-cream);
+}
+
+/* Footer: same storybook band */
+.zambia-page .site-footer {
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
+  background: linear-gradient(180deg, rgba(249, 232, 200, 0.88), rgba(249, 232, 200, 0.72));
+  border-top: 2px solid rgba(140, 74, 47, 0.28);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+html[data-theme="dark"] .zambia-page .site-footer {
+  background: linear-gradient(180deg, rgba(35, 30, 22, 0.94), rgba(25, 22, 18, 0.9));
+  border-top-color: rgba(246, 197, 68, 0.2);
+}
+
+.zambia-page .site-footer .footer-heading,
+.zambia-page .site-footer p {
+  color: var(--zm-ink);
+}
+
+.zambia-page .site-footer a {
+  color: var(--zm-leaf);
+}
+
+.zambia-page .site-footer a:hover {
+  color: var(--zm-sunset);
+}
+
+html[data-theme="dark"] .zambia-page .site-footer a {
+  color: var(--zm-gold);
+}
+
+html[data-theme="dark"] .zambia-page .site-footer a:hover {
+  color: var(--zm-sunrise);
+}
+
+.zambia-main {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  padding-bottom: var(--spacing-2xl, 4rem);
+}
+
+#zambia-intro,
+#zambia-map {
+  scroll-margin-top: 6.75rem;
+}
+
+@media (max-width: 640px) {
+  #zambia-intro,
+  #zambia-map {
+    scroll-margin-top: 6rem;
+  }
+}
+
+/* Sticky dot rail: which section you’re in; click to jump */
+.zambia-section-dots {
+  position: sticky;
+  top: 4.5rem;
+  z-index: 90;
+  display: flex;
+  justify-content: center;
+  padding: 0.55rem 1rem;
+  background: linear-gradient(
+    180deg,
+    rgba(249, 232, 200, 0.94) 0%,
+    rgba(249, 232, 200, 0.78) 100%
+  );
+  border-bottom: 1px solid rgba(140, 74, 47, 0.22);
+  box-shadow: 0 6px 20px rgba(61, 41, 24, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.zambia-section-dots__list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.zambia-section-dots__list > li {
+  display: flex;
+  align-items: center;
+}
+
+.zambia-section-dots__rule {
+  width: 2.75rem;
+  height: 2px;
+  margin: 0 0.4rem;
+  border-radius: 2px;
+  background: rgba(140, 74, 47, 0.35);
+}
+
+.zambia-section-dots__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.zambia-section-dots__link::after {
+  content: "";
+  display: block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  background: var(--zm-brown);
+  opacity: 0.38;
+  transition:
+    width 0.2s ease,
+    height 0.2s ease,
+    opacity 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.zambia-section-dots__link:hover::after,
+.zambia-section-dots__link:focus-visible::after {
+  opacity: 0.75;
+}
+
+.zambia-section-dots__link:focus-visible {
+  outline: 2px solid var(--zm-sunset);
+  outline-offset: 3px;
+}
+
+.zambia-section-dots__link.is-active::after {
+  width: 0.65rem;
+  height: 0.65rem;
+  opacity: 1;
+  background: var(--zm-sunset);
+  box-shadow: 0 0 0 3px rgba(232, 90, 12, 0.35);
+}
+
+html[data-theme="dark"] .zambia-section-dots {
+  background: linear-gradient(180deg, rgba(42, 35, 26, 0.94) 0%, rgba(30, 26, 20, 0.88) 100%);
+  border-bottom-color: rgba(246, 197, 68, 0.2);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
+}
+
+html[data-theme="dark"] .zambia-section-dots__rule {
+  background: rgba(246, 197, 68, 0.28);
+}
+
+html[data-theme="dark"] .zambia-section-dots__link::after {
+  background: var(--zm-gold);
+  opacity: 0.35;
+}
+
+html[data-theme="dark"] .zambia-section-dots__link.is-active::after {
+  background: var(--zm-gold);
+  box-shadow: 0 0 0 3px rgba(246, 197, 68, 0.28);
+}
+
+html[data-theme="dark"] .zambia-section-dots__link:focus-visible {
+  outline-color: var(--zm-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zambia-section-dots__link,
+  .zambia-section-dots__link::after {
+    transition-duration: 0.01ms;
+  }
+}
+
+.zambia-hero {
+  padding: var(--spacing-xl, 3rem) 0 var(--spacing-md, 1.5rem);
+  text-align: center;
+}
+
+.zambia-hero__eyebrow {
+  font-family: "Nunito Sans", var(--font-body, system-ui), sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--zm-brown);
+  margin-bottom: 0.5rem;
+}
+
+[data-theme="dark"] .zambia-hero__eyebrow {
+  color: var(--zm-gold);
+}
+
+html[data-theme="dark"] .zambia-hero__title {
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+}
+
+.zambia-hero__title {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(2.25rem, 5vw, 3.25rem);
+  line-height: 1.15;
+  color: var(--zm-ink);
+  text-shadow: 0 2px 20px rgba(249, 232, 200, 0.4);
+}
+
+.zambia-hero__lede {
+  font-family: "Nunito Sans", var(--font-body, system-ui), sans-serif;
+  max-width: 38rem;
+  margin: 1rem auto 0;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: var(--zm-ink-muted);
+}
+
+.zambia-graph-wrap {
+  max-width: min(1200px, 100%);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md, 1.5rem);
+}
+
+/* Graph + optional mobile scroll rail (same cream band as section dots) */
+.zambia-graph-chrome {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  gap: 0;
+}
+
+.zambia-graph-scroll-rail {
+  display: none;
+}
+
+.zambia-graph-viewport-frame {
+  stroke: rgba(140, 74, 47, 0.34);
+  stroke-width: 1.5px;
+  vector-effect: non-scaling-stroke;
+}
+
+html[data-theme="dark"] .zambia-page .zambia-graph-viewport-frame {
+  stroke: rgba(246, 197, 68, 0.3);
+}
+
+@media (max-width: 768px) {
+  .zambia-graph-scroll-rail {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 2.25rem;
+    width: 2.25rem;
+    min-height: 8rem;
+    background: linear-gradient(
+      180deg,
+      rgba(249, 232, 200, 0.94) 0%,
+      rgba(249, 232, 200, 0.78) 100%
+    );
+    border: 1px solid rgba(140, 74, 47, 0.22);
+    border-right: none;
+    border-radius: 12px 0 0 12px;
+    box-shadow: 0 6px 20px rgba(61, 41, 24, 0.06);
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  .zambia-graph-scroll-rail__text {
+    font-family: "Nunito Sans", sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--zm-brown);
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .zambia-graph-chrome .zambia-graph-shell {
+    min-width: 0;
+    flex: 1;
+    border-radius: 0 12px 12px 0;
+  }
+}
+
+html[data-theme="dark"] .zambia-page .zambia-graph-scroll-rail {
+  background: linear-gradient(180deg, rgba(42, 35, 26, 0.94) 0%, rgba(30, 26, 20, 0.88) 100%);
+  border-color: rgba(246, 197, 68, 0.2);
+}
+
+html[data-theme="dark"] .zambia-page .zambia-graph-scroll-rail__text {
+  color: var(--zm-gold);
+}
+
+.zambia-graph-intro {
+  margin-bottom: 1rem;
+}
+
+.zambia-graph-hint {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  text-align: center;
+  color: var(--zm-ink-muted);
+  max-width: 44rem;
+  margin: 0 auto 0.75rem;
+}
+
+.zambia-graph-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.zambia-graph-btn {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  border: 2px solid var(--zm-sunrise);
+  background: var(--zm-sunrise);
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.zambia-graph-btn:hover {
+  background: var(--zm-sunset);
+  border-color: var(--zm-sunset);
+}
+
+.zambia-graph-btn:focus-visible {
+  outline: 2px solid var(--zm-gold);
+  outline-offset: 2px;
+}
+
+html[data-theme="dark"] .zambia-graph-btn {
+  background: var(--zm-sunrise);
+  border-color: var(--zm-sunrise);
+  color: #fff;
+}
+
+html[data-theme="dark"] .zambia-graph-btn:hover {
+  background: var(--zm-sunset);
+  border-color: var(--zm-sunset);
+  color: #fff;
+}
+
+.zambia-graph-shell {
+  position: relative;
+  width: 100%;
+  min-height: 620px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+}
+
+[data-theme="dark"] .zambia-graph-shell {
+  background: transparent;
+  box-shadow: none;
+}
+
+.zambia-graph-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  touch-action: none;
+  user-select: none;
+}
+
+.zambia-graph-svg:active {
+  cursor: grabbing;
+}
+
+.zambia-link {
+  pointer-events: none;
+}
+
+/* SVG node typography (D3-rendered) — no text stroke (thick stroke reads as a white box behind glyphs) */
+.zambia-fnode__label,
+.zambia-fnode__sub,
+.zambia-fnode__label tspan,
+.zambia-fnode__sub tspan {
+  pointer-events: none;
+  paint-order: normal;
+  stroke: none;
+  stroke-width: 0;
+}
+
+.zambia-fnode__label {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.zambia-fnode--hub .zambia-fnode__label {
+  font-size: 13px;
+}
+
+.zambia-fnode--hub .zambia-fnode__sub {
+  font-size: 11px;
+}
+
+.zambia-fnode--center .zambia-fnode__label {
+  font-family: "Fraunces", Georgia, serif;
+  font-size: 22px;
+}
+
+.zambia-fnode--center .zambia-fnode__sub {
+  font-size: 13px;
+}
+
+.zambia-fnode__sub {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.zambia-fnode__label--leaf,
+.zambia-fnode__sub--leaf {
+  font-size: 12px;
+}
+
+.zambia-fnode__thumb {
+  opacity: 0;
+  transition: opacity 0.28s ease;
+  pointer-events: none;
+}
+
+.zambia-fnode[data-node-id="microscopy"].is-expanded .zambia-fnode__thumb {
+  opacity: 1;
+}
+
+/* Microscopy: full-viewport 16:9 preview (HTML layer; see #zambia-micro-preview) */
+.zambia-micro-preview {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(12px, 4vw, 36px);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.zambia-micro-preview.is-visible {
+  display: flex;
+  pointer-events: auto;
+}
+
+.zambia-micro-preview__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(42, 26, 16, 0.52);
+  backdrop-filter: blur(3px);
+}
+
+.zambia-micro-preview__frame {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  width: min(92vw, 1120px, calc(85vh * 16 / 9));
+  aspect-ratio: 16 / 9;
+  max-height: 85vh;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 28px 72px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.zambia-micro-preview__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zambia-micro-preview__backdrop,
+  .zambia-micro-preview__frame {
+    transition: none;
+  }
+}
+
+.zambia-fnode__shape {
+  stroke-width: 2.75px;
+  filter: drop-shadow(0 2px 6px rgba(61, 41, 24, 0.12));
+}
+
+[data-theme="dark"] .zambia-fnode__shape {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
+}
+
+.zambia-fnode__halo {
+  fill: transparent;
+  stroke: transparent;
+  pointer-events: none;
+}
+
+.zambia-fnode:focus {
+  outline: none;
+}
+
+.zambia-fnode:focus .zambia-fnode__halo {
+  stroke: var(--zm-gold);
+  stroke-width: 3px;
+  stroke-opacity: 0.95;
+}
+
+.zambia-fnode:hover .zambia-fnode__shape {
+  filter: drop-shadow(0 4px 14px rgba(232, 90, 12, 0.25));
+}
+
+@media (max-width: 640px) {
+  .zambia-graph-hint br {
+    display: none;
+  }
+
+  .zambia-fnode__label {
+    font-size: 13px;
+  }
+
+  .zambia-fnode--hub .zambia-fnode__label {
+    font-size: 11px;
+  }
+
+  .zambia-fnode--center .zambia-fnode__label {
+    font-size: 18px;
+  }
+}
