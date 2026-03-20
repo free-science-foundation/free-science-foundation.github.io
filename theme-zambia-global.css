@@ -315,7 +315,10 @@
 }
 
 [data-theme="zambia"] .initial-choice-subtitle {
-  color: var(--zm-ink-muted);
+  color: #fffefc;
+  text-shadow:
+    0 1px 3px rgba(61, 41, 24, 0.45),
+    0 0 20px rgba(61, 41, 24, 0.22);
 }
 
 /* Team page: gradient .section-title + slate .team-member-contribution wash out on warm body BG */
