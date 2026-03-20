@@ -282,3 +282,82 @@
   background: rgba(255, 255, 255, 0.08);
   border-color: rgba(255, 255, 255, 0.14);
 }
+
+/* Zambia sunrise — align catalog with global warm palette */
+[data-theme="zambia"] {
+  --ts-bg: transparent;
+  --ts-surface: rgba(255, 252, 245, 0.94);
+  --ts-surface-solid: #fff8ee;
+  --ts-text: #3d2918;
+  --ts-muted: #6b4f3a;
+  --ts-border: rgba(140, 74, 47, 0.22);
+  --ts-shadow: 0 8px 24px rgba(61, 41, 24, 0.1);
+  --ts-shadow-lg: 0 16px 40px rgba(61, 41, 24, 0.14);
+  --ts-accent: #e85a0c;
+  --ts-accent-2: #3e6f2a;
+  --ts-ring: rgba(244, 124, 27, 0.35);
+}
+
+[data-theme="zambia"] .tools-services-header {
+  background:
+    linear-gradient(180deg, rgba(249, 232, 200, 0.92), rgba(249, 232, 200, 0.75)),
+    radial-gradient(1000px 400px at 50% 0%, rgba(244, 124, 27, 0.15), transparent 55%);
+  border-bottom-color: rgba(140, 74, 47, 0.22);
+}
+
+[data-theme="zambia"] .tools-services-header .page-title {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .tools-services-header .page-description {
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .clear-filters {
+  border-color: rgba(232, 90, 12, 0.35);
+  background: rgba(244, 124, 27, 0.12);
+  color: var(--zm-sunset);
+}
+
+[data-theme="zambia"] .item-card:hover {
+  border-color: rgba(232, 90, 12, 0.32);
+}
+
+[data-theme="zambia"] .chip-type-project {
+  background: rgba(244, 124, 27, 0.14);
+  color: #9a3412;
+  border-color: rgba(232, 90, 12, 0.28);
+}
+
+[data-theme="zambia"] .chip-type-service {
+  background: rgba(62, 111, 42, 0.14);
+  color: var(--zm-leaf);
+  border-color: rgba(62, 111, 42, 0.3);
+}
+
+[data-theme="zambia"] .chip-category {
+  background: rgba(140, 74, 47, 0.08);
+  color: var(--zm-ink-muted);
+  border-color: rgba(140, 74, 47, 0.18);
+}
+
+[data-theme="zambia"] .item-description {
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .item-link {
+  color: var(--zm-sunset);
+  border-color: rgba(232, 90, 12, 0.3);
+  background: rgba(244, 124, 27, 0.1);
+}
+
+[data-theme="zambia"] .item-link:hover {
+  border-color: rgba(232, 90, 12, 0.45);
+  background: rgba(244, 124, 27, 0.16);
+}
+
+[data-theme="zambia"] .no-results {
+  background: rgba(255, 252, 245, 0.88);
+  border-color: rgba(140, 74, 47, 0.22);
+  color: var(--zm-ink-muted);
+}

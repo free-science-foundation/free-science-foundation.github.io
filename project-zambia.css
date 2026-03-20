@@ -195,7 +195,11 @@ html[data-theme="dark"] .zambia-page .nav-dropdown__item:focus-visible {
 }
 
 .zambia-micro-preview__project-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
   line-height: 0;
   color: inherit;
   text-decoration: none;
@@ -506,13 +510,11 @@ html[data-theme="dark"] .zambia-hero__title {
 }
 
 .zambia-graph-viewport-frame {
-  stroke: rgba(140, 74, 47, 0.34);
-  stroke-width: 1.5px;
-  vector-effect: non-scaling-stroke;
+  stroke: none;
 }
 
-html[data-theme="dark"] .zambia-page .zambia-graph-viewport-frame {
-  stroke: rgba(246, 197, 68, 0.3);
+.zambia-graph-hitplane {
+  stroke: none;
 }
 
 @media (max-width: 768px) {
@@ -652,6 +654,15 @@ html[data-theme="dark"] .zambia-graph-btn:hover {
   pointer-events: none;
 }
 
+/* Program leaves: white disk; branch color stays on .zambia-fnode__shape stroke (overrides SVG fill attr in cascade) */
+.zambia-page .zambia-fnode--leaf .zambia-fnode__fill {
+  fill: #ffffff;
+}
+
+html[data-theme="dark"] .zambia-page .zambia-fnode--leaf .zambia-fnode__fill {
+  fill: #f8f4ef;
+}
+
 /* SVG node typography (D3-rendered) — no text stroke (thick stroke reads as a white box behind glyphs) */
 .zambia-fnode__label,
 .zambia-fnode__sub,
@@ -741,6 +752,7 @@ html[data-theme="dark"] .zambia-graph-btn:hover {
   max-height: 85vh;
   border-radius: 16px;
   overflow: hidden;
+  background: rgba(24, 18, 12, 0.94);
   box-shadow:
     0 28px 72px rgba(0, 0, 0, 0.5),
     0 0 0 1px rgba(255, 255, 255, 0.1);
@@ -750,7 +762,8 @@ html[data-theme="dark"] .zambia-graph-btn:hover {
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  object-position: center;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -787,6 +800,36 @@ html[data-theme="dark"] .zambia-graph-btn:hover {
 
 .zambia-fnode:hover .zambia-fnode__shape {
   filter: drop-shadow(0 4px 14px rgba(232, 90, 12, 0.25));
+}
+
+.zambia-fnode.is-major-expanded .zambia-fnode__shape {
+  stroke-width: 4px;
+}
+
+.zambia-fnode.is-selected .zambia-fnode__shape {
+  stroke-width: 4.5px;
+  filter: drop-shadow(0 0 10px rgba(232, 90, 12, 0.45));
+}
+
+.zambia-fnode.is-neighbor .zambia-fnode__shape {
+  stroke-width: 3.6px;
+  filter: drop-shadow(0 2px 10px rgba(62, 111, 42, 0.28));
+}
+
+.zambia-fnode--consult.is-neighbor .zambia-fnode__shape {
+  filter: drop-shadow(0 2px 10px rgba(233, 75, 60, 0.28));
+}
+
+[data-theme="dark"] .zambia-fnode.is-selected .zambia-fnode__shape {
+  filter: drop-shadow(0 0 12px rgba(246, 197, 68, 0.35));
+}
+
+[data-theme="dark"] .zambia-fnode.is-neighbor .zambia-fnode__shape {
+  filter: drop-shadow(0 2px 12px rgba(94, 140, 59, 0.35));
+}
+
+[data-theme="dark"] .zambia-fnode--consult.is-neighbor .zambia-fnode__shape {
+  filter: drop-shadow(0 2px 12px rgba(233, 75, 60, 0.3));
 }
 
 @media (max-width: 640px) {
