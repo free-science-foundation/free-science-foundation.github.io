@@ -4584,7 +4584,7 @@ body {
    ========================================================================== */
 
 .initial-choice {
-  padding: 4rem 0;
+  padding: 0 0 4rem;
   background: transparent;
   position: relative;
 }
@@ -4703,13 +4703,21 @@ body {
 
 .initial-choice-about {
   max-width: 44rem;
-  margin: 2.5rem auto 0;
+  margin: 0 auto;
   padding: 0 var(--spacing-md, 1.5rem);
   text-align: center;
 }
 
 .initial-choice-about .initial-choice-group-title {
   margin-bottom: 0.75rem;
+}
+
+.initial-choice-about__mission {
+  margin-bottom: 2.5rem;
+  max-width: 42rem;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.65;
 }
 
 .initial-choice-about__lead {
@@ -5228,7 +5236,7 @@ body {
 /* Responsive Styles for Initial Choice */
 @media (max-width: 768px) {
   .initial-choice {
-    padding: 3rem 0;
+    padding: 0 0 3rem;
   }
   
   .initial-choice-logo {
