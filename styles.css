@@ -2150,10 +2150,14 @@ body {
 }
 
 .whatsapp-nav-qr-image {
+  display: block;
   width: 100%;
   height: 100%;
+  max-width: 100%;
   object-fit: cover;
   border-radius: 6px;
+  flex-shrink: 0;
+  background: #f1f5f9;
 }
 
 .social-icon.discord-icon:hover {

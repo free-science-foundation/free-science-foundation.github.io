@@ -673,8 +673,27 @@
 // WhatsApp Group Contact Modal + First Visit Prompt
 (function() {
   const WHATSAPP_URL = 'https://chat.whatsapp.com/FvUDXRQwqh6CTMyOCZqAUh?mode=gi_t';
-  const WHATSAPP_QR_PATH = 'images/whatsapp-group-qr.png';
   const WHATSAPP_POPUP_KEY = 'fsf_whatsapp_popup_seen_v1';
+
+  /** Absolute URL to QR asset — page-relative `images/...` breaks on nested paths (e.g. events/courses.html). */
+  function getWhatsAppQrUrl() {
+    const scripts = document.querySelectorAll('script[src*="theme.js"]');
+    for (let i = scripts.length - 1; i >= 0; i--) {
+      const src = scripts[i].src;
+      if (!src) continue;
+      try {
+        const u = new URL(src);
+        const path = u.pathname;
+        const slash = path.lastIndexOf('/');
+        const base = slash >= 0 ? path.slice(0, slash + 1) : '/';
+        u.pathname = base + 'images/whatsapp-group-qr.png';
+        return u.href;
+      } catch (err) {
+        /* try next */
+      }
+    }
+    return 'images/whatsapp-group-qr.png';
+  }
 
   function ensureWhatsAppNavIcon() {
     const iconContainers = document.querySelectorAll('.social-icons');
@@ -704,7 +723,7 @@
       qrLink.rel = 'noopener';
       qrLink.className = 'whatsapp-nav-qr';
       qrLink.setAttribute('aria-label', 'Open WhatsApp group QR');
-      qrLink.innerHTML = `<img src="${WHATSAPP_QR_PATH}" alt="WhatsApp group QR code" class="whatsapp-nav-qr-image">`;
+      qrLink.innerHTML = `<img src="${getWhatsAppQrUrl()}" alt="WhatsApp group QR code" class="whatsapp-nav-qr-image" width="32" height="32" decoding="async">`;
 
       wrap.appendChild(link);
       wrap.appendChild(qrLink);
@@ -726,7 +745,7 @@
       <div class="whatsapp-contact-modal">
         <button class="whatsapp-contact-close" aria-label="Close">&times;</button>
         <div class="whatsapp-qr-wrap">
-          <img src="${WHATSAPP_QR_PATH}" alt="WhatsApp group QR code" class="whatsapp-qr-image">
+          <img src="${getWhatsAppQrUrl()}" alt="WhatsApp group QR code" class="whatsapp-qr-image" width="200" height="200" decoding="async">
         </div>
       </div>
     `;
@@ -875,7 +894,7 @@
   });
 })();
 
-// Nav: Projects dropdown (beside Catalog)
+// Nav: dropdown menus (e.g. Projects)
 (function() {
   const dropdowns = document.querySelectorAll('.nav-dropdown');
   if (!dropdowns.length) return;

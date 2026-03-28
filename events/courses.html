@@ -3,30 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>White Papers - Free Science Network</title>
-    <meta name="description" content="Collection of white papers and research documents on free tools and scientific development.">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="theme-zambia-global.css">
-    <link rel="stylesheet" href="projects.css">
+    <title>Events & Courses - Free Science Network</title>
+    <meta name="description" content="Hands-on courses in Switzerland (Basel, Zurich, or Baden): microscopy for Zambia, hydroponics, mushroom cultivation, and more.">
+    <!-- Organizer WhatsApp for course sign-ups: E.164 digits only, no + or spaces (e.g. 41791234567 = +41 79 123 45 67). Replace with your number. -->
+    <meta name="fsn-whatsapp-e164" content="41791234567">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../theme-zambia-global.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="courses.css">
 </head>
 <body>
     <header class="site-header" role="banner">
         <nav class="nav-container" role="navigation" aria-label="Main navigation">
             <div class="nav-brand">
-                <a href="index.html" class="brand-link">
-                    <img src="images/logo.png" alt="Free Science Network Logo" class="site-logo">
+                <a href="../index.html" class="brand-link">
+                    <img src="../images/logo.png" alt="Free Science Network Logo" class="site-logo">
                     <h1 class="site-title">Free Science Network</h1>
                 </a>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html" class="nav-link">Home</a></li>
-                <li><a href="events/courses.html" class="nav-link">Events / Courses</a></li>
-                <!-- <li><a href="trainings.html" class="nav-link">Trainings</a></li> -->
-                <!-- <li><a href="consultancies.html" class="nav-link">Consultancies</a></li> -->
-                <li><a href="team.html" class="nav-link">Team</a></li>
-                <li><a href="partners.html" class="nav-link">Partners</a></li>
-                <!-- <li><a href="3d-printing.html" class="nav-link">3D Printing</a></li> -->
-                <!-- <li><a href="white-papers.html" class="nav-link active" aria-current="page">White Papers</a></li> -->
+                <li><a href="../index.html" class="nav-link">Home</a></li>
+                <li><a href="courses.html" class="nav-link active" aria-current="page">Events / Courses</a></li>
+                <!-- <li><a href="../trainings.html" class="nav-link">Trainings</a></li> -->
+                <!-- <li><a href="../consultancies.html" class="nav-link">Consultancies</a></li> -->
+                <li><a href="../team.html" class="nav-link">Team</a></li>
+                <li><a href="../partners.html" class="nav-link">Partners</a></li>
+                <!-- <li><a href="../3d-printing.html" class="nav-link">3D Printing</a></li> -->
+                <!-- <li><a href="../white-papers.html" class="nav-link">White Papers</a></li> -->
             </ul>
             <div class="nav-controls">
                 <div class="theme-toggle-wrapper">
@@ -134,31 +137,104 @@
     <main>
         <section class="hero" role="banner">
             <div class="container">
-                <h2 class="hero-title">White Papers</h2>
-                <p class="hero-subtitle">Research and analysis on free software and scientific tools</p>
+                <h2 class="hero-title">Events &amp; courses in Switzerland</h2>
+                <p class="hero-subtitle">Hands-on learning with the Free Science Network</p>
                 <p class="hero-description">
-                    A collection of white papers, research documents, and analytical reports covering topics related to free software, scientific tools, and their impact on research accessibility and educational equality.
+                    We run practical workshops and courses in Switzerland. Sessions are held in <strong>Basel</strong>, <strong>Zurich</strong>, or <strong>Baden</strong> depending on the cohort and venue — check each listing or write to us for the next dates and city.
                 </p>
             </div>
         </section>
 
-        <section class="projects-header" aria-labelledby="papers-heading">
+        <section id="courses-location" class="submission-guide courses-map-section" aria-labelledby="courses-map-heading">
             <div class="container">
-                <h2 id="papers-heading" class="page-title">Available Papers</h2>
-                <p class="page-description">
-                    Coming soon: A comprehensive collection of white papers and research documents on free software scientific tools and their impact on research accessibility.
-                </p>
+                <h2 id="courses-map-heading" class="section-title">Where we meet</h2>
+                <div class="courses-map-intro">
+                    <p class="submission-text">
+                        Northern Switzerland: our courses take place in <strong>Basel</strong>, <strong>Zurich</strong>, and <strong>Baden</strong>. The map shows these three cities; exact addresses are shared when you register.
+                    </p>
+                </div>
+                <div class="courses-map">
+                    <div class="courses-map__frame">
+                        <div
+                            id="courses-map-leaflet"
+                            class="courses-map__leaflet"
+                            role="region"
+                            aria-label="Map: course cities Basel, Zurich, and Baden in Switzerland"></div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="projects-container" aria-label="White papers collection">
+        <section id="courses-list" class="submission-guide" aria-labelledby="courses-list-heading">
             <div class="container">
-                <div class="projects-grid">
-                    <!-- Content will be added here -->
+                <h2 id="courses-list-heading" class="section-title">Upcoming courses</h2>
+                <div class="submission-content">
+                    <p class="submission-text">
+                        Practical programmes you can join. Dates and city (Basel, Zurich, or Baden) are confirmed per run — contact us to reserve a seat.
+                    </p>
+                    <div class="submission-steps roles-grid courses-list-grid">
+                        <div class="step">
+                            <h3 class="step-title">Build a Microscope for Zambia</h3>
+                            <p class="step-description">Assemble and understand open hardware microscopy for field and teaching use. Dates TBD — <a href="mailto:info@freesciencenetwork.org">info@freesciencenetwork.org</a>.</p>
+                            <button type="button" class="cta-button course-signup-btn" data-course-title="Build a Microscope for Zambia">Sign up (WhatsApp)</button>
+                        </div>
+                        <div class="step">
+                            <h3 class="step-title">Learn to grow veggies with Hydroponic systems</h3>
+                            <p class="step-description">Intro to small-scale hydroponics for healthy produce. Dates TBD — <a href="mailto:info@freesciencenetwork.org">info@freesciencenetwork.org</a>.</p>
+                            <button type="button" class="cta-button course-signup-btn" data-course-title="Learn to grow veggies with Hydroponic systems">Sign up (WhatsApp)</button>
+                        </div>
+                        <div class="step">
+                            <h3 class="step-title">How to grow Mushrooms</h3>
+                            <p class="step-description">Cultivation basics from substrate to harvest in a lab-friendly setup. Dates TBD — <a href="mailto:info@freesciencenetwork.org">info@freesciencenetwork.org</a>.</p>
+                            <button type="button" class="cta-button course-signup-btn" data-course-title="How to grow Mushrooms">Sign up (WhatsApp)</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
+
+    <div
+        id="course-signup-overlay"
+        class="course-signup-overlay"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="course-signup-title"
+        aria-hidden="true">
+        <div class="course-signup-modal">
+            <button type="button" class="course-signup-close" aria-label="Close">&times;</button>
+            <h2 id="course-signup-title" class="course-signup-heading">Sign up for a course</h2>
+            <p id="course-signup-course-label" class="course-signup-course-label" hidden></p>
+            <form id="course-signup-form" class="course-signup-form" novalidate>
+                <div class="course-signup-field">
+                    <label for="course-signup-email">Email</label>
+                    <input
+                        id="course-signup-email"
+                        name="email"
+                        type="email"
+                        required
+                        autocomplete="email"
+                        placeholder="you@example.com">
+                </div>
+                <div class="course-signup-field">
+                    <label for="course-signup-phone">Phone number (WhatsApp)</label>
+                    <input
+                        id="course-signup-phone"
+                        name="phone"
+                        type="tel"
+                        required
+                        inputmode="tel"
+                        autocomplete="tel"
+                        placeholder="+41 79 000 00 00">
+                </div>
+                <p class="course-signup-hint">
+                    We open WhatsApp with a ready-to-send message including this course, your email, and phone. You can edit it before sending.
+                </p>
+                <p id="course-signup-error" class="course-signup-error" role="alert" hidden></p>
+                <button type="submit" class="cta-button course-signup-submit">Open WhatsApp</button>
+            </form>
+        </div>
+    </div>
 
     <footer class="site-footer" role="contentinfo">
         <div class="container">
@@ -166,7 +242,7 @@
                 <div class="footer-section">
                     <h3 class="footer-heading">Resources</h3>
                     <ul class="footer-links">
-                        <li><a href="tools-services.html">Catalog</a></li>
+                        <li><a href="../tools-services.html">Catalog</a></li>
                         <li><a href="https://www.gnu.org/philosophy/free-sw.html" target="_blank" rel="noopener">What is Free Software?</a></li>
                         <li><a href="https://www.gnu.org/licenses/" target="_blank" rel="noopener">GNU Licenses</a></li>
                         <li><a href="https://www.fsf.org/news/" target="_blank" rel="noopener">News & Events</a></li>
@@ -185,15 +261,12 @@
                     <ul class="footer-links">
                         <li><a href="https://www.gnu.org/copyleft/" target="_blank" rel="noopener">Copyleft</a></li>
                         <li><a href="https://en.wikipedia.org/wiki/Decentralized_autonomous_organization" target="_blank" rel="noopener">What is DAO?</a></li>
+                        <li><a href="../public-materials.html">Public Materials</a></li>
                     </ul>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p class="license-text">© 2024 Free Software Scientific Hub. Licensed under <a href="https://www.gnu.org/licenses/gpl-3.0.html" target="_blank" rel="noopener">GPLv3</a>.</p>
-                <p class="contact-email">Contact: <a href="mailto:info@freesciencenetwork.org">info@freesciencenetwork.org</a></p>
-                <p class="repository-link">
-                    <a href="https://github.com/free-science-foundation/home.git" target="_blank" rel="noopener">View on GitHub</a>
-                </p>
+                <p>&copy; 2025-2030 Free Science Network. All content is free. Contact: <a href="mailto:info@freesciencenetwork.org">info@freesciencenetwork.org</a></p>
             </div>
         </div>
     </footer>
@@ -292,6 +365,9 @@
         </div>
     </div>
 
-    <script src="theme.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="courses-map.js"></script>
+    <script src="courses-signup.js"></script>
+    <script src="../theme.js"></script>
 </body>
 </html>
