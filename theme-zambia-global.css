@@ -4,6 +4,7 @@
  */
 
 [data-theme="zambia"] {
+  --manifesto-expand-fade: #fdf3e4;
   --zm-sunrise: #f47c1b;
   --zm-sunset: #e85a0c;
   --zm-gold: #f6c544;
@@ -248,7 +249,7 @@
   border-color: rgba(246, 197, 68, 0.85);
 }
 
-/* Core content (home + inner pages): gradient fill matched the warm body — mid-tones disappeared */
+/* Core content (home + inner pages): gradient fill matched the warm body; mid-tones disappeared */
 [data-theme="zambia"] .hero-title,
 [data-theme="zambia"] .section-title {
   background: none;

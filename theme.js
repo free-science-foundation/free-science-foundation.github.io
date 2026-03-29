@@ -675,7 +675,7 @@
   const WHATSAPP_URL = 'https://chat.whatsapp.com/FvUDXRQwqh6CTMyOCZqAUh?mode=gi_t';
   const WHATSAPP_POPUP_KEY = 'fsf_whatsapp_popup_seen_v1';
 
-  /** Absolute URL to QR asset — page-relative `images/...` breaks on nested paths (e.g. events/courses.html). */
+  /** Absolute URL to QR asset; page-relative `images/...` breaks on nested paths (e.g. events/courses.html). */
   function getWhatsAppQrUrl() {
     const scripts = document.querySelectorAll('script[src*="theme.js"]');
     for (let i = scripts.length - 1; i >= 0; i--) {

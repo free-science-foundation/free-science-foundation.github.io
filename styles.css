@@ -1,4 +1,4 @@
-/* Modern CSS for Free Science Network - 2025 Consulting Design */
+/* Modern CSS for Free Science Network - 2026 Consulting Design */
 
 /* Google Fonts for multi-script support (Ethiopic, Arabic, Devanagari, etc.) */
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Noto+Sans+Ethiopic:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&family=Noto+Sans+Devanagari:wght@400;600;700&family=Noto+Sans+Bengali:wght@400;600;700&family=Noto+Sans+Tamil:wght@400;600;700&family=Noto+Sans+Thai:wght@400;600;700&family=Noto+Sans+Myanmar:wght@400;600;700&family=Noto+Sans+Khmer:wght@400;600;700&display=swap');
@@ -106,6 +106,9 @@
   --transition-fast: 150ms ease;
   --transition-base: 250ms ease;
   --transition-slow: 400ms ease;
+
+  /* Manifesto “read more” fade: matches default body base */
+  --manifesto-expand-fade: #f8fbfc;
 }
 
 /* CSS Reset and Base Styles */
@@ -1194,6 +1197,10 @@ body {
 
 .footer-bottom a:hover {
   color: #ffffff;
+}
+
+.manifesto--standalone {
+  scroll-margin-top: 96px;
 }
 
 /* Mobile Responsive Design - Modern Breakpoints */
@@ -2323,6 +2330,7 @@ body {
 
 /* Light Mode Styles - Explicit for when user toggles to light on dark system */
 [data-theme="light"] {
+  --manifesto-expand-fade: #ffffff;
   --color-text: #1f2937;
   --color-text-muted: #5b6573;
   --color-text-light: #64748b;
@@ -2556,6 +2564,7 @@ body {
 
 /* Dark Mode Styles */
 [data-theme="dark"] {
+  --manifesto-expand-fade: #0f0f0f;
   --color-text: rgba(255, 255, 255, 0.95);
   --color-text-muted: rgba(200, 200, 200, 0.85);
   --color-text-light: rgba(180, 180, 180, 0.7);
@@ -3302,6 +3311,544 @@ body {
     width: 100%;
     text-align: center;
   }
+}
+
+/* ==========================================================================
+   MANIFESTO SECTION
+   ========================================================================== */
+
+.manifesto {
+  padding: 5rem 0 6rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.manifesto::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 55% at 50% 0%, rgba(37, 99, 235, 0.07), transparent 60%),
+    radial-gradient(ellipse 55% 40% at 90% 100%, rgba(39, 174, 96, 0.06), transparent 55%);
+  pointer-events: none;
+}
+
+.manifesto-header {
+  max-width: 760px;
+  margin: 0 auto 4rem;
+  text-align: center;
+}
+
+.manifesto-eyebrow {
+  display: inline-block;
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  border: 1px solid rgba(37, 99, 235, 0.3);
+  border-radius: 999px;
+  padding: 0.3rem 1rem;
+  background: rgba(37, 99, 235, 0.06);
+}
+
+.manifesto-title {
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  font-weight: 900;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--color-text);
+  margin: 0 0 1.25rem;
+}
+
+.manifesto-title br { display: none; }
+@media (min-width: 540px) { .manifesto-title br { display: block; } }
+
+.manifesto-lead {
+  font-size: clamp(1rem, 1.6vw, 1.15rem);
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* Collapsible body: preview + gradient mask + expand control */
+.manifesto-expandable {
+  margin-top: 2.5rem;
+}
+
+.manifesto-expandable__clip {
+  position: relative;
+  max-height: min(22rem, 52vh);
+  overflow: hidden;
+  transition: max-height 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.manifesto-expandable.is-expanded .manifesto-expandable__clip {
+  max-height: 9999px;
+}
+
+.manifesto-expandable__fade {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 6rem;
+  pointer-events: none;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 18%,
+    var(--manifesto-expand-fade) 100%
+  );
+  opacity: 1;
+  transition: opacity 0.35s ease;
+}
+
+.manifesto-expandable.is-expanded .manifesto-expandable__fade {
+  opacity: 0;
+}
+
+.manifesto-expandable__toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 320px;
+  margin: 1.25rem auto 0;
+  padding: 0.75rem 1.35rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  background: var(--color-surface);
+  border: 1.5px solid rgba(52, 152, 219, 0.35);
+  border-radius: 999px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: background var(--transition-base), border-color var(--transition-base), transform 0.2s ease;
+}
+
+.manifesto-expandable__toggle:hover {
+  background: var(--color-surface-elevated);
+  border-color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.manifesto-expandable__toggle:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 3px;
+}
+
+.manifesto-expandable__text-collapse {
+  display: none;
+}
+
+.manifesto-expandable.is-expanded .manifesto-expandable__text-expand {
+  display: none;
+}
+
+.manifesto-expandable.is-expanded .manifesto-expandable__text-collapse {
+  display: inline;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .manifesto-expandable__clip {
+    transition: none;
+  }
+
+  .manifesto-expandable__fade {
+    transition: none;
+  }
+}
+
+[data-theme="dark"] .manifesto-expandable__toggle {
+  color: #85c1e9;
+  background: #1a1a1a;
+  border-color: rgba(93, 173, 226, 0.35);
+}
+
+[data-theme="dark"] .manifesto-expandable__toggle:hover {
+  background: #242424;
+  border-color: #85c1e9;
+}
+
+[data-theme="zambia"] .manifesto-expandable__toggle {
+  color: var(--zm-sunset);
+  background: rgba(255, 252, 245, 0.95);
+  border-color: rgba(232, 90, 12, 0.4);
+}
+
+[data-theme="zambia"] .manifesto-expandable__toggle:hover {
+  border-color: var(--zm-sunrise);
+}
+
+/* Rights list */
+.manifesto-rights {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 4rem;
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 760px) {
+  .manifesto-rights {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.manifesto-right {
+  display: grid;
+  grid-template-columns: 2.6rem 2.8rem 1fr;
+  align-items: start;
+  gap: 0 1rem;
+  padding: 1.5rem 1.5rem 1.5rem 1.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.manifesto-right:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.manifesto-right--accent {
+  border-color: rgba(37, 99, 235, 0.28);
+  background: linear-gradient(155deg, rgba(37, 99, 235, 0.04) 0%, var(--color-surface) 55%);
+}
+
+.manifesto-right__number {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  color: var(--color-primary);
+  opacity: 0.55;
+  line-height: 1;
+  padding-top: 0.3rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.manifesto-right__icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: 8px;
+  color: #fff;
+  padding: 0.45rem;
+}
+
+.manifesto-right__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.manifesto-right__body {
+  min-width: 0;
+}
+
+.manifesto-right__name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.45rem;
+  letter-spacing: -0.01em;
+}
+
+.manifesto-right__text {
+  font-size: 0.92rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* Closing quote */
+.manifesto-closing {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 2rem 2.5rem;
+  border-left: 4px solid var(--color-primary);
+  background: var(--color-surface);
+  border-radius: 0 12px 12px 0;
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.manifesto-closing p {
+  font-size: clamp(1.05rem, 1.8vw, 1.3rem);
+  font-style: italic;
+  font-weight: 500;
+  color: var(--color-text);
+  line-height: 1.65;
+  margin: 0 0 0.75rem;
+}
+
+.manifesto-closing footer {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+}
+
+/* Dark mode */
+[data-theme="dark"] .manifesto-right {
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+[data-theme="dark"] .manifesto-right--accent {
+  border-color: rgba(93, 173, 226, 0.22);
+  background: linear-gradient(155deg, rgba(93, 173, 226, 0.06) 0%, #1a1a1a 55%);
+}
+
+[data-theme="dark"] .manifesto-right__number {
+  color: #85c1e9;
+}
+
+[data-theme="dark"] .manifesto-right__name {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .manifesto-right__text {
+  color: rgba(200, 200, 200, 0.85);
+}
+
+[data-theme="dark"] .manifesto-eyebrow {
+  color: #85c1e9;
+  border-color: rgba(93, 173, 226, 0.3);
+  background: rgba(93, 173, 226, 0.08);
+}
+
+[data-theme="dark"] .manifesto-title {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .manifesto-closing {
+  background: #1a1a1a;
+  border-left-color: #85c1e9;
+}
+
+[data-theme="dark"] .manifesto-closing p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+[data-theme="dark"] .manifesto-closing footer {
+  color: #85c1e9;
+}
+
+/* Zambia theme */
+[data-theme="zambia"] .manifesto-right {
+  background: rgba(255, 252, 245, 0.92);
+  border-color: rgba(140, 74, 47, 0.18);
+}
+
+[data-theme="zambia"] .manifesto-right--accent {
+  border-color: rgba(232, 90, 12, 0.28);
+  background: linear-gradient(155deg, rgba(244, 124, 27, 0.07) 0%, rgba(255, 252, 245, 0.92) 55%);
+}
+
+[data-theme="zambia"] .manifesto-right__number {
+  color: var(--zm-sunset);
+}
+
+[data-theme="zambia"] .manifesto-right__icon {
+  background: linear-gradient(135deg, var(--zm-sunrise), var(--zm-leaf));
+}
+
+[data-theme="zambia"] .manifesto-right__name {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .manifesto-right__text {
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .manifesto-eyebrow {
+  color: var(--zm-sunset);
+  border-color: rgba(232, 90, 12, 0.3);
+  background: rgba(244, 124, 27, 0.08);
+}
+
+[data-theme="zambia"] .manifesto-closing {
+  background: rgba(255, 252, 245, 0.92);
+  border-left-color: var(--zm-sunset);
+}
+
+[data-theme="zambia"] .manifesto-closing p {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .manifesto-closing footer {
+  color: var(--zm-sunset);
+}
+
+/* Manifesto: economic stance block */
+.manifesto-stance {
+  margin-top: 4rem;
+  max-width: 860px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.manifesto-stance__header {
+  margin-bottom: 2rem;
+}
+
+.manifesto-stance__title {
+  font-size: clamp(1.6rem, 3.5vw, 2.25rem);
+  font-weight: 900;
+  letter-spacing: -0.025em;
+  color: var(--color-text);
+  margin: 0.5rem 0 0;
+  line-height: 1.15;
+}
+
+.manifesto-stance__body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 2rem 2.25rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 1.5rem;
+}
+
+.manifesto-stance__body p {
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.manifesto-stance__body p strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+/* "Our profit" highlight box */
+.manifesto-profit {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.75rem 2rem;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.06) 0%, var(--color-surface) 60%);
+  border: 1.5px solid rgba(37, 99, 235, 0.22);
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+.manifesto-profit__icon {
+  width: 2.8rem;
+  height: 2.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  border-radius: 10px;
+  color: #fff;
+  padding: 0.55rem;
+  flex-shrink: 0;
+}
+
+.manifesto-profit__icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.manifesto-profit__label {
+  font-size: 0.88rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin: 0 0 0.6rem;
+}
+
+.manifesto-profit__text p {
+  font-size: clamp(0.95rem, 1.4vw, 1.05rem);
+  color: var(--color-text-muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+/* Dark mode: stance */
+[data-theme="dark"] .manifesto-stance__title {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .manifesto-stance__body {
+  background: #1a1a1a;
+  border-color: rgba(255, 255, 255, 0.07);
+}
+
+[data-theme="dark"] .manifesto-stance__body p {
+  color: rgba(200, 200, 200, 0.85);
+}
+
+[data-theme="dark"] .manifesto-stance__body p strong {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+[data-theme="dark"] .manifesto-profit {
+  background: linear-gradient(135deg, rgba(93, 173, 226, 0.07) 0%, #1a1a1a 60%);
+  border-color: rgba(93, 173, 226, 0.2);
+}
+
+[data-theme="dark"] .manifesto-profit__label {
+  color: #85c1e9;
+}
+
+[data-theme="dark"] .manifesto-profit__text p {
+  color: rgba(200, 200, 200, 0.85);
+}
+
+/* Zambia theme: stance */
+[data-theme="zambia"] .manifesto-stance__title {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .manifesto-stance__body {
+  background: rgba(255, 252, 245, 0.92);
+  border-color: rgba(140, 74, 47, 0.18);
+}
+
+[data-theme="zambia"] .manifesto-stance__body p {
+  color: var(--zm-ink-muted);
+}
+
+[data-theme="zambia"] .manifesto-stance__body p strong {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .manifesto-profit {
+  background: linear-gradient(135deg, rgba(244, 124, 27, 0.07) 0%, rgba(255, 252, 245, 0.92) 60%);
+  border-color: rgba(232, 90, 12, 0.25);
+}
+
+[data-theme="zambia"] .manifesto-profit__icon {
+  background: linear-gradient(135deg, var(--zm-sunrise), var(--zm-leaf));
+}
+
+[data-theme="zambia"] .manifesto-profit__label {
+  color: var(--zm-sunset);
+}
+
+[data-theme="zambia"] .manifesto-profit__text p {
+  color: var(--zm-ink-muted);
 }
 
 /* ==========================================================================

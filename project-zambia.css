@@ -1,4 +1,4 @@
-/* Project Zambia — special sunset landscape + navbar (scoped to body.zambia-page) */
+/* Project Zambia: special sunset landscape + navbar (scoped to body.zambia-page) */
 @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;700&family=Nunito+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap');
 
 /* Palette */
@@ -27,7 +27,7 @@ body.zambia-page {
   background-attachment: fixed;
 }
 
-/* Full-page savanna art (zambia-1) — faint watermark (above body gradient, below grain/vignette + content) */
+/* Full-page savanna art (zambia-1): faint watermark (above body gradient, below grain/vignette + content) */
 .zambia-page-illustration {
   position: fixed;
   inset: 0;
@@ -97,7 +97,7 @@ html[data-theme="dark"] body.zambia-page::after {
     radial-gradient(ellipse 45% 30% at 50% 8%, rgba(246, 197, 68, 0.08) 0%, transparent 65%);
 }
 
-/* ——— Navbar: cream glass, no default sky photo ——— */
+/* Navbar: cream glass, no default sky photo */
 .zambia-page .site-header {
   background:
     linear-gradient(180deg, rgba(249, 232, 200, 0.94) 0%, rgba(249, 232, 200, 0.78) 100%),
@@ -663,7 +663,7 @@ html[data-theme="dark"] .zambia-page .zambia-fnode--leaf .zambia-fnode__fill {
   fill: #f8f4ef;
 }
 
-/* SVG node typography (D3-rendered) — no text stroke (thick stroke reads as a white box behind glyphs) */
+/* SVG node typography (D3-rendered): no text stroke (thick stroke reads as a white box behind glyphs) */
 .zambia-fnode__label,
 .zambia-fnode__sub,
 .zambia-fnode__label tspan,

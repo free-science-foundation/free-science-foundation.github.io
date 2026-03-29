@@ -120,7 +120,7 @@
     return false;
   }
 
-  /** Microscopy hub: small in-node thumb (upper disk) — shared with hover popout placement */
+  /** Microscopy hub: small in-node thumb (upper disk); shared with hover popout placement */
   var MICRO_THUMB_FR = 0.52;
   var MICRO_THUMB_CY_FR = -0.48;
 
