@@ -257,7 +257,7 @@ body {
   color: var(--color-text);
 }
 
-/* Projects dropdown (next to Catalog) */
+/* Projects dropdown (next to tools catalog page) */
 .nav-links > li.nav-dropdown {
   position: relative;
 }
@@ -4381,6 +4381,13 @@ body {
 
 .path-explorer-join-team .submission-steps {
   margin-bottom: 0;
+  align-items: stretch;
+}
+
+.path-explorer-join-team .submission-steps > .step {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
 .path-explorer-back {

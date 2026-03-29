@@ -1,13 +1,28 @@
 /* Volunteering page: WhatsApp connect modal (Join Our Team steps) */
 
 .path-explorer-join-team .submission-steps .step .volunteer-wa-open-btn {
-  margin-top: 1.25rem;
+  margin-top: auto;
   width: 100%;
 }
 
 .help-project-card .volunteer-wa-open-btn {
   margin-top: 1rem;
   width: 100%;
+}
+
+/* Find your path: WhatsApp under each tree detail panel */
+.tree-detail-wa {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--color-border, rgba(15, 23, 42, 0.12));
+}
+
+.tree-detail-wa .volunteer-wa-open-btn {
+  width: 100%;
+}
+
+[data-theme="dark"] .tree-detail-wa {
+  border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 .volunteer-wa-overlay {
