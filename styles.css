@@ -5495,6 +5495,7 @@ body {
   padding: 4rem 0;
   background: transparent;
   position: relative;
+  scroll-margin-top: 100px;
 }
 
 .need-help-subtitle {
@@ -5782,6 +5783,10 @@ body {
   color: var(--color-primary);
   transform: translateY(-2px);
   box-shadow: var(--shadow-sm);
+}
+
+a.back-to-choice-btn {
+  text-decoration: none;
 }
 
 /* Responsive Styles for Initial Choice */

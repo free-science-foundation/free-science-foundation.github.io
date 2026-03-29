@@ -1,83 +1,16 @@
-/* Courses page: map + layout (scoped) */
+/* Volunteering page: WhatsApp connect modal (Join Our Team steps) */
 
-.courses-map-section {
-  padding-bottom: var(--section-spacing, 3rem);
-}
-
-.courses-map-intro {
-  margin-bottom: 1.25rem;
-  max-width: 52rem;
-}
-
-.courses-map-intro .submission-text {
-  margin-bottom: 0;
-}
-
-.courses-map {
-  position: relative;
-  width: 100%;
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-  background: var(--card-bg, rgba(0, 0, 0, 0.04));
-}
-
-.courses-map__frame {
-  display: block;
-  width: 100%;
-  height: 0;
-  padding-bottom: 56.25%;
-  position: relative;
-  border: 0;
-}
-
-.courses-map__frame iframe,
-.courses-map__frame .courses-map__leaflet {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-.courses-map__leaflet.leaflet-container {
-  font-family: inherit;
-  background: #e8eef2;
-}
-
-@media (min-width: 768px) {
-  .courses-map__frame {
-    padding-bottom: 45%;
-    min-height: 320px;
-  }
-}
-
-.courses-list-grid.submission-steps.roles-grid {
-  grid-template-columns: 1fr;
-}
-
-@media (min-width: 640px) {
-  .courses-list-grid.submission-steps.roles-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (min-width: 960px) {
-  .courses-list-grid.submission-steps.roles-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-/* Course WhatsApp sign-up */
-.courses-list-grid .step .course-signup-btn {
+.path-explorer-join-team .submission-steps .step .volunteer-wa-open-btn {
   margin-top: 1.25rem;
   width: 100%;
-  max-width: 100%;
-  padding: 0.75rem 1.25rem;
-  font-size: 1rem;
 }
 
-.course-signup-overlay {
+.help-project-card .volunteer-wa-open-btn {
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.volunteer-wa-overlay {
   position: fixed;
   inset: 0;
   z-index: 10001;
@@ -93,15 +26,17 @@
   transition: opacity 0.25s ease, visibility 0.25s ease;
 }
 
-.course-signup-overlay.is-open {
+.volunteer-wa-overlay.is-open {
   opacity: 1;
   visibility: visible;
 }
 
-.course-signup-modal {
+.volunteer-wa-modal {
   position: relative;
   width: 100%;
-  max-width: 420px;
+  max-width: 440px;
+  max-height: min(90vh, 640px);
+  overflow-y: auto;
   padding: 1.75rem 1.5rem 1.5rem;
   background: var(--color-surface, #fff);
   border-radius: var(--radius-lg, 12px);
@@ -111,11 +46,11 @@
   transition: transform 0.25s ease;
 }
 
-.course-signup-overlay.is-open .course-signup-modal {
+.volunteer-wa-overlay.is-open .volunteer-wa-modal {
   transform: translateY(0) scale(1);
 }
 
-.course-signup-close {
+.volunteer-wa-close {
   position: absolute;
   top: 0.75rem;
   right: 0.75rem;
@@ -133,34 +68,45 @@
   justify-content: center;
 }
 
-.course-signup-close:hover {
+.volunteer-wa-close:hover {
   background: var(--color-neutral-200, #e2e8f0);
   color: var(--color-text, #1e293b);
 }
 
-.course-signup-heading {
+.volunteer-wa-heading {
   margin: 0 2rem 0.5rem 0;
   font-size: 1.35rem;
   font-weight: 700;
   color: var(--color-text, #1e293b);
 }
 
-.course-signup-course-label {
-  margin: 0 0 1rem;
+.volunteer-wa-topic-label {
+  margin: 0 0 0.35rem;
   font-size: 0.95rem;
   font-weight: 600;
   color: var(--color-primary, #2563eb);
 }
 
-.course-signup-form {
-  margin-top: 0.5rem;
+.volunteer-wa-topic-summary {
+  margin: 0 0 1rem;
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--color-text-muted, #64748b);
+  padding: 0.65rem 0.75rem;
+  background: var(--color-surface-elevated, rgba(0, 0, 0, 0.03));
+  border-radius: var(--radius-md, 8px);
+  border: 1px solid var(--color-border, rgba(15, 23, 42, 0.08));
 }
 
-.course-signup-field {
+.volunteer-wa-form {
+  margin-top: 0.25rem;
+}
+
+.volunteer-wa-field {
   margin-bottom: 1rem;
 }
 
-.course-signup-field label {
+.volunteer-wa-field label {
   display: block;
   font-size: 0.875rem;
   font-weight: 600;
@@ -168,72 +114,87 @@
   margin-bottom: 0.35rem;
 }
 
-.course-signup-field input {
+.volunteer-wa-field input,
+.volunteer-wa-field textarea {
   width: 100%;
   box-sizing: border-box;
   padding: 0.65rem 0.75rem;
   border: 1px solid var(--color-border, rgba(15, 23, 42, 0.12));
   border-radius: var(--radius-md, 8px);
   font-size: 1rem;
+  font-family: inherit;
   background: var(--color-surface-elevated, #fff);
   color: var(--color-text, #1e293b);
 }
 
-.course-signup-field input:focus {
+.volunteer-wa-field textarea {
+  min-height: 5.5rem;
+  resize: vertical;
+}
+
+.volunteer-wa-field input:focus,
+.volunteer-wa-field textarea:focus {
   outline: 2px solid var(--color-primary, #2563eb);
   outline-offset: 2px;
 }
 
-.course-signup-hint {
+.volunteer-wa-hint {
   margin: 0 0 1rem;
   font-size: 0.85rem;
   line-height: 1.5;
   color: var(--color-text-muted, #64748b);
 }
 
-.course-signup-error {
+.volunteer-wa-error {
   margin: 0 0 0.75rem;
   font-size: 0.875rem;
   color: #b91c1c;
 }
 
-.course-signup-submit {
+.volunteer-wa-submit {
   width: 100%;
   margin-top: 0.25rem;
 }
 
-[data-theme="dark"] .course-signup-modal {
+[data-theme="dark"] .volunteer-wa-modal {
   background: var(--color-surface, #1e1e1e);
 }
 
-[data-theme="dark"] .course-signup-heading {
+[data-theme="dark"] .volunteer-wa-heading {
   color: var(--color-text, rgba(255, 255, 255, 0.92));
 }
 
-[data-theme="dark"] .course-signup-field label {
+[data-theme="dark"] .volunteer-wa-topic-summary {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: rgba(200, 200, 200, 0.9);
+}
+
+[data-theme="dark"] .volunteer-wa-field label {
   color: rgba(226, 232, 240, 0.9);
 }
 
-[data-theme="dark"] .course-signup-field input {
+[data-theme="dark"] .volunteer-wa-field input,
+[data-theme="dark"] .volunteer-wa-field textarea {
   background: #262626;
   border-color: rgba(255, 255, 255, 0.12);
   color: rgba(255, 255, 255, 0.92);
 }
 
-[data-theme="dark"] .course-signup-close {
+[data-theme="dark"] .volunteer-wa-close {
   background: rgba(255, 255, 255, 0.08);
   color: rgba(226, 232, 240, 0.85);
 }
 
-[data-theme="dark"] .course-signup-close:hover {
+[data-theme="dark"] .volunteer-wa-close:hover {
   background: rgba(255, 255, 255, 0.14);
   color: #fff;
 }
 
-[data-theme="dark"] .course-signup-hint {
+[data-theme="dark"] .volunteer-wa-hint {
   color: rgba(180, 180, 180, 0.9);
 }
 
-[data-theme="dark"] .course-signup-error {
+[data-theme="dark"] .volunteer-wa-error {
   color: #fca5a5;
 }

@@ -546,10 +546,10 @@
       }
       
       // Smooth scroll back to pillars
-      const pathExplorer = document.getElementById('path-explorer');
-      if (pathExplorer) {
+      const pathExplorerRoot = document.querySelector('section.path-explorer');
+      if (pathExplorerRoot) {
         setTimeout(() => {
-          pathExplorer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          pathExplorerRoot.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }, 100);
       }
     });
