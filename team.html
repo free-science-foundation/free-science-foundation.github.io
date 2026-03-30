@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team - Free Science Network</title>
     <meta name="description" content="Meet the dedicated team behind Free Science Network. Researchers, developers, and educators committed to democratizing scientific tools.">
+    <meta http-equiv="Cache-Control" content="no-cache, must-revalidate">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="theme-zambia-global.css">
 </head>
@@ -145,7 +146,7 @@
         <section class="team-grid-section" aria-labelledby="team-grid-heading">
             <div class="container">
                 <h2 id="team-grid-heading" class="section-title">Members</h2>
-                <div class="team-grid">
+                <div class="team-grid" id="team-grid">
                     <div class="team-member-card">
                         <div class="team-member-photo">
                             <img src="images/francesco-cozzolino.png" alt="Francesco Cozzolino">
@@ -472,5 +473,23 @@
     </div>
 
     <script src="theme.js"></script>
+    <script>
+    (function () {
+        var grid = document.getElementById("team-grid");
+        if (!grid || grid.children.length < 2) return;
+        var cards = Array.prototype.slice.call(grid.children);
+        var founder = cards[0];
+        var rest = cards.slice(1);
+        for (var i = rest.length - 1; i > 0; i--) {
+            var j = Math.floor(Math.random() * (i + 1));
+            var tmp = rest[i];
+            rest[i] = rest[j];
+            rest[j] = tmp;
+        }
+        while (grid.firstChild) grid.removeChild(grid.firstChild);
+        grid.appendChild(founder);
+        for (var k = 0; k < rest.length; k++) grid.appendChild(rest[k]);
+    })();
+    </script>
 </body>
 </html>
