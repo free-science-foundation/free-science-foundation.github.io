@@ -5,7 +5,7 @@
   var mount = document.getElementById("zambia-graph-mount");
   if (!mount) return;
 
-  /** Which hub has its leaves shown (only one at a time). null = first level only (Zambia + 3 hubs). */
+  /** Which hub has its leaves shown (only one at a time). Direct children of Zambia are always visible. */
   var expandedHubId = null;
   /** Within expanded hub: one tier-1 leaf whose subtree is open; null = only top-level leaves (majors). */
   var expandedMajorLeafId = null;
@@ -20,7 +20,6 @@
     center: { fill: "#F6C544", stroke: "#E85A0C", text: "#3d2918" },
     scope: { fill: "#e8f0d8", stroke: "#3E6F2A", text: "#1e3d14" },
     sensors: { fill: "#e4efd9", stroke: "#5E8C3B", text: "#1a3010" },
-    consult: { fill: "#fde8d4", stroke: "#E94B3C", text: "#5c2410" },
     leaf: { fill: "#ffffff", stroke: "#F47C1B", text: "#3d2918" },
     link: "#c9783a",
     linkDim: "#e5ddd4",
@@ -28,61 +27,41 @@
 
   var NODE_DEFS = [
     { id: "zambia", label: "Zambia", sub: "project hub", kind: "center", branch: "center", r: 74 },
-    { id: "microscopy", label: "Microscopy", sub: "", kind: "hub", branch: "scope", r: 80 },
-    { id: "sensors", label: "Smart sensors", sub: "", kind: "hub", branch: "sensors", r: 80 },
-    { id: "consult", label: "Consultancies", sub: "", kind: "hub", branch: "consult", r: 80 },
     { id: "edu", label: "Education", sub: "", kind: "leaf", branch: "scope", r: 58 },
-    { id: "labs", label: "Labs", sub: "", kind: "leaf", branch: "scope", r: 58 },
-    { id: "hospital", label: "Field hospitals", sub: "", kind: "leaf", branch: "scope", r: 58 },
-    { id: "env", label: "Environment", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "agri", label: "Agriculture", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "animal", label: "Animal welfare", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "sensors-land-herds", label: "Land & herds", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "sensors-perimeter-tracking", label: "Perimeter tracking", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "sensors-video-analysis", label: "Video analysis", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "sensors-audio-analysis", label: "Audio analysis", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "consult-scientific-papers", label: "Scientific paper review", sub: "", kind: "leaf", branch: "consult", r: 58 },
-    { id: "consult-local-llm", label: "Local LLM", sub: "", kind: "leaf", branch: "consult", r: 58 },
-    { id: "consult-analysis-tools", label: "Analysis tools", sub: "", kind: "leaf", branch: "consult", r: 58 },
-    { id: "consult-ai-best", label: "How to use AI at best", sub: "", kind: "leaf", branch: "consult", r: 58 },
-    { id: "consult-lower-costs", label: "Lower costs", sub: "", kind: "leaf", branch: "consult", r: 58 },
-    { id: "consult-automation", label: "Automation", sub: "", kind: "leaf", branch: "consult", r: 58 },
-    { id: "consult-universities", label: "Universities", sub: "", kind: "leaf", branch: "consult", r: 58 },
-    { id: "consult-nonprofits", label: "Nonprofits", sub: "", kind: "leaf", branch: "consult", r: 58 },
-    { id: "env-air-dust", label: "Air & dust", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "env-water", label: "Water quality", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "agri-soil-moisture", label: "Soil moisture", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "animal-heat-stress", label: "Heat stress", sub: "", kind: "leaf", branch: "sensors", r: 58 },
-    { id: "land-grazing-rotation", label: "Grazing rotation", sub: "", kind: "leaf", branch: "sensors", r: 58 },
+    { id: "microscope", label: "Microscope", sub: "", kind: "hub", branch: "scope", r: 72 },
+    {
+      id: "openflexure",
+      label: "OpenFlexure",
+      sub:
+        "OpenFlexure Project (University of Glasgow): free software microscope with 3D-printed flexures, sub-100 nm precision, and affordable lab-grade imaging for clinics, schools, and diagnostics. Used worldwide with open design files.",
+      kind: "leaf",
+      branch: "scope",
+      r: 72,
+    },
+    {
+      id: "foldmicroscope",
+      label: "FoldMicroscope",
+      sub: "Compact folded-optics and paper-friendly microscopy concepts.",
+      kind: "leaf",
+      branch: "scope",
+      r: 58,
+    },
+    {
+      id: "sensors",
+      label: "Smart sensors",
+      sub: "",
+      kind: "leaf",
+      branch: "sensors",
+      r: 58,
+    },
   ];
 
   var LINK_DEFS = [
-    { source: "zambia", target: "microscopy" },
+    { source: "zambia", target: "edu" },
+    { source: "zambia", target: "microscope" },
+    { source: "microscope", target: "openflexure" },
+    { source: "microscope", target: "foldmicroscope" },
     { source: "zambia", target: "sensors" },
-    { source: "zambia", target: "consult" },
-    { source: "microscopy", target: "edu" },
-    { source: "microscopy", target: "labs" },
-    { source: "microscopy", target: "hospital" },
-    { source: "sensors", target: "env" },
-    { source: "sensors", target: "agri" },
-    { source: "sensors", target: "animal" },
-    { source: "sensors", target: "sensors-land-herds" },
-    { source: "animal", target: "sensors-video-analysis" },
-    { source: "animal", target: "animal-heat-stress" },
-    { source: "sensors-land-herds", target: "sensors-perimeter-tracking" },
-    { source: "sensors-land-herds", target: "land-grazing-rotation" },
-    { source: "agri", target: "sensors-audio-analysis" },
-    { source: "agri", target: "agri-soil-moisture" },
-    { source: "env", target: "env-air-dust" },
-    { source: "env", target: "env-water" },
-    { source: "consult", target: "consult-universities" },
-    { source: "consult", target: "consult-nonprofits" },
-    { source: "consult-universities", target: "consult-scientific-papers" },
-    { source: "consult-universities", target: "consult-analysis-tools" },
-    { source: "consult-universities", target: "consult-local-llm" },
-    { source: "consult-nonprofits", target: "consult-lower-costs" },
-    { source: "consult-nonprofits", target: "consult-automation" },
-    { source: "consult-nonprofits", target: "consult-ai-best" },
   ];
 
   var CHILDREN_OF = {};
@@ -120,46 +99,29 @@
     return false;
   }
 
-  /** Microscopy hub: small in-node thumb (upper disk); shared with hover popout placement */
-  var MICRO_THUMB_FR = 0.52;
-  var MICRO_THUMB_CY_FR = -0.48;
+  /** In-node bench photo on OpenFlexure leaf */
+  var OPENFLEX_THUMB_FR = 0.44;
+  var OPENFLEX_THUMB_CY_FR = -0.38;
 
   var LEAF_TO_HUB = {
-    edu: "microscopy",
-    labs: "microscopy",
-    hospital: "microscopy",
-    env: "sensors",
-    agri: "sensors",
-    animal: "sensors",
-    "sensors-land-herds": "sensors",
-    "sensors-perimeter-tracking": "sensors",
-    "sensors-video-analysis": "sensors",
-    "sensors-audio-analysis": "sensors",
-    "env-air-dust": "sensors",
-    "env-water": "sensors",
-    "agri-soil-moisture": "sensors",
-    "animal-heat-stress": "sensors",
-    "land-grazing-rotation": "sensors",
-    "consult-scientific-papers": "consult",
-    "consult-local-llm": "consult",
-    "consult-analysis-tools": "consult",
-    "consult-ai-best": "consult",
-    "consult-lower-costs": "consult",
-    "consult-automation": "consult",
-    "consult-universities": "consult",
-    "consult-nonprofits": "consult",
+    edu: "zambia",
+    openflexure: "microscope",
+    foldmicroscope: "microscope",
+    sensors: "zambia",
   };
 
   function branchColors(branch) {
     if (branch === "center") return palette.center;
     if (branch === "scope") return palette.scope;
     if (branch === "sensors") return palette.sensors;
-    if (branch === "consult") return palette.consult;
     return palette.leaf;
   }
 
   function leafVisible(leafId) {
-    return expandedHubId && LEAF_TO_HUB[leafId] === expandedHubId;
+    var hub = LEAF_TO_HUB[leafId];
+    if (!hub) return false;
+    if (hub === "zambia") return true;
+    return expandedHubId === hub;
   }
 
   function nodeVisible(n) {
@@ -167,6 +129,7 @@
     if (!leafVisible(n.id)) return false;
     var p = parentOfNode(n.id);
     if (p === expandedHubId) return true;
+    if (p === "zambia") return true;
     return isUnderExpandedMajor(n.id);
   }
 
@@ -562,19 +525,24 @@
         .attr("cx", 0)
         .attr("cy", 0)
         .attr("fill", function (dn) {
+          if (dn.kind === "leaf" && dn.branch === "sensors") {
+            return palette.sensors.fill;
+          }
           if (dn.kind === "leaf") return palette.leaf.fill;
           return branchColors(dn.branch).fill;
         });
 
-      var isMicroscopy = d.id === "microscopy";
-      if (isMicroscopy) {
-        var thumb = d.r * MICRO_THUMB_FR;
-        var thumbCy = d.r * MICRO_THUMB_CY_FR;
+      var isOpenflexPhoto = d.id === "openflexure";
+      if (isOpenflexPhoto) {
+        var thumb = d.r * OPENFLEX_THUMB_FR;
+        var thumbCy = d.r * OPENFLEX_THUMB_CY_FR;
         var thumbLink = content
           .append("a")
           .attr("class", "zambia-fnode__thumb-link")
-          .attr("href", "projects.html#project-zambia")
-          .attr("aria-label", "View OpenFlexure & Project Zambia on Projects");
+          .attr("href", "https://openflexure.org")
+          .attr("target", "_blank")
+          .attr("rel", "noopener")
+          .attr("aria-label", "OpenFlexure Project website");
         thumbLink
           .append("image")
           .attr("class", "zambia-fnode__thumb")
@@ -610,39 +578,44 @@
           .style("opacity", 0.9)
           .text(d.sub);
       } else if (d.kind === "hub") {
-        var ly = isMicroscopy ? d.r * 0.18 : 2;
-        var suby = isMicroscopy ? d.r * 0.44 : 20;
         content
           .append("text")
           .attr("class", "zambia-fnode__label")
           .attr("text-anchor", "middle")
           .attr("x", 0)
-          .attr("y", ly)
+          .attr("y", 2)
           .attr("fill", fill)
           .text(d.label);
-        var hubSubLong = d.sub && d.sub.length > 22 && !isMicroscopy;
-        var subHub = content
-          .append("text")
-          .attr("class", "zambia-fnode__sub")
-          .attr("text-anchor", "middle")
-          .attr("x", 0)
-          .attr("y", isMicroscopy ? suby : hubSubLong ? 18 : suby)
-          .attr("fill", fill)
-          .style("opacity", 0.88);
-        if (hubSubLong) {
-          wrapLabelText(subHub, d.sub, 18);
-          subHub.selectAll("tspan").attr("x", 0);
-        } else {
-          subHub.text(d.sub);
+        if (d.sub) {
+          var hubSubLong = d.sub.length > 22;
+          var subHub = content
+            .append("text")
+            .attr("class", "zambia-fnode__sub")
+            .attr("text-anchor", "middle")
+            .attr("x", 0)
+            .attr("y", hubSubLong ? 18 : 20)
+            .attr("fill", fill)
+            .style("opacity", 0.88);
+          if (hubSubLong) {
+            wrapLabelText(subHub, d.sub, 18);
+            subHub.selectAll("tspan").attr("x", 0);
+          } else {
+            subHub.text(d.sub);
+          }
         }
       } else {
         var longSub = d.sub && d.sub.length > 20;
+        var leafLabY = isOpenflexPhoto
+          ? d.r * 0.1
+          : d.sub
+            ? (longSub ? -16 : -10)
+            : 4;
         var leafLab = content
           .append("text")
           .attr("class", "zambia-fnode__label zambia-fnode__label--leaf")
           .attr("text-anchor", "middle")
           .attr("x", 0)
-          .attr("y", d.sub ? (longSub ? -16 : -10) : 4)
+          .attr("y", leafLabY)
           .attr("fill", fill);
         var maxCh = r < 52 ? 12 : 14;
         if (d.label.length > maxCh) {
@@ -652,16 +625,18 @@
           leafLab.text(d.label);
         }
         if (d.sub) {
+          var subWrap = isOpenflexPhoto ? 11 : 16;
+          var subStartY = isOpenflexPhoto ? d.r * 0.26 : longSub ? 12 : 22;
           var subLeaf = content
             .append("text")
             .attr("class", "zambia-fnode__sub zambia-fnode__sub--leaf")
             .attr("text-anchor", "middle")
             .attr("x", 0)
-            .attr("y", longSub ? 12 : 22)
+            .attr("y", subStartY)
             .attr("fill", fill)
             .style("opacity", 0.85);
-          if (longSub) {
-            wrapLabelText(subLeaf, d.sub, 16);
+          if (longSub || isOpenflexPhoto) {
+            wrapLabelText(subLeaf, d.sub, subWrap);
             subLeaf.selectAll("tspan").attr("x", 0);
           } else {
             subLeaf.text(d.sub);
@@ -677,29 +652,6 @@
         .attr("fill", "none")
         .attr("stroke", function (dn) { return branchColors(dn.branch).stroke; })
         .attr("stroke-width", 3.25);
-
-      if (isMicroscopy) {
-        var thumbR = d.r * MICRO_THUMB_FR;
-        var thumbCyR = d.r * MICRO_THUMB_CY_FR;
-        var slabPad = 8;
-        var slabW = thumbR + slabPad * 2;
-        var slabH = thumbR + slabPad * 2;
-        var slabTop = -thumbR / 2 - slabPad;
-        var hoverWrap = g
-          .append("g")
-          .attr("class", "zambia-fnode__thumb-hover-wrap")
-          .attr("transform", "translate(0," + thumbCyR + ")");
-        hoverWrap
-          .append("rect")
-          .attr("class", "zambia-fnode__thumb-hover-slab")
-          .attr("x", -slabW / 2)
-          .attr("y", slabTop)
-          .attr("width", slabW)
-          .attr("height", slabH)
-          .attr("fill", "transparent")
-          .style("pointer-events", "all")
-          .attr("aria-hidden", "true");
-      }
     });
 
     node
@@ -798,24 +750,9 @@
 
   build();
 
-  var microPreviewEl = document.getElementById("zambia-micro-preview");
-  function showMicroPreview() {
-    if (!microPreviewEl) return;
-    microPreviewEl.classList.add("is-visible");
-    microPreviewEl.removeAttribute("hidden");
-    microPreviewEl.setAttribute("aria-hidden", "false");
-  }
-  function hideMicroPreview() {
-    if (!microPreviewEl) return;
-    microPreviewEl.classList.remove("is-visible");
-    microPreviewEl.setAttribute("hidden", "");
-    microPreviewEl.setAttribute("aria-hidden", "true");
-  }
-
   var btnReset = document.getElementById("zambia-graph-reset-zoom");
   if (btnReset) {
     btnReset.addEventListener("click", function () {
-      hideMicroPreview();
       if (svg && zoomBehavior) {
         svg.transition().duration(320).call(zoomBehavior.transform, d3.zoomIdentity);
       }
@@ -840,45 +777,4 @@
     });
   }
 
-  if (microPreviewEl) {
-    microPreviewEl.addEventListener("click", function (e) {
-      if (!microPreviewEl.classList.contains("is-visible")) return;
-      var frame = microPreviewEl.querySelector(".zambia-micro-preview__frame");
-      if (frame && frame.contains(e.target)) return;
-      hideMicroPreview();
-    });
-    document.addEventListener(
-      "keydown",
-      function (e) {
-        if (e.key !== "Escape") return;
-        if (!microPreviewEl.classList.contains("is-visible")) return;
-        hideMicroPreview();
-      },
-      true
-    );
-  }
-
-  var graphWrapEl = document.querySelector(".zambia-graph-wrap");
-  if (graphWrapEl && microPreviewEl) {
-    graphWrapEl.addEventListener("mouseover", function (e) {
-      var t = e.target;
-      if (t && t.closest && t.closest(".zambia-fnode__thumb-hover-slab")) {
-        showMicroPreview();
-      }
-    });
-    graphWrapEl.addEventListener("mouseout", function (e) {
-      var t = e.target;
-      if (!t || !t.closest || !t.closest(".zambia-fnode__thumb-hover-slab")) return;
-      var rel = e.relatedTarget;
-      if (rel && microPreviewEl.contains(rel)) return;
-      if (rel && rel.closest && rel.closest(".zambia-fnode__thumb-hover-slab")) return;
-      hideMicroPreview();
-    });
-    microPreviewEl.addEventListener("mouseout", function (e) {
-      var rel = e.relatedTarget;
-      if (rel && microPreviewEl.contains(rel)) return;
-      if (rel && rel.closest && rel.closest(".zambia-fnode__thumb-hover-slab")) return;
-      hideMicroPreview();
-    });
-  }
 })();

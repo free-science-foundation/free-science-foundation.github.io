@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Zambia - Free Science Network</title>
-    <meta name="description" content="Project Zambia: microscopy in the field, smart sensing for land and landscapes, and consultancies for partnerships, universities, and nonprofits.">
+    <meta name="description" content="Project Zambia: microscopy in the field for care, learning, and community labs.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="theme-zambia-global.css">
     <link rel="stylesheet" href="project-zambia.css">
@@ -165,17 +165,16 @@
             <p class="zambia-hero__eyebrow">Free Science Network</p>
             <h1 id="zambia-title" class="zambia-hero__title">Project: Zambia</h1>
             <p class="zambia-hero__lede">
-                A warm-sunrise map of how community science meets the field: microscopy for care and learning,
-                sensors for landscapes and herds, and consultancies that help nonprofits and universities grow capacity.
+                A warm-sunrise map of how community science meets the field: microscopy for care, learning, open hardware microscopes, and smart sensing.
             </p>
         </section>
 
         <div id="zambia-map" class="zambia-graph-wrap">
             <div class="zambia-graph-intro" id="zambia-graph-hint">
                 <p class="zambia-graph-hint">
-                    <strong>Reactive map</strong>: starts with <strong>Zambia</strong> and the three hubs only.
-                    <strong>Click</strong> a hub to show its top-level programs (only one hub open at a time). <strong>Click</strong> a program that has a sub-branch to open it; opening one closes the other sub-branches. Click again to fold that branch. Click <strong>Zambia</strong> or <strong>Reset view</strong> to collapse all.
-                    Click a program node without a sub-branch to <strong>highlight</strong> its connected nodes and <strong>lock</strong> the layout; click again to release and drag again. Keyboard: Tab to focus, <strong>Enter</strong> to activate. Scroll or pinch to zoom.
+                    <strong>Reactive map</strong>: <strong>Zambia</strong> at the center with <strong>Education</strong>, <strong>Microscope</strong> (click to open <strong>OpenFlexure</strong> with bench photo + project description, and <strong>FoldMicroscope</strong>), and <strong>Smart sensors</strong>.
+                    Click a program to <strong>highlight</strong> its connections and <strong>lock</strong> the layout; click again to release. Click <strong>Microscope</strong> again to collapse its branch. Click <strong>Zambia</strong> or <strong>Reset view</strong> to clear highlight and reset zoom.
+                    Keyboard: Tab to focus, <strong>Enter</strong> to activate. Scroll or pinch to zoom.
                 </p>
                 <div class="zambia-graph-actions">
                     <button type="button" class="zambia-graph-btn" id="zambia-graph-reset-zoom" aria-label="Reset zoom and pan">Reset view</button>
@@ -323,29 +322,6 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div
-        id="zambia-micro-preview"
-        class="zambia-micro-preview"
-        hidden
-        aria-hidden="true"
-        role="dialog"
-        aria-label="Microscopy photo preview"
-    >
-        <div class="zambia-micro-preview__backdrop" aria-hidden="true"></div>
-        <figure class="zambia-micro-preview__frame">
-            <a href="projects.html#project-zambia" class="zambia-micro-preview__project-link">
-                <img
-                    class="zambia-micro-preview__img"
-                    src="images/microscope-01.jpg"
-                    alt="Open hardware microscope build on a lab bench"
-                    width="1920"
-                    height="1080"
-                    decoding="async"
-                />
-            </a>
-        </figure>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" crossorigin="anonymous"></script>
