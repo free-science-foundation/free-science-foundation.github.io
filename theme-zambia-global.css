@@ -381,7 +381,6 @@
 
 /* Team page: gradient .section-title + slate .team-member-contribution wash out on warm body BG */
 [data-theme="zambia"] .team-grid-section .section-title,
-[data-theme="zambia"] #team-members .section-title,
 [data-theme="zambia"] .hero .hero-title {
   background: none;
   -webkit-background-clip: unset;
