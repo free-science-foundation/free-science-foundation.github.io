@@ -8,3 +8,4 @@
 | `whatsapp-group-qr.png` | WhatsApp group QR (nav). |
 | `partners-logos/tridimension-logo.png` | Partner logo. |
 | `daniel-gaiki.jpeg` | **Team** (`team.html`): Daniel Gaiki, electronics engineer. |
+| `jimmy-k-muwowo.jpg` | **Team** (`team.html`): Jimmy K. Muwowo, IUCN CEESP. |
