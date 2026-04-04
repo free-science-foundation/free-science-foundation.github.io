@@ -547,7 +547,7 @@
   color: var(--zm-leaf);
 }
 
-[data-theme="zambia"] .current-project-microscope .current-project-tag {
+[data-theme="zambia"] .current-project-engineering .current-project-tag {
   background: rgba(246, 197, 68, 0.22);
   border-color: rgba(140, 74, 47, 0.28);
   color: var(--zm-brown);
