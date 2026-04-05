@@ -1,5 +1,5 @@
-// Theme: light | dark | zambia (sunrise palette) | ngo (narrative scroll)
-// NGO is the default theme. The blue dot button cycles classic light ↔ dark.
+// Theme: light | dark | zambia (sunrise palette) | ngo (forest-green narrative skin — default)
+// First paint: theme-init.js in <head> sets data-theme from localStorage or "ngo". Blue dot = classic light ↔ dark.
 (function() {
   const themeToggle    = document.getElementById('theme-toggle');   // blue dot button
   const themeZambiaBtn = document.getElementById('theme-zambia-toggle');

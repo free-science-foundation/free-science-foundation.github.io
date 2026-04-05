@@ -152,7 +152,7 @@ body {
 /* Header and Navigation - Modern Glassmorphism */
 .site-header {
   /* Scales gaps/padding in the nav cluster; raise for a more stretched header */
-  --nav-stretch: 1.4;
+  --nav-stretch: 1.72;
   background: 
     linear-gradient(180deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.75)),
     url('images/navbar-bg.png');
@@ -175,7 +175,7 @@ body {
   column-gap: calc(1.15rem * var(--nav-stretch));
   row-gap: calc(0.55rem * var(--nav-stretch));
   padding: calc(0.65rem * var(--nav-stretch)) calc(1.25rem * var(--nav-stretch));
-  max-width: min(1000px, 100%);
+  max-width: min(1180px, 100%);
   margin: 0 auto;
   box-sizing: border-box;
 }
