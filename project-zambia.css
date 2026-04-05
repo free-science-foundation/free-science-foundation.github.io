@@ -27,18 +27,19 @@ body.zambia-page {
   background-attachment: fixed;
 }
 
-/* Full-page savanna art (zambia-1): faint watermark (above body gradient, below grain/vignette + content) */
+/* Full-page photo: Zambia landmarks (above body gradient, below grain/vignette + content) */
 .zambia-page-illustration {
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  background: url("images/zambia-1.png") center center / cover no-repeat;
-  opacity: 0.07;
+  background:
+    url("images/top-sehenswurdigkeiten-in-sambia.webp") center center / cover no-repeat;
+  opacity: 0.22;
 }
 
 html[data-theme="dark"] .zambia-page-illustration {
-  opacity: 0.045;
+  opacity: 0.14;
 }
 
 @media (prefers-reduced-motion: reduce) {

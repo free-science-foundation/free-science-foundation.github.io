@@ -476,8 +476,8 @@ body {
 
 }
 
-/* Home hero: Zambia + original banner carousel (index.html)
-   Width cap lives on .hero-banner--carousel so viewport + toolbar share one column (no 800px bar under a wider slide). */
+/* Home hero: Zambia + banner + projects carousel (index.html)
+   Width cap lives on .hero-banner--carousel (no 800px bar under a wider slide). */
 .hero-banner--carousel {
   margin-bottom: 2rem;
   display: block;

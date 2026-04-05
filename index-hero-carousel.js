@@ -36,6 +36,7 @@
 
   function startAuto() {
     stopAuto();
+    if (n <= 1) return;
     autoInterval = setInterval(function () { go(1); }, AUTO_DELAY);
   }
 
@@ -62,10 +63,12 @@
   });
 
   /* Pause auto-play while the user hovers over the carousel */
-  root.addEventListener("mouseenter", stopAuto);
-  root.addEventListener("mouseleave", startAuto);
-  root.addEventListener("focusin",  stopAuto);
-  root.addEventListener("focusout", startAuto);
+  if (n > 1) {
+    root.addEventListener("mouseenter", stopAuto);
+    root.addEventListener("mouseleave", startAuto);
+    root.addEventListener("focusin",  stopAuto);
+    root.addEventListener("focusout", startAuto);
+  }
 
   applySlide(0);
   startAuto();
