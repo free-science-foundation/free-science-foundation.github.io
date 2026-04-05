@@ -476,7 +476,7 @@ body {
 
 }
 
-/* Home hero: Zambia + banner + projects carousel (index.html)
+/* Home hero: Project Zambia carousel (single slide; controls kept for layout / future slides) (index.html)
    Width cap lives on .hero-banner--carousel (no 800px bar under a wider slide). */
 .hero-banner--carousel {
   margin-bottom: 2rem;
@@ -5581,6 +5581,35 @@ body {
 
 .initial-choice-about__lead {
   margin-bottom: 2.5rem;
+}
+
+.initial-choice-about__howitworks-block {
+  margin: 0.5rem 0 2.5rem;
+  text-align: center;
+}
+
+.initial-choice-about__howitworks-title {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.initial-choice-about__howitworks-cta {
+  margin: 0;
+  font-size: 1.05rem;
+  line-height: 1.5;
+}
+
+.initial-choice-about__howitworks-cta a {
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  border-bottom: 2px solid rgba(52, 152, 219, 0.35);
+  transition: color var(--transition-fast), border-color var(--transition-fast);
+}
+
+.initial-choice-about__howitworks-cta a:hover {
+  color: var(--color-primary-dark);
+  border-bottom-color: var(--color-primary);
 }
 
 .choice-donate {

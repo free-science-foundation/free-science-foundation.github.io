@@ -456,6 +456,20 @@
   line-height: 1.8;
 }
 
+[data-theme="ngo"] .initial-choice-about__howitworks-title {
+  color: var(--ngo-text);
+}
+
+[data-theme="ngo"] .initial-choice-about__howitworks-cta a {
+  color: var(--ngo-accent-text);
+  border-bottom-color: rgba(74, 92, 40, 0.35);
+}
+
+[data-theme="ngo"] .initial-choice-about__howitworks-cta a:hover {
+  color: var(--ngo-accent-btn);
+  border-bottom-color: var(--ngo-accent-text);
+}
+
 /* ── 10. CARDS — index page (service + choice) ───────────────── */
 
 [data-theme="ngo"] .service-card {
