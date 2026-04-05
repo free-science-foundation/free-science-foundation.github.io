@@ -31,10 +31,6 @@
 
   --ngo-border:   rgba(38, 41, 30, 0.13);
   --ngo-wave:     52px;
-  --ngo-footer-silhouette: 96px; /* tree-line strip; taller so trunks/canopies read */
-  --ngo-footer-mid: #41512a;
-  --ngo-footer-foreground: #1b2511;
-  --ngo-footer-haze: rgba(177, 193, 134, 0.12);
   --ngo-ease:     0.35s ease;
 }
 
@@ -654,89 +650,20 @@
 /* ── 15. FOOTER ─────────────────────────────────────────────── */
 
 [data-theme="ngo"] .site-footer {
-  background:
-    radial-gradient(120% 120% at 50% 0%, var(--ngo-footer-haze) 0%, transparent 58%),
-    linear-gradient(180deg, #324220 0%, var(--ngo-dark) 24%, #263319 100%) !important;
+  background: var(--ngo-dark) !important;
   border-top: none !important;
   color: var(--ngo-on-dark) !important;
   position: relative;
-  padding-top: calc(2.85rem + var(--ngo-wave) * 0.72) !important;
-  /* Room for landscape silhouette strip below footer copy */
-  padding-bottom: calc(2.5rem + var(--ngo-footer-silhouette, 96px)) !important;
+  padding-top: 2.85rem !important;
+  padding-bottom: 2.5rem !important;
 }
 
-[data-theme="ngo"] .site-footer > .container {
-  position: relative;
-  z-index: 1;
-}
-
-/* Bottom: open woodland / bushveld silhouette — related to savanna + forest, but not the same shape language */
-[data-theme="ngo"] .site-footer::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: var(--ngo-footer-silhouette, 96px);
-  background:
-    radial-gradient(15% 40% at 6% 74%, rgba(78, 98, 53, 0.82) 0 52%, transparent 53%),
-    radial-gradient(18% 38% at 20% 69%, rgba(86, 108, 57, 0.8) 0 50%, transparent 51%),
-    radial-gradient(14% 32% at 35% 73%, rgba(74, 94, 48, 0.78) 0 49%, transparent 50%),
-    radial-gradient(19% 42% at 49% 68%, rgba(90, 111, 59, 0.82) 0 52%, transparent 53%),
-    radial-gradient(13% 30% at 63% 74%, rgba(78, 99, 50, 0.78) 0 49%, transparent 50%),
-    radial-gradient(17% 40% at 78% 70%, rgba(84, 105, 56, 0.8) 0 51%, transparent 52%),
-    radial-gradient(14% 34% at 92% 74%, rgba(72, 90, 47, 0.76) 0 48%, transparent 49%),
-    linear-gradient(to top, rgba(13, 19, 8, 0.96) 0 18%, transparent 18%),
-    linear-gradient(
-      90deg,
-      transparent 0 7%,
-      rgba(24, 34, 14, 0.92) 7% 7.8%,
-      transparent 7.8% 18%,
-      rgba(24, 34, 14, 0.88) 18% 18.7%,
-      transparent 18.7% 31%,
-      rgba(24, 34, 14, 0.9) 31% 31.9%,
-      transparent 31.9% 46%,
-      rgba(24, 34, 14, 0.86) 46% 46.8%,
-      transparent 46.8% 59%,
-      rgba(24, 34, 14, 0.88) 59% 59.8%,
-      transparent 59.8% 72%,
-      rgba(24, 34, 14, 0.9) 72% 72.9%,
-      transparent 72.9% 86%,
-      rgba(24, 34, 14, 0.9) 86% 86.8%,
-      transparent 86.8% 100%
-    ),
-    linear-gradient(to bottom, rgba(65, 81, 42, 0.82) 0%, rgba(27, 37, 17, 0.96) 100%);
-  clip-path: polygon(
-    0% 100%, 0% 78%,
-    7% 72%, 14% 58%, 21% 66%,
-    30% 50%, 39% 62%, 48% 46%,
-    57% 60%, 66% 54%, 74% 68%,
-    83% 56%, 91% 70%, 100% 62%,
-    100% 100%
-  );
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Top edge: a broad clearing rather than reusing the manifesto wave */
 [data-theme="ngo"] .site-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: calc(var(--ngo-wave) * 0.72);
-  background: linear-gradient(180deg, rgba(55, 70, 34, 0.98) 0%, rgba(46, 60, 30, 0.98) 100%);
-  clip-path: polygon(
-    0% 100%, 0% 76%,
-    12% 64%, 26% 78%,
-    43% 56%, 58% 74%,
-    74% 60%, 88% 72%,
-    100% 58%,
-    100% 100%
-  );
-  opacity: 0.92;
-  pointer-events: none;
+  display: none !important;
+}
+
+[data-theme="ngo"] .site-footer::after {
+  display: none !important;
 }
 
 [data-theme="ngo"] .footer-heading {
@@ -745,6 +672,12 @@
   letter-spacing: 0.12em !important;
   text-transform: uppercase !important;
   font-weight: 700 !important;
+}
+
+[data-theme="ngo"] .footer-contact-text {
+  color: var(--ngo-footer-link) !important;
+  font-size: 0.78rem !important;
+  line-height: 1.32 !important;
 }
 
 [data-theme="ngo"] .footer-links a         { color: var(--ngo-footer-link) !important; }
@@ -784,10 +717,7 @@
 /* ── 17. RESPONSIVE ─────────────────────────────────────────── */
 
 @media (max-width: 768px) {
-  [data-theme="ngo"] {
-    --ngo-wave: 36px;
-    --ngo-footer-silhouette: 72px;
-  }
+  [data-theme="ngo"] { --ngo-wave: 36px; }
   [data-theme="ngo"] .manifesto,
   [data-theme="ngo"] .initial-choice,
   [data-theme="ngo"] .team-grid-section,

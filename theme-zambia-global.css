@@ -325,6 +325,10 @@
   color: var(--zm-ink);
 }
 
+[data-theme="zambia"] .footer-contact-text {
+  color: var(--zm-ink-muted);
+}
+
 [data-theme="zambia"] .site-footer a,
 [data-theme="zambia"] .footer-links a {
   color: var(--zm-leaf);

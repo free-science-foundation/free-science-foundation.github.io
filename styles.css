@@ -397,6 +397,38 @@ body {
   z-index: 1;
 }
 
+/* Text-only heroes (e.g. how-it-works): less space before next section */
+.hero--compact {
+  padding-top: 1.5rem;
+  padding-bottom: 0;
+}
+
+.hero--compact .hero-subtitle {
+  margin-bottom: 0.45rem;
+}
+
+.hero--compact .hero-description {
+  margin-bottom: 0.5rem;
+}
+
+.page-how-it-works .submission-guide--tight-top {
+  padding-top: 1.25rem;
+  padding-bottom: 4rem;
+}
+
+.page-how-it-works .submission-guide--tight-top .section-title {
+  margin-bottom: 0.35rem;
+}
+
+.page-how-it-works .submission-guide--tight-top .section-title::after {
+  margin-top: 0.65rem;
+}
+
+.page-how-it-works .submission-guide--tight-top .public-materials-diagram-wrap {
+  margin-top: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
 /* Hero Banner Image */
 .hero-banner {
   margin-bottom: 2rem;
@@ -823,6 +855,46 @@ body {
   margin-bottom: 2.5rem;
 }
 
+/* How it works — roadmap phases */
+.how-phases .how-phases__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  max-width: 1100px;
+  margin: 2rem auto 0;
+  text-align: left;
+}
+
+.how-phase-card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 1.5rem 1.35rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.how-phase-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--color-text);
+  margin: 0 0 0.75rem;
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+}
+
+.how-phase-current {
+  font-weight: 600;
+  color: var(--color-secondary);
+  font-size: 0.95em;
+}
+
+.how-phase-card__text {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  font-size: 0.98rem;
+}
+
 /* Letter-style Mission Statement */
 .mission-letter {
   max-width: 900px;
@@ -971,6 +1043,27 @@ body {
   max-width: 1000px;
   margin: 0 auto;
   text-align: center;
+}
+
+.public-materials-diagram-wrap {
+  max-width: 900px;
+  margin: 2rem auto 2.5rem;
+}
+
+.public-materials-diagram-wrap img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.public-materials-diagram-lead {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  color: var(--color-text-muted);
+  line-height: 1.65;
+  margin: 0 auto 1.25rem;
+  max-width: 42rem;
 }
 
 .submission-text {
@@ -1211,23 +1304,39 @@ body {
 .site-footer {
   background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%);
   color: rgba(255, 255, 255, 0.9);
-  padding: 4rem 0 2rem;
+  padding: 1.75rem 0 1.25rem;
   margin-top: auto;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Columns sized to content, grouped and centered (not full-bleed in wide containers) */
 .footer-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2rem;
-  margin-bottom: 2rem;
+  grid-template-columns: repeat(4, max-content);
+  column-gap: clamp(1rem, 3vw, 1.65rem);
+  row-gap: 0.45rem;
+  justify-content: center;
+  justify-items: start;
+  align-items: start;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 auto 0.85rem;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .footer-heading {
-  font-size: 1.1rem;
+  font-size: 0.98rem;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.3rem;
   color: #ffffff;
+}
+
+.footer-contact-text {
+  margin: 0 0 0.28rem;
+  font-size: 0.84rem;
+  line-height: 1.32;
+  color: #bdc3c7;
 }
 
 .footer-links {
@@ -1235,13 +1344,14 @@ body {
 }
 
 .footer-links li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.18rem;
 }
 
 .footer-links a {
   color: #bdc3c7;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.84rem;
+  line-height: 1.28;
   transition: color 0.2s ease;
 }
 
@@ -1251,8 +1361,10 @@ body {
 
 .footer-bottom {
   border-top: 1px solid #34495e;
-  padding-top: 1.5rem;
+  padding-top: 0.75rem;
   text-align: center;
+  max-width: 52rem;
+  margin-inline: auto;
 }
 
 .license-text,
@@ -1372,7 +1484,10 @@ body {
   
   .footer-content {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    justify-content: stretch;
+    justify-items: center;
+    width: 100%;
+    row-gap: 0.65rem;
   }
 }
 
@@ -1544,7 +1659,11 @@ body {
   }
   
   .footer-content {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, max-content);
+    justify-content: center;
+    width: max-content;
+    max-width: 100%;
+    margin-inline: auto;
   }
 }
 
@@ -1594,10 +1713,6 @@ body {
     justify-content: center;
   }
   
-  .footer-content {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-  }
 }
 
 /* 4K Displays (3840x2160) */
@@ -1654,18 +1769,6 @@ body {
     padding: 1rem 2rem;
   }
   
-  .footer-content {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 4rem;
-  }
-  
-  .footer-heading {
-    font-size: 1.5rem;
-  }
-  
-  .footer-links a {
-    font-size: 1.1rem;
-  }
 }
 
 /* 5K Displays (5120x2880) */
@@ -1722,18 +1825,6 @@ body {
     padding: 1.5rem 3rem;
   }
   
-  .footer-content {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6rem;
-  }
-  
-  .footer-heading {
-    font-size: 2rem;
-  }
-  
-  .footer-links a {
-    font-size: 1.4rem;
-  }
 }
 
 /* Ultra-Wide Monitors (3440x1440, 2560x1080) */
@@ -1755,10 +1846,6 @@ body {
     gap: 3rem;
   }
   
-  .footer-content {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-  }
 }
 
 /* Super Ultra-Wide (5120x1440) */
@@ -1776,10 +1863,6 @@ body {
     gap: 4rem;
   }
   
-  .footer-content {
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4rem;
-  }
 }
 
 /* Accessibility and Focus Styles */
@@ -1966,6 +2049,46 @@ body {
 
 .partner-leadership {
   color: var(--color-secondary);
+  font-weight: 600;
+}
+
+/* FAQ page */
+.faq-section {
+  padding: 2rem 0 4rem;
+}
+
+.faq-list {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 0.35rem 1rem 0.85rem;
+  margin-bottom: 0.65rem;
+  background: var(--color-surface);
+}
+
+.faq-item summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--color-text);
+  padding: 0.5rem 0;
+}
+
+.faq-item[open] {
+  box-shadow: var(--shadow-sm);
+}
+
+.faq-item p {
+  margin: 0 0 0.35rem;
+  color: var(--color-text-muted);
+  line-height: 1.65;
+}
+
+.faq-item a {
+  color: var(--color-primary);
   font-weight: 600;
 }
 
@@ -5247,6 +5370,14 @@ body {
   color: var(--color-text);
   margin: 0 0 1.25rem;
   letter-spacing: -0.02em;
+}
+
+#what-we-do {
+  scroll-margin-top: 96px;
+}
+
+#how-it-works {
+  scroll-margin-top: 96px;
 }
 
 .choice-card {
