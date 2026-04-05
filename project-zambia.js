@@ -27,13 +27,20 @@
 
   var NODE_DEFS = [
     { id: "zambia", label: "Zambia", sub: "project hub", kind: "center", branch: "center", r: 74 },
-    { id: "edu", label: "Education", sub: "", kind: "leaf", branch: "scope", r: 58 },
+    { id: "edu", label: "Education", sub: "", kind: "hub", branch: "scope", r: 64 },
+    {
+      id: "edu-llm",
+      label: "Local LLM",
+      sub: "for education",
+      kind: "leaf",
+      branch: "scope",
+      r: 58,
+    },
     { id: "microscope", label: "Microscope", sub: "", kind: "hub", branch: "scope", r: 72 },
     {
       id: "openflexure",
-      label: "OpenFlexure",
-      sub:
-        "OpenFlexure Project (University of Glasgow): free software microscope with 3D-printed flexures, sub-100 nm precision, and affordable lab-grade imaging for clinics, schools, and diagnostics. Used worldwide with open design files.",
+      label: "Openflux",
+      sub: "",
       kind: "leaf",
       branch: "scope",
       r: 72,
@@ -50,6 +57,14 @@
       id: "sensors",
       label: "Smart sensors",
       sub: "",
+      kind: "hub",
+      branch: "sensors",
+      r: 64,
+    },
+    {
+      id: "sensors-gis-wildlife",
+      label: "Sensor GIS",
+      sub: "for wildlife",
       kind: "leaf",
       branch: "sensors",
       r: 58,
@@ -58,10 +73,12 @@
 
   var LINK_DEFS = [
     { source: "zambia", target: "edu" },
+    { source: "edu", target: "edu-llm" },
     { source: "zambia", target: "microscope" },
     { source: "microscope", target: "openflexure" },
     { source: "microscope", target: "foldmicroscope" },
     { source: "zambia", target: "sensors" },
+    { source: "sensors", target: "sensors-gis-wildlife" },
   ];
 
   var CHILDREN_OF = {};
@@ -104,10 +121,10 @@
   var OPENFLEX_THUMB_CY_FR = -0.38;
 
   var LEAF_TO_HUB = {
-    edu: "zambia",
+    "edu-llm": "edu",
     openflexure: "microscope",
     foldmicroscope: "microscope",
-    sensors: "zambia",
+    "sensors-gis-wildlife": "sensors",
   };
 
   function branchColors(branch) {
@@ -542,7 +559,7 @@
           .attr("href", "https://openflexure.org")
           .attr("target", "_blank")
           .attr("rel", "noopener")
-          .attr("aria-label", "OpenFlexure Project website");
+          .attr("aria-label", "Openflux — OpenFlexure project website");
         thumbLink
           .append("image")
           .attr("class", "zambia-fnode__thumb")
