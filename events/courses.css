@@ -68,6 +68,23 @@
   }
 }
 
+/* Course card photo (e.g. microscopy) */
+.courses-list-grid .course-step-photo {
+  margin: 0 0 1rem;
+  border-radius: var(--radius-md, 12px);
+  overflow: hidden;
+  aspect-ratio: 4 / 3;
+  background: var(--card-bg, rgba(0, 0, 0, 0.06));
+}
+
+.courses-list-grid .course-step-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
 /* Course WhatsApp sign-up */
 .courses-list-grid .step .course-signup-btn {
   margin-top: 1.25rem;

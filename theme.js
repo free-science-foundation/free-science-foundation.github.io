@@ -728,10 +728,9 @@
   }
 })();
 
-// WhatsApp Group Contact Modal + First Visit Prompt
+// WhatsApp Group Contact Modal (opened from nav WhatsApp / QR icon only)
 (function() {
   const WHATSAPP_URL = 'https://chat.whatsapp.com/FvUDXRQwqh6CTMyOCZqAUh?mode=gi_t';
-  const WHATSAPP_POPUP_KEY = 'fsf_whatsapp_popup_seen_v1';
 
   /** Absolute URL to QR asset; page-relative `images/...` breaks on nested paths (e.g. events/courses.html). */
   function getWhatsAppQrUrl() {
@@ -842,39 +841,6 @@
     return overlay;
   }
 
-  function markPopupSeen() {
-    try {
-      localStorage.setItem(WHATSAPP_POPUP_KEY, '1');
-    } catch (err) {
-      // Ignore private mode/localStorage restrictions
-    }
-  }
-
-  function hasSeenPopup() {
-    try {
-      return localStorage.getItem(WHATSAPP_POPUP_KEY) === '1';
-    } catch (err) {
-      return false;
-    }
-  }
-
-  function maybeShowFirstVisitPopup(overlay) {
-    if (hasSeenPopup()) return;
-
-    function tryShow() {
-      const disclaimer = document.getElementById('disclaimer-overlay');
-      if (disclaimer && disclaimer.classList.contains('active')) {
-        setTimeout(tryShow, 800);
-        return;
-      }
-
-      overlay._showWhatsAppModal?.();
-      markPopupSeen();
-    }
-
-    setTimeout(tryShow, 700);
-  }
-
   function attachHandlers() {
     ensureWhatsAppNavIcon();
 
@@ -897,8 +863,6 @@
         overlay._showWhatsAppModal?.(true);
       });
     });
-
-    maybeShowFirstVisitPopup(overlay);
   }
 
   if (document.readyState === 'loading') {
