@@ -187,14 +187,6 @@ html[data-theme="dark"] .zambia-page .nav-dropdown__item:focus-visible {
   color: var(--zm-gold);
 }
 
-.zambia-fnode__thumb-link {
-  cursor: pointer;
-}
-
-.zambia-fnode__thumb-link:focus {
-  outline: none;
-}
-
 .zambia-page .nav-brand .site-logo {
   box-shadow:
     0 0 0 2px rgba(246, 197, 68, 0.5),
@@ -303,134 +295,13 @@ html[data-theme="dark"] .zambia-page .site-footer a:hover {
   padding-bottom: var(--spacing-2xl, 4rem);
 }
 
-#zambia-intro,
-#zambia-map {
+#zambia-intro {
   scroll-margin-top: 6.75rem;
 }
 
 @media (max-width: 640px) {
-  #zambia-intro,
-  #zambia-map {
+  #zambia-intro {
     scroll-margin-top: 6rem;
-  }
-}
-
-/* Sticky dot rail: which section you’re in; click to jump */
-.zambia-section-dots {
-  position: sticky;
-  top: 4.5rem;
-  z-index: 90;
-  display: flex;
-  justify-content: center;
-  padding: 0.55rem 1rem;
-  background: linear-gradient(
-    180deg,
-    rgba(249, 232, 200, 0.94) 0%,
-    rgba(249, 232, 200, 0.78) 100%
-  );
-  border-bottom: 1px solid rgba(140, 74, 47, 0.22);
-  box-shadow: 0 6px 20px rgba(61, 41, 24, 0.06);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-}
-
-.zambia-section-dots__list {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.zambia-section-dots__list > li {
-  display: flex;
-  align-items: center;
-}
-
-.zambia-section-dots__rule {
-  width: 2.75rem;
-  height: 2px;
-  margin: 0 0.4rem;
-  border-radius: 2px;
-  background: rgba(140, 74, 47, 0.35);
-}
-
-.zambia-section-dots__link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.zambia-section-dots__link::after {
-  content: "";
-  display: block;
-  width: 0.5rem;
-  height: 0.5rem;
-  border-radius: 50%;
-  background: var(--zm-brown);
-  opacity: 0.38;
-  transition:
-    width 0.2s ease,
-    height 0.2s ease,
-    opacity 0.2s ease,
-    background 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.zambia-section-dots__link:hover::after,
-.zambia-section-dots__link:focus-visible::after {
-  opacity: 0.75;
-}
-
-.zambia-section-dots__link:focus-visible {
-  outline: 2px solid var(--zm-sunset);
-  outline-offset: 3px;
-}
-
-.zambia-section-dots__link.is-active::after {
-  width: 0.65rem;
-  height: 0.65rem;
-  opacity: 1;
-  background: var(--zm-sunset);
-  box-shadow: 0 0 0 3px rgba(232, 90, 12, 0.35);
-}
-
-html[data-theme="dark"] .zambia-section-dots {
-  background: linear-gradient(180deg, rgba(42, 35, 26, 0.94) 0%, rgba(30, 26, 20, 0.88) 100%);
-  border-bottom-color: rgba(246, 197, 68, 0.2);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.25);
-}
-
-html[data-theme="dark"] .zambia-section-dots__rule {
-  background: rgba(246, 197, 68, 0.28);
-}
-
-html[data-theme="dark"] .zambia-section-dots__link::after {
-  background: var(--zm-gold);
-  opacity: 0.35;
-}
-
-html[data-theme="dark"] .zambia-section-dots__link.is-active::after {
-  background: var(--zm-gold);
-  box-shadow: 0 0 0 3px rgba(246, 197, 68, 0.28);
-}
-
-html[data-theme="dark"] .zambia-section-dots__link:focus-visible {
-  outline-color: var(--zm-gold);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .zambia-section-dots__link,
-  .zambia-section-dots__link::after {
-    transition-duration: 0.01ms;
   }
 }
 
@@ -466,339 +337,91 @@ html[data-theme="dark"] .zambia-hero__title {
   text-shadow: 0 2px 20px rgba(249, 232, 200, 0.4);
 }
 
-.zambia-graph-wrap {
-  max-width: min(1200px, 100%);
-  margin: 0 auto;
-  padding: 0 var(--spacing-md, 1.5rem);
-}
-
-/* Graph + optional mobile scroll rail (same cream band as section dots) */
-.zambia-graph-chrome {
-  display: flex;
-  align-items: stretch;
-  width: 100%;
-  gap: 0;
-}
-
-.zambia-graph-scroll-rail {
-  display: none;
-}
-
-.zambia-graph-viewport-frame {
-  stroke: none;
-}
-
-.zambia-graph-hitplane {
-  stroke: none;
-}
-
-@media (max-width: 768px) {
-  .zambia-graph-scroll-rail {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex: 0 0 2.25rem;
-    width: 2.25rem;
-    min-height: 8rem;
-    background: linear-gradient(
-      180deg,
-      rgba(249, 232, 200, 0.94) 0%,
-      rgba(249, 232, 200, 0.78) 100%
-    );
-    border: 1px solid rgba(140, 74, 47, 0.22);
-    border-right: none;
-    border-radius: 12px 0 0 12px;
-    box-shadow: 0 6px 20px rgba(61, 41, 24, 0.06);
-    touch-action: pan-y;
-    -webkit-user-select: none;
-    user-select: none;
-  }
-
-  .zambia-graph-scroll-rail__text {
-    font-family: "Nunito Sans", sans-serif;
-    font-size: 0.62rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--zm-brown);
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-  }
-
-  .zambia-graph-chrome .zambia-graph-shell {
-    min-width: 0;
-    flex: 1;
-    border-radius: 0 12px 12px 0;
-  }
-}
-
-html[data-theme="dark"] .zambia-page .zambia-graph-scroll-rail {
-  background: linear-gradient(180deg, rgba(42, 35, 26, 0.94) 0%, rgba(30, 26, 20, 0.88) 100%);
-  border-color: rgba(246, 197, 68, 0.2);
-}
-
-html[data-theme="dark"] .zambia-page .zambia-graph-scroll-rail__text {
-  color: var(--zm-gold);
-}
-
-.zambia-graph-intro {
-  margin-bottom: 1rem;
-}
-
-.zambia-graph-hint {
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  text-align: center;
-  color: var(--zm-ink-muted);
-  max-width: 44rem;
-  margin: 0 auto 0.75rem;
-}
-
-.zambia-graph-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  justify-content: center;
-  align-items: center;
-}
-
-.zambia-graph-btn {
-  font-family: "Nunito Sans", sans-serif;
-  font-size: 0.875rem;
-  font-weight: 600;
-  padding: 0.45rem 1rem;
-  border-radius: 999px;
-  border: 2px solid var(--zm-sunrise);
-  background: var(--zm-sunrise);
-  color: #fff;
-  cursor: pointer;
-  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-.zambia-graph-btn:hover {
-  background: var(--zm-sunset);
-  border-color: var(--zm-sunset);
-}
-
-.zambia-graph-btn:focus-visible {
-  outline: 2px solid var(--zm-gold);
-  outline-offset: 2px;
-}
-
-html[data-theme="dark"] .zambia-graph-btn {
-  background: var(--zm-sunrise);
-  border-color: var(--zm-sunrise);
-  color: #fff;
-}
-
-html[data-theme="dark"] .zambia-graph-btn:hover {
-  background: var(--zm-sunset);
-  border-color: var(--zm-sunset);
-  color: #fff;
-}
-
-.zambia-graph-shell {
-  position: relative;
-  width: 100%;
-  min-height: 620px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  overflow: visible;
-}
-
-[data-theme="dark"] .zambia-graph-shell {
-  background: transparent;
-  box-shadow: none;
-}
-
-.zambia-graph-svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  touch-action: none;
-  user-select: none;
-}
-
-.zambia-graph-svg:active {
-  cursor: grabbing;
-}
-
-.zambia-link {
-  pointer-events: none;
-}
-
-/* Leaf disks: tinted fills (not pure white) so labels read clearly on the photo background */
-.zambia-page .zambia-fnode--leaf.zambia-fnode--scope .zambia-fnode__fill {
-  fill: #e8f0d8;
-}
-
-.zambia-page .zambia-fnode--leaf.zambia-fnode--sensors .zambia-fnode__fill {
-  fill: #dde8d4;
-}
-
-html[data-theme="dark"] .zambia-page .zambia-fnode--leaf.zambia-fnode--scope .zambia-fnode__fill {
-  fill: #343d30;
-}
-
-html[data-theme="dark"] .zambia-page .zambia-fnode--leaf.zambia-fnode--sensors .zambia-fnode__fill {
-  fill: #2f382c;
-}
-
-html[data-theme="dark"] .zambia-page .zambia-fnode--leaf .zambia-fnode__label,
-html[data-theme="dark"] .zambia-page .zambia-fnode--leaf .zambia-fnode__sub,
-html[data-theme="dark"] .zambia-page .zambia-fnode--leaf .zambia-fnode__label tspan,
-html[data-theme="dark"] .zambia-page .zambia-fnode--leaf .zambia-fnode__sub tspan {
-  fill: #f5f0e6 !important;
-}
-
-/* SVG node typography (D3-rendered): no text stroke (thick stroke reads as a white box behind glyphs) */
-.zambia-fnode__label,
-.zambia-fnode__sub,
-.zambia-fnode__label tspan,
-.zambia-fnode__sub tspan {
-  pointer-events: none;
-  paint-order: normal;
-  stroke: none;
-  stroke-width: 0;
-}
-
-.zambia-fnode__label {
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 700;
-  font-size: 15px;
-}
-
-.zambia-fnode--hub .zambia-fnode__label {
-  font-size: 13px;
-}
-
-.zambia-fnode--hub .zambia-fnode__sub {
-  font-size: 12px;
-}
-
-.zambia-fnode--center .zambia-fnode__label {
-  font-family: "Fraunces", Georgia, serif;
-  font-size: 22px;
-}
-
-.zambia-fnode--center .zambia-fnode__sub {
-  font-size: 13px;
-}
-
-.zambia-fnode__sub {
-  font-family: "Nunito Sans", sans-serif;
-  font-weight: 600;
-  font-size: 13px;
-}
-
-.zambia-fnode__label--leaf,
-.zambia-fnode__sub--leaf {
-  font-size: 13px;
-}
-
-.zambia-fnode__thumb {
-  opacity: 0.9;
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-}
-
-.zambia-fnode[data-node-id="openflexure"]:hover .zambia-fnode__thumb {
-  opacity: 1;
-}
-
-.zambia-fnode[data-node-id="openflexure"] .zambia-fnode__sub--leaf {
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 0.01em;
-}
-
-.zambia-fnode__shape {
-  stroke-width: 2.75px;
-  filter: drop-shadow(0 2px 6px rgba(61, 41, 24, 0.12));
-}
-
-.zambia-page .zambia-fnode--leaf .zambia-fnode__shape {
-  stroke-width: 3.15px;
-}
-
-[data-theme="dark"] .zambia-fnode__shape {
-  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.4));
-}
-
-.zambia-fnode__halo {
-  fill: transparent;
-  stroke: transparent;
-  pointer-events: none;
-}
-
-.zambia-fnode:focus {
-  outline: none;
-}
-
-.zambia-fnode:focus .zambia-fnode__halo {
-  stroke: var(--zm-gold);
-  stroke-width: 3px;
-  stroke-opacity: 0.95;
-}
-
-.zambia-fnode:hover .zambia-fnode__shape {
-  filter: drop-shadow(0 4px 14px rgba(232, 90, 12, 0.25));
-}
-
-.zambia-fnode.is-major-expanded .zambia-fnode__shape {
-  stroke-width: 4px;
-}
-
-.zambia-fnode.is-selected .zambia-fnode__shape {
-  stroke-width: 4.5px;
-  filter: drop-shadow(0 0 10px rgba(232, 90, 12, 0.45));
-}
-
-.zambia-fnode.is-neighbor .zambia-fnode__shape {
-  stroke-width: 3.6px;
-  filter: drop-shadow(0 2px 10px rgba(62, 111, 42, 0.28));
-}
-
-.zambia-fnode--consult.is-neighbor .zambia-fnode__shape {
-  filter: drop-shadow(0 2px 10px rgba(233, 75, 60, 0.28));
-}
-
-.zambia-fnode--sensors.is-neighbor .zambia-fnode__shape {
-  filter: drop-shadow(0 2px 10px rgba(94, 140, 59, 0.32));
-}
-
-[data-theme="dark"] .zambia-fnode.is-selected .zambia-fnode__shape {
-  filter: drop-shadow(0 0 12px rgba(246, 197, 68, 0.35));
-}
-
-[data-theme="dark"] .zambia-fnode.is-neighbor .zambia-fnode__shape {
-  filter: drop-shadow(0 2px 12px rgba(94, 140, 59, 0.35));
-}
-
-[data-theme="dark"] .zambia-fnode--consult.is-neighbor .zambia-fnode__shape {
-  filter: drop-shadow(0 2px 12px rgba(233, 75, 60, 0.3));
-}
-
-[data-theme="dark"] .zambia-fnode--sensors.is-neighbor .zambia-fnode__shape {
-  filter: drop-shadow(0 2px 12px rgba(94, 140, 59, 0.38));
+#zambia-phases {
+  scroll-margin-top: 6.75rem;
 }
 
 @media (max-width: 640px) {
-  .zambia-graph-hint br {
-    display: none;
+  #zambia-phases {
+    scroll-margin-top: 6rem;
   }
+}
 
-  .zambia-fnode__label {
-    font-size: 13px;
-  }
+.zambia-phases {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 0 0 var(--spacing-2xl, 4rem);
+}
 
-  .zambia-fnode--hub .zambia-fnode__label {
-    font-size: 11px;
-  }
+.zambia-phases__heading {
+  font-family: "Fraunces", Georgia, serif;
+  font-weight: 700;
+  font-size: clamp(1.5rem, 3.5vw, 1.85rem);
+  color: var(--zm-ink);
+  text-align: center;
+  margin: 0 0 var(--spacing-lg, 2rem);
+  text-shadow: 0 1px 16px rgba(249, 232, 200, 0.35);
+}
 
-  .zambia-fnode--center .zambia-fnode__label {
-    font-size: 18px;
-  }
+.zambia-phases__timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg, 2rem);
+}
+
+.zambia-phase {
+  margin: 0;
+  padding: var(--spacing-lg, 2rem);
+  border-radius: 1rem;
+  border: 2px solid rgba(140, 74, 47, 0.28);
+  background:
+    linear-gradient(165deg, rgba(249, 232, 200, 0.55) 0%, rgba(249, 232, 200, 0.28) 100%);
+  box-shadow:
+    0 1px 0 rgba(246, 197, 68, 0.25) inset,
+    0 12px 40px rgba(61, 41, 24, 0.08);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+html[data-theme="dark"] .zambia-phase {
+  border-color: rgba(246, 197, 68, 0.2);
+  background:
+    linear-gradient(165deg, rgba(42, 35, 26, 0.65) 0%, rgba(30, 26, 20, 0.5) 100%);
+  box-shadow:
+    0 1px 0 rgba(246, 197, 68, 0.12) inset,
+    0 12px 40px rgba(0, 0, 0, 0.25);
+}
+
+.zambia-phase__title {
+  font-family: "Nunito Sans", var(--font-body, system-ui), sans-serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--zm-brown);
+  margin: 0 0 var(--spacing-md, 1.5rem);
+}
+
+html[data-theme="dark"] .zambia-phase__title {
+  color: var(--zm-gold);
+}
+
+.zambia-phase__list {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--zm-ink);
+  font-family: "Nunito Sans", var(--font-body, system-ui), sans-serif;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.zambia-phase__list li {
+  margin-bottom: 0.5rem;
+}
+
+.zambia-phase__list li:last-child {
+  margin-bottom: 0;
 }

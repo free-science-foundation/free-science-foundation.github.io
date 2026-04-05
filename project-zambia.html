@@ -5,7 +5,7 @@
     <script src="theme-init.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project: Zambia - Free Science Network</title>
-    <meta name="description" content="Project Zambia: microscopy in the field for care, learning, and community labs.">
+    <meta name="description" content="Project Zambia: phased plan for microscopes, local NGO partners, delivery, and training in Zambia.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="theme-zambia-global.css">
     <link rel="stylesheet" href="ngo-skin.css">
@@ -137,61 +137,40 @@
     </header>
 
     <main class="zambia-main">
-        <nav class="zambia-section-dots" aria-label="On this page">
-            <ul class="zambia-section-dots__list">
-                <li>
-                    <a
-                        href="#zambia-intro"
-                        class="zambia-section-dots__link is-active"
-                        data-zambia-section-link
-                        aria-current="location"
-                        title="Introduction"
-                    >
-                        <span class="visually-hidden">Introduction</span>
-                    </a>
-                </li>
-                <li class="zambia-section-dots__rule" aria-hidden="true"></li>
-                <li>
-                    <a
-                        href="#zambia-map"
-                        class="zambia-section-dots__link"
-                        data-zambia-section-link
-                        title="Interactive map"
-                    >
-                        <span class="visually-hidden">Interactive map</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-
         <section id="zambia-intro" class="zambia-hero container" aria-labelledby="zambia-title">
             <p class="zambia-hero__eyebrow">Free Science Network</p>
             <h1 id="zambia-title" class="zambia-hero__title">Project: Zambia</h1>
         </section>
 
-        <div id="zambia-map" class="zambia-graph-wrap">
-            <div class="zambia-graph-intro" id="zambia-graph-hint">
-                <p class="zambia-graph-hint">
-                    <strong>Reactive map</strong>: Click hubs (<strong>Education</strong>, <strong>Microscope</strong>, <strong>Smart sensors</strong>) to expand or collapse; click nodes to focus links. <strong>Zambia</strong> or <strong>Reset view</strong> clears. Scroll or pinch to zoom; <strong>Tab</strong> + <strong>Enter</strong> with the keyboard.
-                </p>
-                <div class="zambia-graph-actions">
-                    <button type="button" class="zambia-graph-btn" id="zambia-graph-reset-zoom" aria-label="Reset zoom and pan">Reset view</button>
-                    <button type="button" class="zambia-graph-btn" id="zambia-graph-unfix" aria-label="Release pinned center">Release center</button>
-                </div>
-            </div>
-            <div class="zambia-graph-chrome">
-                <aside class="zambia-graph-scroll-rail" aria-label="Scroll the page; use this strip to scroll past the graph on touch devices">
-                    <span class="zambia-graph-scroll-rail__text">Scroll</span>
-                </aside>
-                <div
-                    id="zambia-graph-mount"
-                    class="zambia-graph-shell"
-                    role="application"
-                    aria-label="Interactive force-directed graph of Project Zambia programs"
-                    aria-describedby="zambia-graph-hint"
-                ></div>
-            </div>
-        </div>
+        <section id="zambia-phases" class="zambia-phases container" aria-labelledby="zambia-phases-title">
+            <h2 id="zambia-phases-title" class="zambia-phases__heading">Phases</h2>
+            <ol class="zambia-phases__timeline">
+                <li class="zambia-phase">
+                    <h3 class="zambia-phase__title">Phase 1</h3>
+                    <ul class="zambia-phase__list">
+                        <li>Identify local NGO partners and define priority use cases for OpenFlexure and Flex microscopes.</li>
+                        <li>Assess operational needs, local conditions, and intended areas of use.</li>
+                        <li>Define a clear framework for partnership and implementation.</li>
+                    </ul>
+                </li>
+                <li class="zambia-phase">
+                    <h3 class="zambia-phase__title">Phase 2</h3>
+                    <ul class="zambia-phase__list">
+                        <li>Confirm the scope of deployment with partner organisations.</li>
+                        <li>Define maintenance responsibilities and local support arrangements.</li>
+                        <li>Coordinate delivery planning and implementation readiness.</li>
+                    </ul>
+                </li>
+                <li class="zambia-phase">
+                    <h3 class="zambia-phase__title">Phase 3</h3>
+                    <ul class="zambia-phase__list">
+                        <li>Deploy the equipment with local partner organisations.</li>
+                        <li>Deliver local training to support effective use, maintenance, and continuity.</li>
+                        <li>Review initial implementation outcomes and define the next phase of support or expansion.</li>
+                    </ul>
+                </li>
+            </ol>
+        </section>
     </main>
 <div id="site-footer-placeholder"></div>
     <script src="footer.js"></script>
@@ -290,9 +269,6 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js" crossorigin="anonymous"></script>
-    <script src="project-zambia.js"></script>
-    <script src="zambia-section-nav.js"></script>
     <script src="theme.js"></script>
 </body>
 </html>
