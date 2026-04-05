@@ -91,6 +91,14 @@
   color: transparent;
 }
 
+[data-theme="zambia"] .hero-site-title {
+  background: linear-gradient(135deg, var(--zm-leaf) 0%, var(--zm-sunrise) 45%, var(--zm-sunset) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
 [data-theme="zambia"] .nav-link {
   color: var(--zm-ink-muted);
 }

@@ -1,41 +1,46 @@
-// Theme: light | dark | zambia (sunrise palette)
+// Theme: light | dark | zambia (sunrise palette) | ngo (narrative scroll)
+// NGO is the default theme. The blue dot button cycles classic light ↔ dark.
 (function() {
-  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggle    = document.getElementById('theme-toggle');   // blue dot button
   const themeZambiaBtn = document.getElementById('theme-zambia-toggle');
+  const themeNgoBtn    = document.getElementById('theme-ngo-toggle');
   const html = document.documentElement;
-  const STORAGE = 'theme';
-  const BEFORE_ZAMBIA = 'themeBeforeZambia';
+  const STORAGE        = 'theme';
+  const CLASSIC_KEY    = 'themeClassic'; // last used classic mode: 'light' | 'dark'
+  const BEFORE_ZAMBIA  = 'themeBeforeZambia';
+  const BEFORE_NGO     = 'themeBeforeNgo';
+
+  const VALID = ['light', 'dark', 'zambia', 'ngo'];
 
   function getPreferredTheme() {
     const saved = localStorage.getItem(STORAGE);
-    if (saved === 'light' || saved === 'dark' || saved === 'zambia') {
-      return saved;
-    }
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
+    if (VALID.includes(saved)) return saved;
+    // Default: NGO green theme for first-time visitors
+    return 'ngo';
   }
 
   function syncControls(theme) {
     if (themeToggle) {
-      if (theme === 'zambia') {
-        const b = localStorage.getItem(BEFORE_ZAMBIA);
-        themeToggle.checked = b === 'dark';
-      } else {
-        themeToggle.checked = theme === 'dark';
-      }
+      const classicOn = theme === 'light' || theme === 'dark';
+      themeToggle.setAttribute('aria-pressed', classicOn ? 'true' : 'false');
+      themeToggle.classList.toggle('is-active', classicOn);
     }
     if (themeZambiaBtn) {
       const on = theme === 'zambia';
       themeZambiaBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
       themeZambiaBtn.classList.toggle('is-active', on);
     }
+    if (themeNgoBtn) {
+      const on = theme === 'ngo';
+      themeNgoBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
+      themeNgoBtn.classList.toggle('is-active', on);
+    }
   }
 
   function setTheme(theme) {
-    if (theme !== 'light' && theme !== 'dark' && theme !== 'zambia') {
-      theme = 'light';
+    if (!VALID.includes(theme)) theme = 'ngo';
+    if (theme === 'light' || theme === 'dark') {
+      localStorage.setItem(CLASSIC_KEY, theme);
     }
     html.setAttribute('data-theme', theme);
     localStorage.setItem(STORAGE, theme);
@@ -45,8 +50,17 @@
   setTheme(getPreferredTheme());
 
   if (themeToggle) {
-    themeToggle.addEventListener('change', function() {
-      setTheme(this.checked ? 'dark' : 'light');
+    themeToggle.addEventListener('click', function() {
+      const cur = html.getAttribute('data-theme');
+      if (cur === 'light') {
+        setTheme('dark');
+      } else if (cur === 'dark') {
+        setTheme('light');
+      } else {
+        // Coming from ngo/zambia — restore last classic or default to light
+        const last = localStorage.getItem(CLASSIC_KEY) || 'light';
+        setTheme(last);
+      }
     });
   }
 
@@ -55,20 +69,64 @@
       const cur = html.getAttribute('data-theme');
       if (cur === 'zambia') {
         const back = localStorage.getItem(BEFORE_ZAMBIA);
-        setTheme(back === 'dark' ? 'dark' : 'light');
+        setTheme(VALID.includes(back) ? back : 'ngo');
       } else {
-        localStorage.setItem(BEFORE_ZAMBIA, cur === 'dark' ? 'dark' : 'light');
+        localStorage.setItem(BEFORE_ZAMBIA, cur);
         setTheme('zambia');
+      }
+    });
+  }
+
+  if (themeNgoBtn) {
+    themeNgoBtn.addEventListener('click', function() {
+      const cur = html.getAttribute('data-theme');
+      if (cur === 'ngo') {
+        const back = localStorage.getItem(BEFORE_NGO);
+        const classic = localStorage.getItem(CLASSIC_KEY) || 'light';
+        setTheme(VALID.includes(back) && back !== 'ngo' ? back : classic);
+      } else {
+        localStorage.setItem(BEFORE_NGO, cur);
+        setTheme('ngo');
       }
     });
   }
 
   if (window.matchMedia) {
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-      if (!localStorage.getItem(STORAGE)) {
+      const cur = html.getAttribute('data-theme');
+      if (cur === 'light' || cur === 'dark') {
         setTheme(e.matches ? 'dark' : 'light');
       }
     });
+  }
+
+  // NGO skin: nav tint on scroll (class only has visual effect under data-theme="ngo")
+  var header = document.querySelector('.site-header');
+  if (header) {
+    window.addEventListener('scroll', function() {
+      header.classList.toggle('ngo-scrolled', window.scrollY > 10);
+    }, { passive: true });
+    header.classList.toggle('ngo-scrolled', window.scrollY > 10);
+  }
+
+  // NGO skin: scroll fade-in — only set up once; CSS gates visibility to ngo theme
+  if ('IntersectionObserver' in window) {
+    var FADE_SEL = '.manifesto-header, .manifesto-right, .initial-choice-about, ' +
+                  '.initial-choice-group-title, .service-card, .choice-card, ' +
+                  '.team-member-card, .partner-card';
+    var fadeTargets = document.querySelectorAll(FADE_SEL);
+    if (fadeTargets.length) {
+      fadeTargets.forEach(function(el) { el.classList.add('ngo-fade'); });
+      var io = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('ngo-visible');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+      fadeTargets.forEach(function(el) { io.observe(el); });
+    }
   }
 })();
 

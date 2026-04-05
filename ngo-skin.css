@@ -1,0 +1,796 @@
+/* ============================================================
+   NGO Narrative Scroll — Skin
+   Activated only when html[data-theme="ngo"] is set.
+   Toggle via the forest-green leaf button in the nav bar.
+   ============================================================ */
+
+/* ── 1. DESIGN TOKENS ────────────────────────────────────────── */
+:root {
+  --ngo-bg:           #f7f5f0;  /* warm off-white — body/card bg            */
+  --ngo-dark:         #2e3c1e;  /* deep forest — manifesto + footer bg      */
+  --ngo-text:         #26291e;  /* near-black — 11.4:1 on ngo-bg ✅         */
+  --ngo-muted:        #5c5e4e;  /* dark grey-green — 5.9:1 on ngo-bg ✅    */
+  --ngo-on-dark:      #e4e0d4;  /* warm off-white — 7.6:1 on ngo-dark ✅   */
+
+  /* Accent — decorative only (borders, icon strokes on light bg).           */
+  /* DO NOT use as text on any background.                                   */
+  --ngo-accent:       #7a8c52;
+
+  /* Text-safe accent variants ─────────────────────────────────────────    */
+  /* On light backgrounds (#f7f5f0 / #fff):  6.1:1 ✅ */
+  --ngo-accent-text:  #4a5c28;
+  /* On dark background (#2e3c1e):           4.9:1 ✅ */
+  --ngo-accent-dark:  #a8ba6a;
+
+  /* Button / filled-badge bg (white text on top → 5.8:1 ✅) */
+  --ngo-accent-btn:   #46581f;
+
+  /* Footer text — solid colours instead of low-opacity rgba               */
+  --ngo-footer-link:  #c8c0b4;  /* 5.7:1 on ngo-dark ✅                    */
+  --ngo-footer-meta:  #bab2a8;  /* 5.0:1 on ngo-dark ✅                    */
+
+  --ngo-border:   rgba(38, 41, 30, 0.13);
+  --ngo-wave:     52px;
+  --ngo-footer-silhouette: 96px; /* tree-line strip; taller so trunks/canopies read */
+  --ngo-footer-mid: #41512a;
+  --ngo-footer-foreground: #1b2511;
+  --ngo-footer-haze: rgba(177, 193, 134, 0.12);
+  --ngo-ease:     0.35s ease;
+}
+
+/* ── 2. NGO TOGGLE BUTTON (always visible in nav) ───────────── */
+
+.theme-ngo-btn {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  border: 2px solid rgba(46, 60, 30, 0.5);
+  cursor: pointer;
+  background:
+    radial-gradient(circle at 38% 38%, rgba(200, 220, 160, 0.6) 0%, transparent 50%),
+    linear-gradient(145deg, #6a8a40 0%, #2e3c1e 100%);
+  box-shadow: 0 2px 10px rgba(46, 60, 30, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-ngo-btn__glyph {
+  display: block;
+  width: 11px;
+  height: 11px;
+  background: linear-gradient(135deg, #c8dca0, #8aac5a);
+  border-radius: 50% 0;
+  transform: rotate(45deg);
+  box-shadow: 0 0 6px rgba(168, 208, 96, 0.7);
+  transition: transform 0.2s ease;
+}
+
+.theme-ngo-btn:hover {
+  transform: scale(1.06);
+  border-color: rgba(106, 138, 64, 0.8);
+  box-shadow: 0 4px 16px rgba(46, 60, 30, 0.45);
+}
+
+.theme-ngo-btn:focus-visible {
+  outline: 2px solid var(--ngo-accent);
+  outline-offset: 3px;
+}
+
+.theme-ngo-btn.is-active {
+  border-color: rgba(168, 208, 96, 0.9);
+  box-shadow: 0 0 0 3px rgba(122, 140, 82, 0.4), 0 4px 18px rgba(46, 60, 30, 0.5);
+}
+
+.theme-ngo-btn.is-active:hover .theme-ngo-btn__glyph {
+  transform: rotate(45deg) scale(1.1);
+}
+
+[data-theme="dark"] .theme-ngo-btn       { border-color: rgba(168, 208, 96, 0.35); }
+[data-theme="dark"] .theme-ngo-btn.is-active { border-color: rgba(168, 208, 96, 0.85); }
+
+@media (max-width: 768px) { .theme-ngo-btn { display: none; } }
+
+
+/* ════════════════════════════════════════════════════════════
+   Everything below only activates when data-theme="ngo"
+   ════════════════════════════════════════════════════════════ */
+
+/* ── 3. BASE — body & colour resets ─────────────────────────── */
+
+[data-theme="ngo"] {
+  --manifesto-expand-fade: var(--ngo-dark);
+}
+
+[data-theme="ngo"] body {
+  background: var(--ngo-bg) !important;
+  color: var(--ngo-text);
+  line-height: 1.8;
+  /* NO padding-top override — keep existing sticky-header behaviour */
+}
+
+/* ── 4. NAVIGATION ───────────────────────────────────────────── */
+
+/* Transparent at page top; tinted once user scrolls (class set by theme.js) */
+[data-theme="ngo"] .site-header {
+  background: transparent !important;
+  border-bottom: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  transition: background var(--ngo-ease), box-shadow var(--ngo-ease) !important;
+}
+
+[data-theme="ngo"] .site-header.ngo-scrolled {
+  background: rgba(247, 245, 240, 0.95) !important;
+  box-shadow: 0 1px 0 var(--ngo-border) !important;
+  backdrop-filter: blur(8px) !important;
+  -webkit-backdrop-filter: blur(8px) !important;
+}
+
+/* Brand title — plain text, no gradient clip */
+[data-theme="ngo"] .nav-brand .site-title {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: var(--ngo-text) !important;
+  background-clip: unset !important;
+  color: var(--ngo-text) !important;
+  letter-spacing: 0.02em;
+}
+
+/* Nav links — uppercase; inline-block so ::after width:100% matches the label (avoids a “dot” on inline <a>) */
+[data-theme="ngo"] .nav-link {
+  color: var(--ngo-muted) !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase;
+  transition: color var(--ngo-ease) !important;
+  display: inline-block !important;
+  position: relative !important;
+  padding-bottom: 0.2rem !important;
+}
+
+/* Same bar as default theme (styles.css .nav-link::after): sky blue → green, not NGO-only shapes */
+[data-theme="ngo"] .nav-link::after {
+  content: '' !important;
+  display: block !important;
+  position: absolute !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 2px !important;
+  transform: none !important;
+  border-radius: 0 !important;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary)) !important;
+  box-shadow: none !important;
+  transition: width var(--transition-base, 0.3s ease) !important;
+}
+
+[data-theme="ngo"] .nav-link:hover::after,
+[data-theme="ngo"] .nav-link.active::after {
+  width: 100% !important;
+}
+
+[data-theme="ngo"] .nav-link:hover,
+[data-theme="ngo"] .nav-link.active {
+  color: var(--ngo-text) !important;
+  transform: none !important;
+}
+
+/* Current page: stronger type + accent hue (like Zambia .nav-link.active vs .nav-link) */
+[data-theme="ngo"] .nav-link.active {
+  font-weight: 700 !important;
+  color: var(--ngo-accent-text) !important;
+}
+
+/* ── 5. HERO — full-bleed carousel (index.html) ──────────────── */
+
+[data-theme="ngo"] .hero {
+  background: transparent !important;
+  padding-bottom: 3rem !important;
+}
+
+[data-theme="ngo"] .hero::before { display: none !important; }
+
+/* Home: site name above carousel — same editorial treatment as inner-page .hero-title */
+[data-theme="ngo"] .hero-site-title {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+  color: var(--ngo-text) !important;
+  font-size: clamp(1.85rem, 4.5vw, 3rem) !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.06em !important;
+  line-height: 1.2 !important;
+  max-width: none !important;
+  margin-bottom: 1.35rem !important;
+}
+
+[data-theme="ngo"] .hero .container {
+  max-width: 100% !important;
+  padding: 0 !important;
+}
+
+/* Carousel in NGO mode: gap before the manifesto wave */
+[data-theme="ngo"] .hero-banner--carousel {
+  margin-bottom: 4rem !important;
+}
+
+[data-theme="ngo"] .hero-banner--carousel .hero-carousel-slide,
+[data-theme="ngo"] .hero-banner--carousel .hero-carousel__image-link {
+  overflow: hidden !important;
+}
+
+/* ── 6. HERO TEXT — inner pages (team, partners, volunteering…) ─ */
+
+/* Remove gradient clip from hero title — plain editorial text */
+[data-theme="ngo"] .hero-title {
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+  color: var(--ngo-text) !important;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: 0.06em !important;
+  line-height: 1.2 !important;
+  font-weight: 700;
+}
+
+[data-theme="ngo"] .hero-subtitle {
+  color: var(--ngo-muted) !important;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  letter-spacing: 0.03em;
+  font-weight: 500;
+}
+
+[data-theme="ngo"] .hero-description {
+  color: var(--ngo-muted) !important;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+/* ── 7. SECTION HEADINGS — universal ────────────────────────── */
+
+[data-theme="ngo"] .section-title {
+  letter-spacing: 0.07em !important;
+  line-height: 1.25 !important;
+  color: var(--ngo-text) !important;
+  background: none !important;
+  -webkit-background-clip: unset !important;
+  -webkit-text-fill-color: unset !important;
+  background-clip: unset !important;
+}
+
+[data-theme="ngo"] .section-title::after { display: none !important; }
+
+[data-theme="ngo"] .page-title {
+  color: var(--ngo-text) !important;
+  letter-spacing: 0.06em;
+  line-height: 1.25;
+  background: none !important;
+  -webkit-text-fill-color: unset !important;
+}
+
+[data-theme="ngo"] .page-description {
+  color: var(--ngo-muted) !important;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+/* ── 8. MANIFESTO — dark section (index + manifesto page) ────── */
+
+[data-theme="ngo"] .manifesto {
+  background: var(--ngo-dark) !important;
+  overflow: visible !important;
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+/* Top terrain wave — dark overlaps the section above */
+[data-theme="ngo"] .manifesto::before {
+  content: '' !important;
+  position: absolute !important;
+  top: calc(-1 * var(--ngo-wave)) !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: auto !important;
+  width: auto !important;
+  height: var(--ngo-wave) !important;
+  background: var(--ngo-dark) !important;
+  background-image: none !important;
+  clip-path: polygon(
+    0% 100%, 0% 62%,
+    8% 42%,  20% 68%,
+    33% 22%, 47% 58%,
+    60% 14%, 72% 50%,
+    85% 30%, 93% 54%,
+    100% 38%, 100% 100%
+  ) !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+/* Bottom terrain wave — dark overlaps the section below */
+[data-theme="ngo"] .manifesto::after {
+  content: '';
+  position: absolute;
+  bottom: calc(-1 * var(--ngo-wave));
+  left: 0;
+  right: 0;
+  height: var(--ngo-wave);
+  background: var(--ngo-dark);
+  clip-path: polygon(
+    0%   0%,  100%  0%,
+    100% 58%,  88% 82%,
+    75%  48%,  62% 88%,
+    50%  56%,  38% 78%,
+    25%  42%,  12% 72%,
+    0%   52%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Text on dark */
+[data-theme="ngo"] .manifesto .manifesto-eyebrow {
+  color: var(--ngo-accent-dark) !important;
+  border-color: rgba(168, 186, 106, 0.45) !important;
+  background: rgba(168, 186, 106, 0.14) !important;
+}
+
+[data-theme="ngo"] .manifesto .manifesto-title { color: #fff !important; }
+
+[data-theme="ngo"] .manifesto .manifesto-lead,
+[data-theme="ngo"] .manifesto .manifesto-right__text {
+  color: var(--ngo-on-dark) !important;
+}
+
+[data-theme="ngo"] .manifesto .manifesto-right__name,
+[data-theme="ngo"] .manifesto .manifesto-stance__title {
+  color: #fff !important;
+}
+
+/* Paper cards (.manifesto-stance__body, .manifesto-profit) stay light — use ink, not on-dark cream */
+[data-theme="ngo"] .manifesto .manifesto-stance__body,
+[data-theme="ngo"] .manifesto .manifesto-profit {
+  background: var(--ngo-bg) !important;
+  border-color: var(--ngo-border) !important;
+  box-shadow: 0 1px 0 rgba(38, 41, 30, 0.06) !important;
+}
+
+[data-theme="ngo"] .manifesto .manifesto-stance__body p,
+[data-theme="ngo"] .manifesto .manifesto-profit__text p {
+  color: var(--ngo-muted) !important;
+}
+
+[data-theme="ngo"] .manifesto .manifesto-stance__body p strong {
+  color: var(--ngo-text) !important;
+}
+
+[data-theme="ngo"] .manifesto .manifesto-profit__label {
+  color: var(--ngo-accent-h) !important;
+}
+
+[data-theme="ngo"] .manifesto .manifesto-right__number {
+  color: var(--ngo-accent-dark) !important;
+  opacity: 1;
+}
+
+[data-theme="ngo"] .manifesto .manifesto-closing p   { color: var(--ngo-on-dark) !important; }
+/* Attribution: same palette as eyebrow/accents but softer — not the same hue/weight as labels */
+[data-theme="ngo"] .manifesto .manifesto-closing footer {
+  color: var(--ngo-footer-link) !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.04em !important;
+  text-transform: none !important;
+  font-style: normal !important;
+}
+
+[data-theme="ngo"] .manifesto-right {
+  background: transparent !important;
+  border-color: rgba(228, 224, 212, 0.1) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="ngo"] .manifesto-right:hover {
+  background: rgba(228, 224, 212, 0.05) !important;
+  transform: none !important;
+}
+
+[data-theme="ngo"] .manifesto-right__icon svg { stroke: var(--ngo-accent-dark) !important; }
+
+[data-theme="ngo"] .manifesto-closing {
+  border-left-color: var(--ngo-accent) !important;
+  background: rgba(228, 224, 212, 0.04) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="ngo"] .manifesto-stance {
+  border-top-color: rgba(228, 224, 212, 0.12) !important;
+  background: rgba(228, 224, 212, 0.03) !important;
+}
+
+[data-theme="ngo"] .manifesto-profit__icon svg { stroke: var(--ngo-accent) !important; }
+
+[data-theme="ngo"] .manifesto-expandable__toggle {
+  color: #fff !important;
+  border-color: rgba(228, 224, 212, 0.4) !important;
+  background: linear-gradient(135deg, var(--ngo-accent-h) 0%, var(--ngo-dark) 100%) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="ngo"] .manifesto-expandable__toggle:hover {
+  background: linear-gradient(135deg, var(--ngo-accent) 0%, #243018 100%) !important;
+  border-color: rgba(228, 224, 212, 0.55) !important;
+}
+
+[data-theme="ngo"] .manifesto-expandable__fade {
+  background: linear-gradient(to bottom, transparent 0%, var(--ngo-dark) 100%) !important;
+}
+
+/* ── 9. INDEX: initial-choice section ───────────────────────── */
+
+[data-theme="ngo"] .initial-choice {
+  background: var(--ngo-bg) !important;
+  /* Extra top clearance for the manifesto bottom wave */
+  padding-top: calc(80px + var(--ngo-wave)) !important;
+  padding-bottom: 80px !important;
+}
+
+[data-theme="ngo"] .initial-choice-group-title {
+  color: var(--ngo-text);
+  letter-spacing: 0.06em;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+}
+
+[data-theme="ngo"] .initial-choice-subtitle,
+[data-theme="ngo"] .initial-choice-about__lead {
+  color: var(--ngo-muted) !important;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+/* ── 10. CARDS — index page (service + choice) ───────────────── */
+
+[data-theme="ngo"] .service-card {
+  background: #ffffff !important;
+  border: 1px solid var(--ngo-border) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  transition: transform var(--ngo-ease) !important;
+}
+
+[data-theme="ngo"] .service-card::before { display: none !important; }
+
+[data-theme="ngo"] .service-card:hover {
+  transform: scale(1.03) !important;
+  box-shadow: none !important;
+  border-color: rgba(122, 140, 82, 0.35) !important;
+}
+
+[data-theme="ngo"] .service-card-tools:hover,
+[data-theme="ngo"] .service-card-consulting:hover,
+[data-theme="ngo"] .service-card-engineering:hover {
+  border-color: rgba(122, 140, 82, 0.35) !important;
+}
+
+[data-theme="ngo"] .service-icon,
+[data-theme="ngo"] .service-card-tools .service-icon,
+[data-theme="ngo"] .service-card-consulting .service-icon,
+[data-theme="ngo"] .service-card-engineering .service-icon {
+  background: rgba(122, 140, 82, 0.1) !important;
+  color: var(--ngo-accent) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="ngo"] .current-project-tag {
+  background: var(--ngo-accent-btn) !important;
+  color: #fff !important;
+  border-radius: 2px !important;
+  font-size: 0.68rem !important;
+  letter-spacing: 0.1em !important;
+}
+
+[data-theme="ngo"] .choice-card {
+  background: #ffffff !important;
+  border: 1px solid var(--ngo-border) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  color: var(--ngo-text) !important;
+  transition: transform var(--ngo-ease) !important;
+}
+
+[data-theme="ngo"] .choice-card::before { display: none !important; }
+
+[data-theme="ngo"] .choice-card:hover {
+  transform: scale(1.03) !important;
+  box-shadow: none !important;
+  border-color: rgba(122, 140, 82, 0.4) !important;
+}
+
+[data-theme="ngo"] .choice-icon {
+  background: rgba(122, 140, 82, 0.12) !important;
+  color: var(--ngo-accent) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="ngo"] .choice-card:hover .choice-icon { transform: none !important; }
+[data-theme="ngo"] .choice-title    { color: var(--ngo-text) !important; }
+[data-theme="ngo"] .choice-description { color: var(--ngo-muted) !important; line-height: 1.8; }
+
+/* ── 11. TEAM PAGE ───────────────────────────────────────────── */
+
+[data-theme="ngo"] .team-grid-section {
+  background: var(--ngo-bg) !important;
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+[data-theme="ngo"] .team-member-card {
+  background: transparent !important;
+}
+
+[data-theme="ngo"] .team-member-card:hover { transform: translateY(-3px); }
+
+[data-theme="ngo"] .team-member-photo {
+  border-color: var(--ngo-border) !important;
+  background: rgba(122, 140, 82, 0.08) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="ngo"] .team-member-name {
+  color: var(--ngo-text) !important;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+[data-theme="ngo"] .team-member-role,
+[data-theme="ngo"] .team-member-profession,
+[data-theme="ngo"] .team-member-contribution,
+[data-theme="ngo"] .team-member-bio {
+  color: var(--ngo-muted) !important;
+}
+
+[data-theme="ngo"] .team-member-title-group {
+  color: var(--ngo-accent-text) !important;
+}
+
+[data-theme="ngo"] .team-member-contribution {
+  border-top-color: var(--ngo-border) !important;
+}
+
+/* ── 12. PARTNERS PAGE ───────────────────────────────────────── */
+
+[data-theme="ngo"] .partners-section {
+  background: var(--ngo-bg) !important;
+  padding-top: 80px !important;
+  padding-bottom: 80px !important;
+}
+
+[data-theme="ngo"] .partners-intro {
+  color: var(--ngo-muted) !important;
+  max-width: 640px;
+  line-height: 1.8;
+}
+
+[data-theme="ngo"] .partner-card {
+  background: #ffffff !important;
+  border: 1px solid var(--ngo-border) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  transition: transform var(--ngo-ease) !important;
+}
+
+[data-theme="ngo"] .partner-card:hover {
+  transform: scale(1.02) !important;
+  box-shadow: none !important;
+  border-color: rgba(122, 140, 82, 0.4) !important;
+}
+
+[data-theme="ngo"] .partner-logo-wrap {
+  background: var(--ngo-bg) !important;
+  border-radius: 2px !important;
+}
+
+[data-theme="ngo"] .partner-name        { color: var(--ngo-text) !important; letter-spacing: 0.03em; }
+[data-theme="ngo"] .partner-description { color: var(--ngo-muted) !important; line-height: 1.75; }
+[data-theme="ngo"] .partner-leadership  { color: var(--ngo-accent-text) !important; }
+
+/* ── 13. PROJECTS PAGE ───────────────────────────────────────── */
+
+[data-theme="ngo"] .projects-header {
+  background: var(--ngo-bg) !important;
+  padding-top: 80px !important;
+  padding-bottom: 60px !important;
+}
+
+/* ── 14. BUTTONS & CTAs — universal ─────────────────────────── */
+
+[data-theme="ngo"] .cta-button {
+  background: var(--ngo-accent-btn) !important;
+  border-radius: 6px !important;
+  box-shadow: none !important;
+  color: #fff !important;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: background var(--ngo-ease), transform var(--ngo-ease) !important;
+}
+
+[data-theme="ngo"] .cta-button::before { display: none !important; }
+
+[data-theme="ngo"] .cta-button:hover {
+  background: #3a4a18 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: none !important;
+}
+
+[data-theme="ngo"] .action-link {
+  background: transparent !important;
+  border: 1px solid var(--ngo-border) !important;
+  border-radius: 4px !important;
+  box-shadow: none !important;
+  color: var(--ngo-muted) !important;
+  transition: color var(--ngo-ease), border-color var(--ngo-ease) !important;
+}
+
+[data-theme="ngo"] .action-link:hover {
+  background: transparent !important;
+  border-color: var(--ngo-accent-text) !important;
+  color: var(--ngo-accent-text) !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+/* ── 15. FOOTER ─────────────────────────────────────────────── */
+
+[data-theme="ngo"] .site-footer {
+  background:
+    radial-gradient(120% 120% at 50% 0%, var(--ngo-footer-haze) 0%, transparent 58%),
+    linear-gradient(180deg, #324220 0%, var(--ngo-dark) 24%, #263319 100%) !important;
+  border-top: none !important;
+  color: var(--ngo-on-dark) !important;
+  position: relative;
+  padding-top: calc(2.85rem + var(--ngo-wave) * 0.72) !important;
+  /* Room for landscape silhouette strip below footer copy */
+  padding-bottom: calc(2.5rem + var(--ngo-footer-silhouette, 96px)) !important;
+}
+
+[data-theme="ngo"] .site-footer > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* Bottom: open woodland / bushveld silhouette — related to savanna + forest, but not the same shape language */
+[data-theme="ngo"] .site-footer::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--ngo-footer-silhouette, 96px);
+  background:
+    radial-gradient(15% 40% at 6% 74%, rgba(78, 98, 53, 0.82) 0 52%, transparent 53%),
+    radial-gradient(18% 38% at 20% 69%, rgba(86, 108, 57, 0.8) 0 50%, transparent 51%),
+    radial-gradient(14% 32% at 35% 73%, rgba(74, 94, 48, 0.78) 0 49%, transparent 50%),
+    radial-gradient(19% 42% at 49% 68%, rgba(90, 111, 59, 0.82) 0 52%, transparent 53%),
+    radial-gradient(13% 30% at 63% 74%, rgba(78, 99, 50, 0.78) 0 49%, transparent 50%),
+    radial-gradient(17% 40% at 78% 70%, rgba(84, 105, 56, 0.8) 0 51%, transparent 52%),
+    radial-gradient(14% 34% at 92% 74%, rgba(72, 90, 47, 0.76) 0 48%, transparent 49%),
+    linear-gradient(to top, rgba(13, 19, 8, 0.96) 0 18%, transparent 18%),
+    linear-gradient(
+      90deg,
+      transparent 0 7%,
+      rgba(24, 34, 14, 0.92) 7% 7.8%,
+      transparent 7.8% 18%,
+      rgba(24, 34, 14, 0.88) 18% 18.7%,
+      transparent 18.7% 31%,
+      rgba(24, 34, 14, 0.9) 31% 31.9%,
+      transparent 31.9% 46%,
+      rgba(24, 34, 14, 0.86) 46% 46.8%,
+      transparent 46.8% 59%,
+      rgba(24, 34, 14, 0.88) 59% 59.8%,
+      transparent 59.8% 72%,
+      rgba(24, 34, 14, 0.9) 72% 72.9%,
+      transparent 72.9% 86%,
+      rgba(24, 34, 14, 0.9) 86% 86.8%,
+      transparent 86.8% 100%
+    ),
+    linear-gradient(to bottom, rgba(65, 81, 42, 0.82) 0%, rgba(27, 37, 17, 0.96) 100%);
+  clip-path: polygon(
+    0% 100%, 0% 78%,
+    7% 72%, 14% 58%, 21% 66%,
+    30% 50%, 39% 62%, 48% 46%,
+    57% 60%, 66% 54%, 74% 68%,
+    83% 56%, 91% 70%, 100% 62%,
+    100% 100%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top edge: a broad clearing rather than reusing the manifesto wave */
+[data-theme="ngo"] .site-footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: calc(var(--ngo-wave) * 0.72);
+  background: linear-gradient(180deg, rgba(55, 70, 34, 0.98) 0%, rgba(46, 60, 30, 0.98) 100%);
+  clip-path: polygon(
+    0% 100%, 0% 76%,
+    12% 64%, 26% 78%,
+    43% 56%, 58% 74%,
+    74% 60%, 88% 72%,
+    100% 58%,
+    100% 100%
+  );
+  opacity: 0.92;
+  pointer-events: none;
+}
+
+[data-theme="ngo"] .footer-heading {
+  color: #ffffff !important;
+  font-size: 0.7rem !important;
+  letter-spacing: 0.12em !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="ngo"] .footer-links a         { color: var(--ngo-footer-link) !important; }
+[data-theme="ngo"] .footer-links a:hover   { color: var(--ngo-on-dark) !important; }
+[data-theme="ngo"] .footer-bottom          { border-top-color: rgba(228, 224, 212, 0.12) !important; }
+
+[data-theme="ngo"] .footer-bottom p,
+[data-theme="ngo"] .footer-bottom a,
+[data-theme="ngo"] .footer-bottom code {
+  color: var(--ngo-footer-meta) !important;
+  font-size: 0.8rem !important;
+}
+
+[data-theme="ngo"] .footer-bottom a:hover { color: var(--ngo-on-dark) !important; }
+
+/* ── 16. SCROLL FADE-IN ──────────────────────────────────────── */
+
+[data-theme="ngo"] .ngo-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+[data-theme="ngo"] .ngo-fade.ngo-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-theme="ngo"] .ngo-fade {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ── 17. RESPONSIVE ─────────────────────────────────────────── */
+
+@media (max-width: 768px) {
+  [data-theme="ngo"] {
+    --ngo-wave: 36px;
+    --ngo-footer-silhouette: 72px;
+  }
+  [data-theme="ngo"] .manifesto,
+  [data-theme="ngo"] .initial-choice,
+  [data-theme="ngo"] .team-grid-section,
+  [data-theme="ngo"] .partners-section { padding-top: 60px !important; padding-bottom: 60px !important; }
+  [data-theme="ngo"] .initial-choice   { padding-top: calc(60px + var(--ngo-wave)) !important; }
+}

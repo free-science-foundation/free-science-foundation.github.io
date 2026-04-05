@@ -7,14 +7,14 @@
     <meta name="description" content="A curated collection of free scientific tools. Empowering researchers, universities, and startups with accessible tools to bridge the gap between well-funded companies and underbudget scientific communities.">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="theme-zambia-global.css">
+    <link rel="stylesheet" href="ngo-skin.css">
 </head>
 <body>
     <header class="site-header" role="banner">
         <nav class="nav-container" role="navigation" aria-label="Main navigation">
             <div class="nav-brand">
                 <a href="index.html" class="brand-link">
-                    <img src="images/logo.png" alt="Free Science Network Logo" class="site-logo">
-                    <h1 class="site-title">Free Science Network</h1>
+                    <img src="images/logo.png" alt="Free Science Network" class="site-logo">
                 </a>
             </div>
             <ul class="nav-links">
@@ -30,12 +30,14 @@
             </ul>
             <div class="nav-controls">
                 <div class="theme-toggle-wrapper">
-                    <label class="theme-switch" for="theme-toggle">
-                        <input type="checkbox" id="theme-toggle" aria-label="Toggle dark mode">
-                        <span class="theme-slider"></span>
-                    </label>
+                    <button type="button" class="theme-classic-btn" id="theme-toggle" aria-label="Classic light / dark theme" aria-pressed="false" title="Classic light / dark mode">
+                        <span class="theme-classic-btn__glyph" aria-hidden="true"></span>
+                    </button>
                     <button type="button" class="theme-zambia-btn" id="theme-zambia-toggle" aria-label="Zambia sunrise theme" aria-pressed="false" title="Warm sunrise palette (Zambia)">
                         <span class="theme-zambia-btn__glyph" aria-hidden="true"></span>
+                    </button>
+                    <button type="button" class="theme-ngo-btn" id="theme-ngo-toggle" aria-label="NGO narrative skin" aria-pressed="false" title="NGO narrative scroll skin">
+                        <span class="theme-ngo-btn__glyph" aria-hidden="true"></span>
                     </button>
                 </div>
                 <div class="language-selector">
@@ -134,6 +136,7 @@
     <main>
         <section class="hero" role="banner">
             <div class="container">
+                <h1 class="hero-site-title">Free Science Network</h1>
                 <div class="hero-banner hero-banner--carousel" data-hero-carousel>
                     <div
                         class="hero-carousel"
@@ -571,45 +574,8 @@
 
     </main>
 
-    <footer class="site-footer" role="contentinfo">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3 class="footer-heading">Resources</h3>
-                    <ul class="footer-links">
-                        <li><a href="tools-services.html">Open source projects</a></li>
-                        <li><a href="manifesto.html">Manifesto</a></li>
-                        <li><a href="https://www.gnu.org/philosophy/free-sw.html" target="_blank" rel="noopener">What is Free Software?</a></li>
-                        <li><a href="https://www.gnu.org/licenses/" target="_blank" rel="noopener">GNU Licenses</a></li>
-                        <li><a href="events/courses.html">Courses</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3 class="footer-heading">Community</h3>
-                    <ul class="footer-links">
-                        <li><a href="https://www.gnu.org/people/people.html" target="_blank" rel="noopener">Contributors</a></li>
-                        <li><a href="https://www.linkedin.com/in/cozzolinofrancesco/" target="_blank" rel="noopener">LinkedIn</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3 class="footer-heading">Legal</h3>
-                    <ul class="footer-links">
-                        <li><a href="https://www.gnu.org/copyleft/" target="_blank" rel="noopener">Copyleft</a></li>
-                        <li><a href="https://en.wikipedia.org/wiki/Decentralized_autonomous_organization" target="_blank" rel="noopener">What is DAO?</a></li>
-                        <li><a href="public-materials.html">Public Materials</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>
-                    &copy; 2026-2030 Free Science Network. All content is free. Contact:
-                    <a href="mailto:info@freesciencenetwork.org">info@freesciencenetwork.org</a><br>
-                    ENS: <a href="https://app.ens.domains/freesciencenetwork.eth" target="_blank" rel="noopener">freesciencenetwork.eth</a><br>
-                    Wallet: <code>0x9031c263dA0FcBeE60519b618A28d7490D723250</code>
-                </p>
-            </div>
-        </div>
-    </footer>
+<div id="site-footer-placeholder"></div>
+    <script src="footer.js"></script>
 
     <!-- Translation Help Modal -->
     <div id="translation-modal" class="translation-modal-overlay" role="dialog" aria-modal="true">
