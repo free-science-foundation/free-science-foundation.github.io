@@ -251,6 +251,27 @@ html[data-theme="dark"] .zambia-page .social-icon.linkedin-icon:hover {
   color: var(--zm-cream);
 }
 
+/* Footer animals: visible warm ink on cream footer (avoid ultra-low opacity + near-black filter) */
+.zambia-page .footer-animals {
+  flex-wrap: nowrap !important;
+  overflow: hidden !important;
+  opacity: 1 !important;
+}
+
+.zambia-page .footer-animals img {
+  min-width: 0 !important;
+  flex: 1 1 0 !important;
+  height: clamp(40px, 6vw, 88px) !important;
+  max-height: 88px !important;
+  opacity: 0.82 !important;
+  filter: brightness(0.36) sepia(0.35) hue-rotate(28deg) saturate(1.35) contrast(1.05) !important;
+}
+
+html[data-theme="dark"] .zambia-page .footer-animals img {
+  opacity: 0.75 !important;
+  filter: brightness(1.12) sepia(0.2) hue-rotate(12deg) saturate(0.85) !important;
+}
+
 /* Footer: same storybook band */
 .zambia-page .site-footer {
   position: relative;

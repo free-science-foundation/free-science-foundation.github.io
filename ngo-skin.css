@@ -194,9 +194,11 @@
 
 [data-theme="ngo"] .hero-animals {
   display: flex;
+  flex-wrap: nowrap !important;
   align-items: flex-end;
   justify-content: space-between;
-  width: 90%;
+  width: 100%;
+  max-width: min(1280px, 100%);
   margin: 0 auto 2rem;
   pointer-events: none;
 }
@@ -205,6 +207,7 @@
   height: 96px;
   width: auto;
   flex: 1 1 0;
+  min-width: 0 !important;
   object-fit: contain;
   object-position: bottom;
   display: block;
@@ -702,25 +705,30 @@
 
 [data-theme="ngo"] .footer-animals {
   display: flex;
+  flex-wrap: nowrap;
   align-items: flex-end;
   justify-content: space-between;
-  width: 90%;
+  width: 100%;
+  max-width: min(1280px, 100%);
   margin: 0 auto;
   overflow: hidden;
   padding-top: 1.5rem;
   padding-bottom: 0;
-  opacity: 0.18;
+  opacity: 1;
   pointer-events: none;
 }
 
 [data-theme="ngo"] .footer-animals img {
-  height: 96px;
+  height: clamp(40px, 6vw, 88px);
+  max-height: 88px;
   width: auto;
   flex: 1 1 0;
+  min-width: 0;
   object-fit: contain;
   object-position: bottom;
   display: block;
-  filter: drop-shadow(0 0 1px rgba(245,240,232,0.3));
+  opacity: 0.88;
+  filter: drop-shadow(0 0 2px rgba(245, 240, 232, 0.35));
 }
 
 [data-theme="ngo"] .site-footer::before {

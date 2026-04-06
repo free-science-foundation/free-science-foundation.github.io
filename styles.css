@@ -399,6 +399,75 @@ body {
   z-index: 1;
 }
 
+/* Animal silhouette row under hero carousel: single line at any viewport.
+   Flex items default to min-width:auto (content size); without min-width:0 they
+   refuse to shrink and the row wraps or blows out layout. */
+.hero-animals {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(2px, 0.35vw, 6px);
+  width: 100%;
+  max-width: min(1280px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 clamp(0.35rem, 1.5vw, 1rem);
+  box-sizing: border-box;
+  pointer-events: none;
+}
+
+.hero-animals img {
+  flex: 1 1 0;
+  min-width: 0;
+  height: clamp(32px, 6vw, 96px);
+  width: auto;
+  max-height: 96px;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+}
+
+/* Footer animal row (partials/site-footer.html): one line; PNGs are ~cream — darken on light footers */
+.footer-animals {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: clamp(2px, 0.35vw, 6px);
+  width: 100%;
+  max-width: min(1280px, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.25rem clamp(0.35rem, 1.5vw, 1rem) 0;
+  box-sizing: border-box;
+  pointer-events: none;
+  opacity: 1;
+}
+
+.footer-animals img {
+  flex: 1 1 0;
+  min-width: 0;
+  height: clamp(28px, 5.5vw, 80px);
+  width: auto;
+  max-height: 80px;
+  object-fit: contain;
+  object-position: bottom center;
+  display: block;
+}
+
+[data-theme="light"] .footer-animals img {
+  filter: brightness(0.42) contrast(1.05);
+  opacity: 0.72;
+}
+
+[data-theme="dark"] .footer-animals img {
+  opacity: 0.65;
+  filter: brightness(1.06) drop-shadow(0 0 3px rgba(0, 0, 0, 0.45));
+}
+
 /* Text-only heroes (e.g. how-it-works): less space before next section */
 .hero--compact {
   padding-top: 1.5rem;
