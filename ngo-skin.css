@@ -456,11 +456,6 @@
   line-height: 1.8;
 }
 
-/* Match how-it-works .mission-text / .mission-subtitle (var(--color-text-muted)) */
-[data-theme="ngo"] .initial-choice-about__lead.initial-choice-about__lead--mission-text {
-  color: var(--color-text-muted) !important;
-}
-
 [data-theme="ngo"] .initial-choice-about__howitworks-title {
   color: var(--ngo-text);
 }
