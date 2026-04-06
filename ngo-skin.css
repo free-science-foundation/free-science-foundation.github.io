@@ -25,6 +25,9 @@
   /* Button / filled-badge bg (white text on top → 5.8:1 ✅) */
   --ngo-accent-btn:   #46581f;
 
+  /* Heading / gradient start (profit label, expand toggle) — text-safe on light */
+  --ngo-accent-h:     var(--ngo-accent-text);
+
   /* Footer text — solid colours instead of low-opacity rgba               */
   --ngo-footer-link:  #c8c0b4;  /* 5.7:1 on ngo-dark ✅                    */
   --ngo-footer-meta:  #bab2a8;  /* 5.0:1 on ngo-dark ✅                    */
@@ -674,8 +677,31 @@
   border-top: none !important;
   color: var(--ngo-on-dark) !important;
   position: relative;
-  padding-top: 2.85rem !important;
+  padding-top: 0 !important;
   padding-bottom: 2.5rem !important;
+}
+
+[data-theme="ngo"] .footer-animals {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  overflow: hidden;
+  padding-top: 1.5rem;
+  padding-bottom: 0;
+  opacity: 0.18;
+  pointer-events: none;
+}
+
+[data-theme="ngo"] .footer-animals img {
+  height: 96px;
+  width: auto;
+  flex: 1 1 0;
+  object-fit: contain;
+  object-position: bottom;
+  display: block;
+  filter: drop-shadow(0 0 1px rgba(245,240,232,0.3));
 }
 
 [data-theme="ngo"] .site-footer::before {
