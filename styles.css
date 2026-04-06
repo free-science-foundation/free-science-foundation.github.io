@@ -820,13 +820,18 @@ body {
   padding: 1.5rem 0 2.25rem;
 }
 
+/* Extra top space when hero is omitted (sticky header + breathing room) */
+.page-how-it-works main > .mission--light-panel:first-child {
+  padding-top: 2.75rem;
+}
+
 .page-how-it-works .mission--light-panel .container {
   max-width: 46rem;
-  background: #ffffff;
-  border-radius: var(--radius-xl);
+  background: transparent;
+  border-radius: 0;
   padding: 1.85rem 1.6rem 2rem;
-  box-shadow: var(--shadow-sm);
-  border: 1px solid var(--color-border-light);
+  box-shadow: none;
+  border: none;
   box-sizing: border-box;
 }
 
@@ -834,15 +839,10 @@ body {
   max-width: none;
 }
 
-.page-how-it-works .mission--light-panel .section-title {
-  color: #1f2937;
-}
-
 .page-how-it-works .mission--light-panel .mission-subtitle,
 .page-how-it-works .mission--light-panel .mission-text {
   font-size: clamp(0.95rem, 1.3vw, 1.08rem);
   font-weight: 400;
-  color: #4b5563;
   line-height: 1.65;
 }
 
@@ -856,16 +856,6 @@ body {
 
 .page-how-it-works .mission--light-panel .mission-text:last-of-type {
   margin-bottom: 0;
-}
-
-[data-theme="dark"] .page-how-it-works .mission--light-panel .container {
-  background: rgba(255, 255, 255, 0.97);
-  border-color: rgba(255, 255, 255, 0.12);
-}
-
-[data-theme="ngo"] .page-how-it-works .mission--light-panel .container {
-  background: #ffffff;
-  border-color: var(--ngo-border);
 }
 
 .section-title {
@@ -955,17 +945,7 @@ body {
   font-size: 0.98rem;
 }
 
-/* How it works page: main title stands out; section & phase headings smaller */
-.page-how-it-works .hero--compact {
-  padding-top: 2rem;
-  padding-bottom: 0.35rem;
-}
-
-.page-how-it-works .hero .hero-title {
-  font-size: clamp(2.9rem, 6vw, 4.75rem);
-  margin-bottom: 0;
-}
-
+/* How it works page: section & phase headings smaller */
 .page-how-it-works .section-title {
   font-size: clamp(1.55rem, 2.7vw, 2rem);
   font-weight: 700;

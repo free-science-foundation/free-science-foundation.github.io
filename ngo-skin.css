@@ -456,6 +456,11 @@
   line-height: 1.8;
 }
 
+/* Match how-it-works .mission-text / .mission-subtitle (var(--color-text-muted)) */
+[data-theme="ngo"] .initial-choice-about__lead.initial-choice-about__lead--mission-text {
+  color: var(--color-text-muted) !important;
+}
+
 [data-theme="ngo"] .initial-choice-about__howitworks-title {
   color: var(--ngo-text);
 }
@@ -468,6 +473,12 @@
 [data-theme="ngo"] .initial-choice-about__howitworks-cta a:hover {
   color: var(--ngo-accent-btn);
   border-bottom-color: var(--ngo-accent-text);
+}
+
+/* How it works — Zero-Margin copy: same green-gray as index initial-choice leads */
+[data-theme="ngo"] .page-how-it-works .mission--light-panel .mission-subtitle,
+[data-theme="ngo"] .page-how-it-works .mission--light-panel .mission-text {
+  color: var(--ngo-muted);
 }
 
 /* ── 10. CARDS — index page (service + choice) ───────────────── */
