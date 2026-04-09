@@ -4,6 +4,10 @@
 
 - Local static server: `python3 -m http.server 8080` from repo root → http://127.0.0.1:8080/ (PID may vary per session).
 
+## Last completed (2026-04-09)
+
+- **Team:** Added Diana (Zhiyuan) Hedlund to [team.html](../team.html); photo `images/diana-hedlund.png` (copied from Cursor assets).
+
 ## Last completed (2026-04-06)
 
 - Added [docs/style-blueprint.md](../docs/style-blueprint.md): CSS/theme/token/typography blueprint for replicating pages; NGO as primary target.
