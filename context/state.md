@@ -6,7 +6,7 @@
 
 ## Last completed (2026-04-09)
 
-- **Team:** Ismahane Touil Allaoui on [team.html](../team.html); photo `images/ismahane-touil-allaoui.png` (B&W headshot). Diana’s `images/diana-hedlund.png` restored to original outdoor portrait.
+- **Team:** Diana’s `images/diana-hedlund.png` updated from user-supplied asset (`image-f8355a03…png`, outdoor / Mont Saint-Michel portrait). Ismahane Touil Allaoui: `images/ismahane-touil-allaoui.png` (B&W headshot).
 
 ## Last completed (2026-04-06)
 
