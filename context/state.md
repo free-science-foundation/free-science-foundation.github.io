@@ -6,8 +6,7 @@
 
 ## Last completed (2026-04-09)
 
-- **Team:** Novartis RNAi/molecular biology profile on [team.html](../team.html); photo `images/novartis-basel-scientist.png`. **No personal name in user paste** — card heading is role-based until name provided.
-- **Team:** Added Diana (Zhiyuan) Hedlund to [team.html](../team.html); photo `images/diana-hedlund.png` (copied from Cursor assets).
+- **Team:** Diana (Zhiyuan) Hedlund on [team.html](../team.html); image file `images/diana-hedlund.png` (name slug) is the professional B&W headshot. Novartis-only card removed earlier; no `novartis-basel-scientist.png`.
 
 ## Last completed (2026-04-06)
 
