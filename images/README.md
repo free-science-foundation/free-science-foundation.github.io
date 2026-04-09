@@ -11,4 +11,5 @@
 | `partners-logos/tridimension-logo.png` | Partner logo. |
 | `daniel-gaiki.jpeg` | **Team** (`team.html`): Daniel Gaiki, electronics engineer. |
 | `jimny.jpeg` | **Team** (`team.html`): Jimmy K. Muwowo, IUCN CEESP. |
-| `diana-hedlund.png` | **Team** (`team.html`): Diana (Zhiyuan) Hedlund, photonics R&D (professional headshot). |
+| `diana-hedlund.png` | **Team** (`team.html`): Diana (Zhiyuan) Hedlund, photonics R&D. |
+| `ismahane-touil-allaoui.png` | **Team** (`team.html`): Ismahane Touil Allaoui, molecular / RNA biology R&D (Basel). |

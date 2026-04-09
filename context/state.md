@@ -6,7 +6,7 @@
 
 ## Last completed (2026-04-09)
 
-- **Team:** Diana (Zhiyuan) Hedlund on [team.html](../team.html); image file `images/diana-hedlund.png` (name slug) is the professional B&W headshot. Novartis-only card removed earlier; no `novartis-basel-scientist.png`.
+- **Team:** Ismahane Touil Allaoui on [team.html](../team.html); photo `images/ismahane-touil-allaoui.png` (B&W headshot). Diana’s `images/diana-hedlund.png` restored to original outdoor portrait.
 
 ## Last completed (2026-04-06)
 
