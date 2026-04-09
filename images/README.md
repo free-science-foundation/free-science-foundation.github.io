@@ -12,3 +12,4 @@
 | `daniel-gaiki.jpeg` | **Team** (`team.html`): Daniel Gaiki, electronics engineer. |
 | `jimny.jpeg` | **Team** (`team.html`): Jimmy K. Muwowo, IUCN CEESP. |
 | `diana-hedlund.png` | **Team** (`team.html`): Diana (Zhiyuan) Hedlund, photonics R&D. |
+| `novartis-basel-scientist.png` | **Team** (`team.html`): Novartis scientist (Basel); replace heading with full name when known. |
