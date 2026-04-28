@@ -1006,3 +1006,170 @@ main {
     margin: 0 0 1rem 0;
   }
 }
+
+/* -- Program pillars (projects.html: thematic focus areas) -- */
+
+body.page-program-pillars {
+  --pillar-bg: #1a1f14;
+  --pillar-card-bg: #222818;
+  --pillar-card-border: rgba(122, 140, 82, 0.38);
+  --pillar-index: #dcecab;
+  --pillar-text: #e8e6dc;
+  --pillar-icon-fg: #f2f8d4;
+}
+
+html[data-theme="ngo"] body.page-program-pillars,
+body.page-program-pillars {
+  background: var(--pillar-bg) !important;
+  color: var(--pillar-text) !important;
+}
+
+body.page-program-pillars main {
+  padding-bottom: 4.5rem;
+}
+
+.program-pillars-hero {
+  padding: 2.75rem 0 1.5rem;
+  text-align: center;
+  border-bottom: 1px solid rgba(122, 140, 82, 0.22);
+}
+
+.program-pillars-title {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin: 0;
+  color: var(--pillar-text);
+}
+
+.program-pillars-title::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 4px;
+  border-radius: 999px;
+  margin: 1rem auto 0;
+  background: linear-gradient(90deg, #2dd4bf, #65a30d);
+  opacity: 0.95;
+}
+
+.program-pillars-section {
+  padding: 1.75rem 0 1rem;
+}
+
+.program-pillars-section .container {
+  max-width: 920px;
+}
+
+.program-pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 680px) {
+  .program-pillars-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.program-pillar-card {
+  position: relative;
+  border-radius: 14px;
+  padding: 1.15rem 1.25rem 1.15rem 1.25rem;
+  background: var(--pillar-card-bg);
+  border: 1px solid var(--pillar-card-border);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.22);
+  transition: opacity 0.25s ease, filter 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.program-pillar-card--active {
+  border-color: rgba(45, 212, 191, 0.45);
+  box-shadow:
+    0 10px 32px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(45, 212, 191, 0.12);
+}
+
+.program-pillar-card--link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.program-pillar-card--link:hover {
+  border-color: rgba(45, 212, 191, 0.55);
+  box-shadow:
+    0 12px 36px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(45, 212, 191, 0.18);
+  transform: translateY(-2px);
+}
+
+.program-pillar-card--link:focus {
+  outline: none;
+}
+
+.program-pillar-card--link:focus-visible {
+  outline: 2px solid rgba(220, 236, 171, 0.85);
+  outline-offset: 3px;
+}
+
+.program-pillar-card--inactive {
+  opacity: 0.5;
+  filter: grayscale(0.12);
+  border-color: rgba(122, 140, 82, 0.2);
+  box-shadow: none;
+}
+
+.program-pillar-index {
+  position: absolute;
+  top: 0.85rem;
+  left: 1rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--pillar-index);
+  line-height: 1;
+}
+
+.program-pillar-inner {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.35rem;
+  min-height: 2.75rem;
+}
+
+.program-pillar-icon {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #22d3bb, #059669);
+  color: var(--pillar-icon-fg);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.program-pillar-card--inactive .program-pillar-icon {
+  background: linear-gradient(145deg, rgba(34, 211, 187, 0.45), rgba(5, 150, 105, 0.4));
+  color: rgba(242, 248, 212, 0.75);
+}
+
+.program-pillar-name {
+  margin: 0;
+  font-size: 1.18rem;
+  font-weight: 750;
+  letter-spacing: -0.02em;
+  color: var(--pillar-text);
+  line-height: 1.25;
+}
+
+.program-pillar-card--inactive .program-pillar-name {
+  color: rgba(232, 230, 220, 0.55);
+}

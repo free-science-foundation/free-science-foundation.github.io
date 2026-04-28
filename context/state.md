@@ -2,7 +2,11 @@
 
 ## Active
 
-- Local static server: `python3 -m http.server 8080` from repo root → http://127.0.0.1:8080/ (PID may vary per session).
+- Local static server (2026-04-28): `python3 -m http.server 8765 --bind 127.0.0.1` from repo root → http://127.0.0.1:8765/ (8080 in use by another process on IPv4; dedicated port avoids wrong handler).
+
+## Last completed (2026-04-28)
+
+- **projects**: pillars on `projects.html`; **Healthcare** → `projects-healthcare.html#openflexure`; **Education** → `projects-education.html` with deep links `#phonescope`, `#water-rocket` (carousel syncs hash via `replaceState`). `projects-carousel.css`, `projects-carousel.js`.
 
 ## Last completed (2026-04-09)
 
