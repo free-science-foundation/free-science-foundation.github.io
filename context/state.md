@@ -6,7 +6,7 @@
 
 ## Last completed (2026-04-28)
 
-- **projects**: pillars on `projects.html`; **Healthcare** → `projects-healthcare.html#openflexure`; **Education** → `projects-education.html` with deep links `#phonescope`, `#water-rocket` (carousel syncs hash via `replaceState`). `projects-carousel.css`, `projects-carousel.js`.
+- **projects**: pillars on `projects.html`; **Healthcare** → `projects-healthcare.html#openflexure`; **Education** → `projects-education.html` (`#phonescope`, `#water-rocket`). **Economic development** (07) → [For All Humankind](https://www.forallhumankind.org/) (external). `projects-carousel.css`, `projects-carousel.js`.
 
 ## Last completed (2026-04-09)
 
