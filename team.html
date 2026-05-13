@@ -150,6 +150,27 @@
         <section class="team-grid-section" aria-labelledby="team-grid-heading">
             <div class="container">
                 <h2 id="team-grid-heading" class="section-title">Members</h2>
+                <div class="team-sort-toolbar" role="region" aria-labelledby="team-sort-label">
+                    <div class="team-sort-toolbar__row">
+                        <div class="team-sort-shell">
+                            <div class="team-sort-shell__inner">
+                                <span class="team-sort-toolbar__icon" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18"/><path d="M7 12h10"/><path d="M11 18h2"/></svg>
+                                </span>
+                                <label id="team-sort-label" for="team-sort-select" class="team-sort-label">Sort members</label>
+                                <div class="team-sort-field">
+                                    <select id="team-sort-select" class="team-sort-select">
+                                        <option value="listed-asc">Date on roster (oldest first)</option>
+                                        <option value="listed-desc">Date on roster (newest first)</option>
+                                        <option value="alpha-asc">Alphabetical (A–Z)</option>
+                                        <option value="alpha-desc">Alphabetical (Z–A)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p id="team-sort-live" class="visually-hidden" aria-live="polite"></p>
+                </div>
                 <div class="team-grid" id="team-grid">
                     <div class="team-member-card">
                         <div class="team-member-photo">
@@ -316,6 +337,50 @@
                             <p class="team-member-contribution">14+ years in pharmaceutical R&amp;D: leads RNAi projects, contributes to siRNA design, and focuses on off-target analysis via bulk RNA-seq with R and Python. Earlier: CRISPR, cloning, flow cytometry and sorting, immunology research support for ofatumumab; clinical development rotation on MS trials (Asclepios I/II), protocols, and regulatory-oriented data review; cellular models, compound screening, and multi-color immunophenotyping.</p>
                         </div>
                     </div>
+                    <div class="team-member-card">
+                        <div class="team-member-photo">
+                            <img src="images/zaccaria.png" alt="Zaccaria">
+                        </div>
+                        <div class="team-member-info">
+                            <h3 class="team-member-name">Zaccaria</h3>
+                            <p class="team-member-title-group">Mechanical Design Engineer</p>
+                            <p class="team-member-profession">Mechanical Engineer · Polytechnic University of Milan</p>
+                            <p class="team-member-contribution">Interested in hardware and software, to build electromechanical devices from scratch.</p>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-photo">
+                            <img src="images/eugenia.png" alt="Eugenia Cabezón">
+                        </div>
+                        <div class="team-member-info">
+                            <h3 class="team-member-name">Eugenia Cabezón</h3>
+                            <p class="team-member-title-group">Industrial Designer · 3D Printing Specialist</p>
+                            <p class="team-member-profession">CAD modeling · additive manufacturing · product design</p>
+                            <p class="team-member-contribution">Design of CAD models for 3D printing, translating concepts and client requirements into functional, production-ready parts and products.</p>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-photo">
+                            <img src="images/adrian.png" alt="Adrián Díez Yubero">
+                        </div>
+                        <div class="team-member-info">
+                            <h3 class="team-member-name">Adrián Díez Yubero</h3>
+                            <p class="team-member-title-group">Product Designer · Packaging &amp; Injection Molding</p>
+                            <p class="team-member-profession">Injection Molding · Sustainable Packaging · Toy Design · Industrial Innovation · 3D printing</p>
+                            <p class="team-member-contribution">Product Designer specialized in plastic injection and packaging. With professional experience in the toy industry, creative concept and industrial feasibility. Focused on optimizing materials and manufacturing processes.</p>
+                        </div>
+                    </div>
+                    <div class="team-member-card">
+                        <div class="team-member-photo">
+                            <img src="images/eric.png" alt="Eryk Dzido">
+                        </div>
+                        <div class="team-member-info">
+                            <h3 class="team-member-name">Eryk Dzido</h3>
+                            <p class="team-member-title-group">Industrial Design student</p>
+                            <p class="team-member-profession">Academy of Fine Arts in Warsaw</p>
+                            <p class="team-member-contribution">My goal is to design user-friendly and open-source solutions for 3D printable tools.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -420,23 +485,6 @@
     </div>
 
     <script src="theme.js"></script>
-    <script>
-    (function () {
-        var grid = document.getElementById("team-grid");
-        if (!grid || grid.children.length < 2) return;
-        var cards = Array.prototype.slice.call(grid.children);
-        var founder = cards[0];
-        var rest = cards.slice(1);
-        for (var i = rest.length - 1; i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var tmp = rest[i];
-            rest[i] = rest[j];
-            rest[j] = tmp;
-        }
-        while (grid.firstChild) grid.removeChild(grid.firstChild);
-        grid.appendChild(founder);
-        for (var k = 0; k < rest.length; k++) grid.appendChild(rest[k]);
-    })();
-    </script>
+    <script src="team-sort.js"></script>
 </body>
 </html>

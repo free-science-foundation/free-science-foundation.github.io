@@ -4,6 +4,15 @@
 
 - Local static server (2026-04-28): `python3 -m http.server 8765 --bind 127.0.0.1` from repo root → http://127.0.0.1:8765/ (8080 in use by another process on IPv4; dedicated port avoids wrong handler).
 
+## Last completed (2026-05-13)
+
+- **Team sort toolbar (visual):** Card-style panel (`var(--radius-lg)`, `var(--shadow-sm)`), top gradient bar, decorative list icon, custom select chevron + hover/focus; responsive column stack ≤768px. Files: [`styles.css`](../styles.css), [`ngo-skin.css`](../ngo-skin.css), [`theme-zambia-global.css`](../theme-zambia-global.css), [`team.html`](../team.html). Logic unchanged: [`team-sort.js`](../team-sort.js).
+- **Team page:** `team.html` + `team-sort.js` — sort dropdown: roster order (oldest/newest by position in HTML) and A–Z / Z–A by display name; removed per-load shuffle of non-founder cards. Styles: `styles.css`, `ngo-skin.css`.
+- **Team:** `team.html` — Eryk Dzido (`images/eric.png`): industrial design student, Academy of Fine Arts in Warsaw; goal text (user-friendly, 3D capitalization).
+- **Team:** `team.html` — Adrián Díez Yubero (`images/adrian.png`): product design, packaging, injection molding, toy industry; bio as provided.
+- **Team:** `team.html` — Eugenia Cabezón (`images/eugenia.png`): Industrial Designer / 3D printing specialist; CAD-to-production copy as provided.
+- **Team:** `team.html` — added Zaccaria (`images/zaccaria.png`): Mechanical Design Engineer; Politecnico di Milano ME; electromechanical hardware/software focus. Display name set to **Zaccaria** (no given name supplied).
+
 ## Last completed (2026-04-28)
 
 - **projects**: pillars on `projects.html`; **Healthcare** → `projects-healthcare.html#openflexure`; **Education** → `projects-education.html` (`#phonescope`, `#water-rocket`). **Economic development** (07) → [For All Humankind](https://www.forallhumankind.org/) (external). `projects-carousel.css`, `projects-carousel.js`.

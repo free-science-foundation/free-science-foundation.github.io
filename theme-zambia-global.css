@@ -452,6 +452,56 @@
   color: var(--zm-ink-muted);
 }
 
+[data-theme="zambia"] .team-sort-toolbar {
+  background: rgba(255, 252, 245, 0.94);
+  border-color: rgba(140, 74, 47, 0.22);
+  box-shadow: 0 8px 22px rgba(61, 41, 24, 0.08);
+}
+
+[data-theme="zambia"] .team-sort-toolbar__icon {
+  color: var(--zm-leaf);
+}
+
+[data-theme="zambia"] .team-sort-label {
+  color: var(--zm-ink);
+}
+
+[data-theme="zambia"] .team-sort-shell {
+  background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 4px 16px rgba(61, 41, 24, 0.18);
+}
+
+[data-theme="zambia"] .team-sort-shell:hover {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.45) inset,
+    0 7px 22px rgba(61, 41, 24, 0.22);
+}
+
+[data-theme="zambia"] .team-sort-shell:has(.team-sort-select:focus-visible) {
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 0 0 3px rgba(232, 90, 12, 0.28),
+    0 7px 24px rgba(61, 41, 24, 0.18);
+}
+
+[data-theme="zambia"] .team-sort-shell__inner {
+  background: rgba(255, 252, 245, 0.99);
+  border-color: rgba(140, 74, 47, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.65);
+}
+
+[data-theme="zambia"] .team-sort-select {
+  background-color: rgba(61, 41, 24, 0.08);
+  color: var(--zm-ink);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%236b4f3a' stroke-width='2.25' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+}
+
+[data-theme="zambia"] .team-sort-select:hover {
+  background-color: rgba(61, 41, 24, 0.12);
+}
+
 /* Partners page */
 [data-theme="zambia"] .partners-section .section-title {
   background: none;
